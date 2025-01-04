@@ -1,0 +1,94 @@
+This is an overhaul of Awakening's encounter system to be more like Origins'.  This means that encounters are a great deal more predictable, and if you want the details on exactly 
+how things work, scroll down past the ****** ;)
+
+
+Install in the override.  Best installed before leaving Vigil's Keep for the first time.  If you have already travelled the world map, you will revisit any random encounters you've 
+	already cleared, once each (with the enemies already dead), but it should properly keep track after that.
+If updating from a previous version, please completely remove the old folders first, rather than overwriting them, since several old files are now defunct. 
+
+ 
+Smaller fixes: 
+	The crow assassin in the "Burning Bridge" encounter now drops 20+ gold and a note, like he's supposed to (both were in his inventory already, but weren't set to "droppable").  
+		Additionally, there will now be an alternate version of the note if the PC is an Orlesian Warden. 
+	The Avvar encounter on the "forest" encounter table had a faulty plot check.
+	There was one mercenary mixed in with the Avvar; he's been replaced with another Avvar. 
+	There were 6 empty barrels in the pirate encounter that you could attempt to loot, they've been deactivated.
+	Nathaniel & Lillith both had generic encounter checks on one table (rather than checks dependent on their respective plots), meaning you could encounter them twice (and in 	
+		the case of Nathaniel, potentially losing any equipment you may have given him!)
+	Travelling now removes plot items that are no longer needed.  If you wish to see what will be removed and when, scroll to the very bottom. 
+	Rearranged all encounter tables so that all generic encounters occur on only one table each, preventing you from showing up to a map you've already cleared.  To make up 
+		for the lack of encounters on the plains table, I've added more chances for randomized/repeating encounters.  
+		I've also given priority to unique encounters on all tables, so you should only get the randomized/repeating encounters if no others are available. 
+	Renamed all Awakening encounter tables, to prevent possible conflicts with the encounter tables from Origins & other DLCs. 
+
+
+Known issues:
+	Sometimes you will be unable to leave an encounter map. This seems to be caused by memory leak, so saving/reloading will sometimes fix it.  The potato computer I used for 
+		testing	had it happen a LOT, so I wrote a script to continue travel: "runscript continue_travel"
+	Sometimes choosing a travel destination on the world map will cause a blink, or a popup that says "travel is not possible".  Waiting a few seconds & trying again fixes it.  
+		Again, this appears to happen mostly on older and/or heavily modded systems.
+
+If your game is already showing signs of strain, I would recommend only installing the 'encounter fixes' folder, and instead just use the random encounters debug menu to look for fights. 
+	(runscript zz_rxa_debug) 
+
+
+Compatibility:
+	Completely compatible with bugfix mods (at least, all the ones that I could find). 
+	Mostly compatible with mods that alter areas and enemies (see below). 
+	Not compatible with other mods that edit random encounter tables.  With the changes I've made to the encounter system, other mods simply will have no effect at all. 
+	Not compatible with any other mods that change the following:
+		gxa_module_travel.ncs
+﻿		gxa_world_map.map
+﻿		terrain_types_gxa.gda
+		worldmaps_gxa.gda
+﻿		lines 20036 & 30000(new) of m2da_base_gxa.gda
+﻿		rxa130cr_crow_assassin.utc
+﻿		rxa140ar.are
+﻿		rxa150ar.are 
+	   
+
+*********************************************
+
+global encounter chance - the game keeps track of how many times the PC has travelled via world map, and checks a table to see if that trip is eligible for an encounter.  
+	The original trip counter only allowed encounters about 1 in every 3 trips, so I've changed it to be like Origins, which allowed encounters about 70% of the time. 
+
+terrain - In Origins, the encounter pool for each journey on the world map is based on the terrain of the destination.  These weren't set in Awakening, so I assigned 
+	terrain types for each map pin:
+		"beach": Forlorn Cove
+		"canyon": Knotwood Hills, Anselm's Reef
+		"farm": Old Stark's Farm, Turnoble Estate
+		"forest": Blackmarsh, Wending Wood
+		"plains": Vigil's Keep, Amaranthine 
+
+encounter tables - for each terrain type there are lists of potential encounters.  Nathaniel, Lilith, and Velanna are on all lists (since they're plot-dependent and can only occur once). 
+	Other encounters:  
+		"beach": pirates, randomized/repeating (roadside farm)
+		"canyon": Dragonbrand, burning bridge, randomized/repeating (canyon road)
+		"farm": randomized/repeating (roadside farm)
+		"forest": Avvar, randomized/repeating (forest path)
+		"plains": randomized/repeating (forest path), randomized/repeating (canyon road), randomized/repeating (roadside farm)
+	The "randomized/repeating" encounters are a special type of encounter, where the enemies are random, and spawned via script.
+	The game chooses which encounter to run by literally running down the list first -> last, checking encounter chance and plot flag requirements.  If no encounters meet their 
+	requirements, you get no encounter for that trip. 
+
+	So, the best way to trigger the Dragonbrand encounter, for instance, is to travel back and forth between Knotwood Hills and Anselm's Reef (once you've met the plot requirements, 
+		of course).
+
+individual encounter chances & plot requirements-  The randomized/repeating maps have a 20% of chance of triggering when travelling to "plains", 30% when travelling anywhere else.  
+	Nathaniel, Velanna, & Lillith are guaranteed triggers once their plot conditions have been met. The other unique encounters are guaranteed to trigger once you've completed at 
+	least one major plot, except the Dragonbrand encounter, which requires you to have completed two major plots. 
+
+
+*********************************************
+Plot Item removal:
+	northern prickleweed seeds - Ines' quest complete
+	smuggler's cove key - smuggler or city guards quest complete
+	Vigil's Keep crypt key - Nathaniel has been given Howe Bow
+	battered journal - stone puzzle completed
+	holding cell key - silverite mine completed
+	blackmarsh dock key - Ser Alvard's sword acquired
+	guardhouse key & cage key- Jacen freed
+(all doors remain open or unlocked once their keys have been used)
+
+  
+
