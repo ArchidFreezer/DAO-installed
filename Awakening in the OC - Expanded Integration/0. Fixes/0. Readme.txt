@@ -1,0 +1,19 @@
+0. Fixes
+	Armor Rune Drop Fixes
+		Certain Awakening Treasure Tables do not have the correct Armor Runes added to them. This adds them to the Tables. This is equivalent to the fix found in Armor Rune Drop Fixes.
+	Cera Sells Barrier Runes
+		Barrier Runes and Barrier Rune Recpies cannot be found anywhere in Awakening. This adds them to Cera's inventory. This is equivalent to the fix found on the Awakening Rune Fixes page.
+	Dweomer Runes Etching Agent Fix
+		Journeyman Dweomer Runes require Etching Agent to craft them, despite no other runes of this level requiring it. This fixes removes the requirement.
+	Extra Specialization Fix
+		Fixes an extra specialization point being given to characters who already had 3 specializations when importing into Awakening.
+	Manual of Focus Fixes
+		Fixes for default Player Skills and the Rogue Dirty Fighting Talent not being accounted for when using the Manual of Focus. Equivalent to the changes in the Manual of Focus - for Origins mod.
+	Massive Armor No Boots Rune Slots Fix
+		Massive Armor No Boots (Templar style armor) is not set to have any Rune Slots in Awakening. This fixes that.
+	Runecrafting Starting Recipes Origins
+		If you take Runecrafting in the original campaign, you will not be given any of the starting recipes. This fixes that. (The game is scripted to give them to you, but the item tags are misspelled, so it does not work)
+	Stamina Draught Skill Level Fix
+		Lesser Stamina Draughts, Stamina Draughts, and Greater Stamina Draughts all required Herbalism Rank 4. This reduces the required skill to match the Health and Lyrium Potion progression.
+	Weapon Runes Fix
+		Certain Weapon Runes are mistakenly marked as Armor Runes. This fixes that. This is equivalent to the fix found in Awakening Rune Fixes.
