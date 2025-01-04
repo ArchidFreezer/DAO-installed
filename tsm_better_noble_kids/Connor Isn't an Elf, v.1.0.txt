@@ -1,0 +1,78 @@
+Name: Connor isn't an Elf! Epilogue Fix
+Version: v1.0
+Date: 12/07/2013
+Category: We Don't Need No Stinkin' QA!
+Author: theskymoves
+
+=================
+Requirements:
+=================
+
+Dragon Age: Origins and a dead Warden who saved Connor. (I think?)
+
+=================
+Description:
+=================
+
+Possessed!Connor's vanilla morph reflects his demonic passenger... he has bruised, discoloured skin, shadowed eyes, and dark lips. If he lives, and the Warden dies, Not!Possessed!Connor will attend the funeral... as an elf. The creature file for epilogue Connor does not use his Redcliffe morph, substituting instead the morph of an ambient elf boy from Nature of the Beast.
+
+I've edited the original Bioware morph for epilogue!Connor, giving him a different skin texture and texture blend, and removing the heavy make-up he wears when possessed. And I've added the new, unique Connor morph to his epilogue creature file.
+
+=================
+Installation:
+=================
+
+Drop the tsm_epi_connor folder into the My Docs override.
+
+=================
+Un-Installation:
+=================
+
+Delete the folder from override.
+
+=================
+Known Issues:
+=================
+
+Will conflict with any other mod that edits epi200cr_connor.utc
+
+=================
+Notes:================
+
+This was not tested in-game, but there's no reason why it shouldn't work.
+
+=================
+History:
+=================
+
+2013-12-06 - Version 1.0
+
+=================
+Contact:
+=================
+
+http://kinlochhold.tumblr.com
+
+=================
+Credits:
+=================
+
+Thanks to Luna's beta testing group at BSN, for bringing this bug to my attention.
+
+
+Thanks to Bioware for creating Dragon Age: Origins.
+Thanks to InsanitySorrow for his ReadMe Generator this file is based on.
+
+=================
+Tools Used:
+=================
+
+Dragon Age Tool Set
+TlkEdit2
+Dragon Age ReadMe Generator
+
+=================
+Licensing/Legal:
+=================
+
+Please don't upload this to other sites without my permission, or claim this mod as your work. Thanks.

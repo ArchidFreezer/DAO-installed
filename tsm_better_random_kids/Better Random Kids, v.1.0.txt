@@ -1,0 +1,118 @@
+Better Random Kids! 
+Version: v1.0
+Date: 2016-01-02
+File under: cookie-cutter kiddies begone
+Author: theskymoves
+
+=================
+Requirements:
+=================
+
+Dragon Age: Origins
+DarthParametric's Additional Clothing for Kids (Mod Resource) - http://www.nexusmods.com/dragonage/mods/4393/
+
+=================
+Description:
+=================
+
+Adds some variety to the attire of various children encountered in DAO. They are largely ambient (such as the children in the Dalish camps and Denerim) though some are more prominent or are involved in quests (such as Bevin, the squires in the Human Noble Origin, and the orphan in Lothering).
+
+I did NOT replace the appearance of every child, so some will still wear the vanilla boy-or-girl clothing. 
+
+=================
+Installation:
+=================
+
+Install DP's Additional Clothing for Kids (Mod Resource).
+
+Drop the tsm_better_random_kids folder into the My Docs override. (or better still, into toolsetexport.)
+
+=================
+Un-Installation:
+=================
+
+Delete the folder from override.
+
+=================
+Known Issues:
+=================
+
+Will conflict with any other mod that edits the following files:
+
+arl110cr_child_f_1.utc
+arl110cr_child_m_2.utc
+arl140cr_bevin.utc
+bec100cr_elf_boy.utc
+bec100cr_elf_girl.utc
+bed200cr_child.utc
+bed200cr_child3.utc
+bhn100cr_squire1.utc
+bhn100cr_squire2.utc
+den200cr_amb_boy1.utc
+den200cr_amb_boy2.utc
+den200cr_amb_elf_boy.utc
+den200cr_amb_elf_girl.utc
+den200cr_amb_girl1.utc
+den200cr_child_dog.utc
+den211cr_scullion.utc
+den300cr_elven_child.utc
+den340cr_captive_boy.utc
+den340cr_captive_girl.utc
+den510cr_scullion_1.utc
+den510cr_scullion_2.utc
+den960cr_eerie_girl_2.utc
+lite_young_pickpocket.utc
+lot100cr_boy_2.utc
+lot100cr_boy_3.utc
+lot100cr_child.utc
+lot100cr_girl_2.utc
+lot100cr_orphan.utc
+lot110cr_refugee_child_f.utc
+lot110cr_refugee_child_m.utc
+ntb100cr_elf_child.utc
+ntb100cr_elf_child_02.utc
+ntb100cr_elf_child_03.utc
+ran200cr_refugee_e.utc
+urn100cr_child.utc
+
+=================
+Notes:
+================
+
+Does not affect kids in the Circle Tower, Connor Guerrin, or Oren Cousland. 
+
+=================
+History:
+=================
+
+2016-01-02 - Version 1.0
+
+=================
+Contact:
+=================
+
+http://kinlochhold.tumblr.com
+
+=================
+Credits:
+=================
+
+thanks to the great DarthParametric for Additional Clothing for Kids (Mod Resource) - http://www.nexusmods.com/dragonage/mods/4393/
+
+
+Thanks to Bioware for creating Dragon Age: Origins.
+Thanks to InsanitySorrow for his ReadMe Generator this file is based on.
+
+=================
+Tools Used:
+=================
+
+Dragon Age Tool Set
+TlkEdit2
+Dragon Age ReadMe Generator
+
+=================
+Licensing/Legal:
+=================
+
+Please don't upload this to other sites without my permission, or claim this mod as your work. Thanks.

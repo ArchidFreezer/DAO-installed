@@ -1,0 +1,90 @@
+Better Mage Kids!
+Version: v1.0
+Date: 2015-12-17
+File under: all dressed up an no-where to go. literally.
+Author: theskymoves
+
+=================
+Requirements:
+=================
+
+Dragon Age: Origins
+DarthParametric's Additional Clothing for Kids (Mod Resource) - http://www.nexusmods.com/dragonage/mods/4393/
+
+=================
+Description:
+=================
+
+In the vanilla game, Circle mage kids wear the same generic clothes as mundane children, rather than mage robes.
+
+This replaces the body models for the child mages in Broken Circle and the Magi Origin with gender-appropriate apprentice robes.
+
+
+=================
+Installation:
+=================
+
+Install DP's Additional Clothing for Kids (Mod Resource).
+
+Drop the tsm_better_mage_kids folder into the My Docs override. (or better still, into toolsetexport.)
+
+=================
+Un-Installation:
+=================
+
+Delete the folder from override.
+
+=================
+Known Issues:
+=================
+
+Will conflict with any other mod that edits the following files:
+
+cir200cr_kids.utc
+cir200cr_kid_2.utc
+cir200cr_kid_3.utc
+bhm100cr_classroom2_stud_f1.utc
+bhm100cr_classroom2_stud_m1.utc
+bhm100cr_classroom2_stud_m2.utc
+
+=================
+Notes:
+================
+
+None.
+
+=================
+History:
+=================
+
+2015-12-17 - Version 1.0
+
+=================
+Contact:
+=================
+
+http://kinlochhold.tumblr.com
+
+=================
+Credits:
+=================
+
+Thanks to DarthParametric for DarthParametric's Additional Clothing for Kids (Mod Resource) - http://www.nexusmods.com/dragonage/mods/4393/
+
+
+Thanks to Bioware for creating Dragon Age: Origins.
+Thanks to InsanitySorrow for his ReadMe Generator this file is based on.
+
+=================
+Tools Used:
+=================
+
+Dragon Age Tool Set
+TlkEdit2
+Dragon Age ReadMe Generator
+
+=================
+Licensing/Legal:
+=================
+
+Please don't upload this to other sites without my permission, or claim this mod as your work. Thanks.

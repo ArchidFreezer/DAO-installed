@@ -1,0 +1,94 @@
+Better Noble Kids! (was: Connor isn't an Elf! Epilogue Fix)
+Version: v1.0
+Date: 12/02/2015
+File under: We Don't Need No Stinkin' QA! with a side of DarthParametric to the rescue
+Author: theskymoves
+
+=================
+Requirements:
+=================
+
+Dragon Age: Origins
+DarthParametric's Additional Clothing for Kids (Mod Resource) - http://www.nexusmods.com/dragonage/mods/4393/
+
+=================
+Description:
+=================
+
+Possessed!Connor's vanilla morph reflects his demonic passenger... he has bruised, discoloured skin, shadowed eyes, and dark lips. If he lives, and the Warden dies, Not!Possessed!Connor will attend the funeral... as an elf. The creature file for epilogue Connor does not use his Redcliffe morph, substituting instead the morph of an ambient elf boy from Nature of the Beast.
+
+I've edited the original Bioware morph for epilogue!Connor, giving him a different skin texture and texture blend, and removing the heavy make-up he wears when possessed. And I've added the new, unique Connor morph to his epilogue creature file.
+
+I've also added appropriate noble clothing to Connor, his possessed!Redcliffe iterations (real!Connor and the Fade!Connors), and he'll now wear apprentice robes in his epilogue appearance.
+
+Likewise, wee Oren Cousland in the Human Noble origin arc will now wear tiny noble clothing, instead of the same thing the peasant children wear. (Awwww...)
+
+=================
+Installation:
+=================
+
+Install DP's Additional Clothing for Kids (Mod Resource).
+
+Drop the tsm_better_noble_kids folder into the My Docs override. (or better still, into toolsetexport.)
+
+=================
+Un-Installation:
+=================
+
+Delete the folder from override.
+
+=================
+Known Issues:
+=================
+
+Will conflict with any other mod that edits the following files (including my Connor isn't an Elf! fix):
+
+epi200cr_connor.utc
+arl220cr_connor.utc
+arl300cr_connor_ambient1.utc
+arl300cr_connor_ambient2.utc
+arl300cr_fake_connor.utc
+bhn100cr_oren.utc
+
+=================
+Notes:
+================
+
+Little Oren is such a cutie.
+
+=================
+History:
+=================
+
+2015-12-02 - Version 1.0
+
+=================
+Contact:
+=================
+
+http://kinlochhold.tumblr.com
+
+=================
+Credits:
+=================
+
+Thanks to Luna's beta testing group at BSN, for bringing the Connor elf bug to my attention.
+Thanks to DarthParametric for Additional Clothing for Kids (Mod Resource) - http://www.nexusmods.com/dragonage/mods/4393/
+
+
+Thanks to Bioware for creating Dragon Age: Origins.
+Thanks to InsanitySorrow for his ReadMe Generator this file is based on.
+
+=================
+Tools Used:
+=================
+
+Dragon Age Tool Set
+TlkEdit2
+Dragon Age ReadMe Generator
+
+=================
+Licensing/Legal:
+=================
+
+Please don't upload this to other sites without my permission, or claim this mod as your work. Thanks.
