@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- AnimProcessor: The animation has been filtered thru EpsilonFilter = 0.000005 --><!-- AnimProcessor: Report=GOB:0,Node:31/31,T:12/12,R:0/0 --><!-- Processed by AnimProcessor on 2010-06-09 20:24:42 --><Animation Name="fxp_terrafire_terra.cust.ani" Length="10.0000000">
+	<AnimationNode ExportName="FlickeringLight_l_Color" SourceType="KeyFrame" Source="Color4" Target="Color4" Elements="4">
+		<KeyFrame><![CDATA[0.0 0.00 0.00 0.00 1.00
+10.0000000 0.00 0.00 0.00 1.00
+]]></KeyFrame>
+	</AnimationNode>
+	<AnimationNode ExportName="Base_Birthrate" SourceType="KeyFrame" Source="Float32" Target="Float32" Elements="1">
+		<KeyFrame><![CDATA[0.0 0.00 
+10.0000000 0.00 
+]]></KeyFrame>
+	</AnimationNode>
+	<AnimationNode ExportName="Base_Life" SourceType="KeyFrame" Source="Float32" Target="Float32" Elements="1">
+		<KeyFrame><![CDATA[0.0 0.32 
+10.0000000 0.32 
+]]></KeyFrame>
+	</AnimationNode>
+	<AnimationNode ExportName="Glow_26_18_20_AgeMapColorMultiplier" SourceType="KeyFrame" Source="Color4" Target="Color4" Elements="4">
+		<KeyFrame><![CDATA[0.0 1.00 1.00 1.00 0.00
+10.0000000 1.00 1.00 1.00 0.00
+]]></KeyFrame>
+	</AnimationNode>
+	<AnimationNode ExportName="Smoke_11_14_32_34_Birthrate" SourceType="KeyFrame" Source="Float32" Target="Float32" Elements="1">
+		<KeyFrame><![CDATA[0.0 0.00 
+10.0000000 0.00 
+]]></KeyFrame>
+	</AnimationNode>
+	<AnimationNode ExportName="Smoke_11_14_32_34_AgeMapScaleXMultiplier" SourceType="KeyFrame" Source="Float32" Target="Float32" Elements="1">
+		<KeyFrame><![CDATA[0.0 0.00 
+10.0000000 0.00 
+]]></KeyFrame>
+	</AnimationNode>
+	<AnimationNode ExportName="Smoke_11_14_32_34_AgeMapScaleYMultiplier" SourceType="KeyFrame" Source="Float32" Target="Float32" Elements="1">
+		<KeyFrame><![CDATA[0.0 0.00 
+10.0000000 0.00 
+]]></KeyFrame>
+	</AnimationNode>
+	<AnimationNode ExportName="Smoke_11_14_32_34_Translation" SourceType="KeyFrame" Source="Vector" Target="Vector" Elements="3">
+		<KeyFrame><![CDATA[0.0000000 0 0 0
+10.0000000 0 0 0
+]]></KeyFrame>
+	</AnimationNode>
+	<AnimationNode ExportName="Embers_23_20_19_29_30_33_35_Birthrate" SourceType="KeyFrame" Source="Float32" Target="Float32" Elements="1">
+		<KeyFrame><![CDATA[0.0 0.00 
+10.0000000 0.00 
+]]></KeyFrame>
+	</AnimationNode>
+	<AnimationNode ExportName="Embers_23_20_19_29_30_33_35_Translation" SourceType="KeyFrame" Source="Vector" Target="Vector" Elements="3">
+		<KeyFrame><![CDATA[0.0000000 0 0 -0.01
+10.0000000 0 0 -0.01
+]]></KeyFrame>
+	</AnimationNode>
+	<AnimationNode ExportName="Base_10_Birthrate" SourceType="KeyFrame" Source="Float32" Target="Float32" Elements="1">
+		<KeyFrame><![CDATA[0.0 0.00 
+10.0000000 0.00 
+]]></KeyFrame>
+	</AnimationNode>
+	<AnimationNode ExportName="Base_10_Life" SourceType="KeyFrame" Source="Float32" Target="Float32" Elements="1">
+		<KeyFrame><![CDATA[0.0 0.32 
+10.0000000 0.32 
+]]></KeyFrame>
+	</AnimationNode>
+	<AnimationNode ExportName="Glow_26_18_20_22_AgeMapColorMultiplier" SourceType="KeyFrame" Source="Color4" Target="Color4" Elements="4">
+		<KeyFrame><![CDATA[0.0 1.00 1.00 1.00 0.00
+10.0000000 1.00 1.00 1.00 0.00
+]]></KeyFrame>
+	</AnimationNode>
+	<AnimationNode ExportName="Smoke_11_14_32_34_36_Birthrate" SourceType="KeyFrame" Source="Float32" Target="Float32" Elements="1">
+		<KeyFrame><![CDATA[0.0 0.00 
+10.0000000 0.00 
+]]></KeyFrame>
+	</AnimationNode>
+	<AnimationNode ExportName="Smoke_11_14_32_34_36_AgeMapScaleXMultiplier" SourceType="KeyFrame" Source="Float32" Target="Float32" Elements="1">
+		<KeyFrame><![CDATA[0.0 0.00 
+10.0000000 0.00 
+]]></KeyFrame>
+	</AnimationNode>
+	<AnimationNode ExportName="Smoke_11_14_32_34_36_AgeMapScaleYMultiplier" SourceType="KeyFrame" Source="Float32" Target="Float32" Elements="1">
+		<KeyFrame><![CDATA[0.0 0.00 
+10.0000000 0.00 
+]]></KeyFrame>
+	</AnimationNode>
+	<AnimationNode ExportName="Smoke_11_14_32_34_36_Translation" SourceType="KeyFrame" Source="Vector" Target="Vector" Elements="3">
+		<KeyFrame><![CDATA[0.0000000 0 0 0
+10.0000000 0 0 0
+]]></KeyFrame>
+	</AnimationNode>
+	<AnimationNode ExportName="Embers_23_20_19_29_30_33_35_38_Birthrate" SourceType="KeyFrame" Source="Float32" Target="Float32" Elements="1">
+		<KeyFrame><![CDATA[0.0 0.00 
+10.0000000 0.00 
+]]></KeyFrame>
+	</AnimationNode>
+	<AnimationNode ExportName="Embers_23_20_19_29_30_33_35_38_Translation" SourceType="KeyFrame" Source="Vector" Target="Vector" Elements="3">
+		<KeyFrame><![CDATA[0.0000000 0 0 -0.01
+10.0000000 0 0 -0.01
+]]></KeyFrame>
+	</AnimationNode>
+	<AnimationNode ExportName="Base_10_13_Birthrate" SourceType="KeyFrame" Source="Float32" Target="Float32" Elements="1">
+		<KeyFrame><![CDATA[0.0 0.00 
+10.0000000 0.00 
+]]></KeyFrame>
+	</AnimationNode>
+	<AnimationNode ExportName="Base_10_13_Life" SourceType="KeyFrame" Source="Float32" Target="Float32" Elements="1">
+		<KeyFrame><![CDATA[0.0 0.32 
+10.0000000 0.32 
+]]></KeyFrame>
+	</AnimationNode>
+	<AnimationNode ExportName="Glow_26_18_20_24_AgeMapColorMultiplier" SourceType="KeyFrame" Source="Color4" Target="Color4" Elements="4">
+		<KeyFrame><![CDATA[0.0 1.00 1.00 1.00 0.00
+10.0000000 1.00 1.00 1.00 0.00
+]]></KeyFrame>
+	</AnimationNode>
+	<AnimationNode ExportName="Smoke_11_14_32_34_37_Birthrate" SourceType="KeyFrame" Source="Float32" Target="Float32" Elements="1">
+		<KeyFrame><![CDATA[0.0 0.00 
+10.0000000 0.00 
+]]></KeyFrame>
+	</AnimationNode>
+	<AnimationNode ExportName="Smoke_11_14_32_34_37_AgeMapScaleXMultiplier" SourceType="KeyFrame" Source="Float32" Target="Float32" Elements="1">
+		<KeyFrame><![CDATA[0.0 0.00 
+10.0000000 0.00 
+]]></KeyFrame>
+	</AnimationNode>
+	<AnimationNode ExportName="Smoke_11_14_32_34_37_AgeMapScaleYMultiplier" SourceType="KeyFrame" Source="Float32" Target="Float32" Elements="1">
+		<KeyFrame><![CDATA[0.0 0.00 
+10.0000000 0.00 
+]]></KeyFrame>
+	</AnimationNode>
+	<AnimationNode ExportName="Smoke_11_14_32_34_37_Translation" SourceType="KeyFrame" Source="Vector" Target="Vector" Elements="3">
+		<KeyFrame><![CDATA[0.0000000 0 0 0
+10.0000000 0 0 0
+]]></KeyFrame>
+	</AnimationNode>
+	<AnimationNode ExportName="Embers_23_20_19_29_30_33_35_39_Birthrate" SourceType="KeyFrame" Source="Float32" Target="Float32" Elements="1">
+		<KeyFrame><![CDATA[0.0 0.00 
+10.0000000 0.00 
+]]></KeyFrame>
+	</AnimationNode>
+	<AnimationNode ExportName="Embers_23_20_19_29_30_33_35_39_Translation" SourceType="KeyFrame" Source="Vector" Target="Vector" Elements="3">
+		<KeyFrame><![CDATA[0.0000000 0 0 -0.01
+10.0000000 0 0 -0.01
+]]></KeyFrame>
+	</AnimationNode>
+	<AnimationNode ExportName="Heat_Distortion_1st_Birthrate" SourceType="KeyFrame" Source="Float32" Target="Float32" Elements="1">
+		<KeyFrame><![CDATA[0.0 0.00 
+10.0000000 0.00 
+]]></KeyFrame>
+	</AnimationNode>
+	<AnimationNode ExportName="Heat_Distortion_2nd_Birthrate" SourceType="KeyFrame" Source="Float32" Target="Float32" Elements="1">
+		<KeyFrame><![CDATA[0.0 0.00 
+10.0000000 0.00 
+]]></KeyFrame>
+	</AnimationNode>
+	<AnimationNode ExportName="Heat_Distortion_3rd_Birthrate" SourceType="KeyFrame" Source="Float32" Target="Float32" Elements="1">
+		<KeyFrame><![CDATA[0.0 0.00 
+10.0000000 0.00 
+]]></KeyFrame>
+	</AnimationNode>
+</Animation>

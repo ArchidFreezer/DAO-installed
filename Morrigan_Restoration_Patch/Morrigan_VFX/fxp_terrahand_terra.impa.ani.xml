@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- AnimProcessor: The animation has been filtered thru EpsilonFilter = 0.000005 --><!-- AnimProcessor: Report=GOB:0,Node:15/15,T:2/2,R:0/0 --><!-- Processed by AnimProcessor on 2010-09-23 00:46:23 --><Animation Name="fxp_terrahand_terra.impa.ani" Length="3.0000000">
+	<AnimationNode ExportName="Flame_16_c_Radius" SourceType="KeyFrame" Source="Float32" Target="Float32" Elements="1">
+		<KeyFrame><![CDATA[0.0 3.00 
+3.0000000 3.00 
+]]></KeyFrame>
+	</AnimationNode>
+	<AnimationNode ExportName="Flame_16_c_Color" SourceType="KeyFrame" Source="Color4" Target="Color4" Elements="4">
+		<KeyFrame><![CDATA[0.0 0.00 0.00 0.00 1.00
+0.2666660 0.00 0.00 0.00 1.00 
+0.5000000 1.60 0.60 0.20 1.00 
+3.0000000 1.60 0.60 0.20 1.00
+]]></KeyFrame>
+	</AnimationNode>
+	<AnimationNode ExportName="Flame_16_l_Radius" SourceType="KeyFrame" Source="Float32" Target="Float32" Elements="1">
+		<KeyFrame><![CDATA[0.0 3.00 
+3.0000000 3.00 
+]]></KeyFrame>
+	</AnimationNode>
+	<AnimationNode ExportName="Flame_16_l_Color" SourceType="KeyFrame" Source="Color4" Target="Color4" Elements="4">
+		<KeyFrame><![CDATA[0.0 0.00 0.00 0.00 1.00
+0.2666660 0.00 0.00 0.00 1.00 
+0.5000000 1.60 0.60 0.20 1.00 
+3.0000000 1.60 0.60 0.20 1.00
+]]></KeyFrame>
+	</AnimationNode>
+	<AnimationNode ExportName="FireHand_21_17_AgeMapScaleXMultiplier" SourceType="KeyFrame" Source="Float32" Target="Float32" Elements="1">
+		<KeyFrame><![CDATA[0.0 0.00 
+0.3333330 0.00 
+0.5000000 1.80 
+3.0000000 1.80 
+]]></KeyFrame>
+	</AnimationNode>
+	<AnimationNode ExportName="FireHand_21_17_AgeMapScaleYMultiplier" SourceType="KeyFrame" Source="Float32" Target="Float32" Elements="1">
+		<KeyFrame><![CDATA[0.0 0.00 
+0.3333330 0.00 
+0.5000000 1.80 
+3.0000000 1.80 
+]]></KeyFrame>
+	</AnimationNode>
+	<AnimationNode ExportName="FireHand_21_17_Translation" SourceType="KeyFrame" Source="Vector" Target="Vector" Elements="3">
+		<KeyFrame><![CDATA[0.0000000 0 0 0
+3.0000000 0 0 0
+]]></KeyFrame>
+	</AnimationNode>
+	<AnimationNode ExportName="Glow_26_18_AgeMapColorMultiplier" SourceType="KeyFrame" Source="Color4" Target="Color4" Elements="4">
+		<KeyFrame><![CDATA[0.0 1.00 1.00 1.00 0.00
+0.2666660 1.00 1.00 1.00 0.00 
+0.5000000 1.00 1.00 1.00 0.50 
+3.0000000 1.00 1.00 1.00 0.50
+]]></KeyFrame>
+	</AnimationNode>
+	<AnimationNode ExportName="Heat_Distortion_28_19_Birthrate" SourceType="KeyFrame" Source="Float32" Target="Float32" Elements="1">
+		<KeyFrame><![CDATA[0.0 0.00 
+0.3333330 0.00 
+0.5000000 2.00 
+3.0000000 2.00 
+]]></KeyFrame>
+	</AnimationNode>
+	<AnimationNode ExportName="Embers_23_20_Birthrate" SourceType="KeyFrame" Source="Float32" Target="Float32" Elements="1">
+		<KeyFrame><![CDATA[0.0 0.00 
+0.4000000 0.00 
+0.5000000 20.00 
+3.0000000 20.00 
+]]></KeyFrame>
+	</AnimationNode>
+	<AnimationNode ExportName="FlareHand_8_11_30_21_AgeMapColorMultiplier" SourceType="KeyFrame" Source="Color4" Target="Color4" Elements="4">
+		<KeyFrame><![CDATA[0.0 1.00 1.00 1.00 1.00
+3.0000000 1.00 1.00 1.00 1.00
+]]></KeyFrame>
+	</AnimationNode>
+	<AnimationNode ExportName="FlareHand_8_11_30_21_AgeMapScaleXMultiplier" SourceType="KeyFrame" Source="Float32" Target="Float32" Elements="1">
+		<KeyFrame><![CDATA[0.0 0.00 
+3.0000000 0.00 
+]]></KeyFrame>
+	</AnimationNode>
+	<AnimationNode ExportName="FlareHand_8_11_30_21_AgeMapScaleYMultiplier" SourceType="KeyFrame" Source="Float32" Target="Float32" Elements="1">
+		<KeyFrame><![CDATA[0.0 0.00 
+3.0000000 0.00 
+]]></KeyFrame>
+	</AnimationNode>
+	<AnimationNode ExportName="Embers_Burst_22_InitialSpeed" SourceType="KeyFrame" Source="Float32" Target="Float32" Elements="1">
+		<KeyFrame><![CDATA[0.0 2.50 
+0.0937950 1.50 
+3.0000000 1.80 
+]]></KeyFrame>
+	</AnimationNode>
+	<AnimationNode ExportName="Embers_Burst_22_InitialSpeedRange" SourceType="KeyFrame" Source="Float32" Target="Float32" Elements="1">
+		<KeyFrame><![CDATA[0.0 2.00 
+0.9835050 0.50 
+3.0000000 0.72 
+]]></KeyFrame>
+	</AnimationNode>
+</Animation>
