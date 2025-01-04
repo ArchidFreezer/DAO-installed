@@ -1,0 +1,506 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<morph_config>
+  <heads>
+    <human_male>
+      <resource name="HM_CPS_P01.mop" />
+      <resource name="HM_CPS_P02.mop" />
+      <resource name="HM_CPS_P03.mop" />
+      <resource name="HM_CPS_P04.mop" />
+      <resource name="HM_CPS_P05.mop" />
+      <resource name="HM_CPS_P06.mop" />
+      <resource name="HM_CPS_P07.mop" />
+      <resource name="HM_CPS_P08.mop" />
+      <resource name="HM_PCC_B01.mop" />
+    </human_male>
+    <human_female>
+      <resource name="HF_CPS_P01.mop" />
+      <resource name="HF_CPS_P02.mop" />
+      <resource name="HF_CPS_P03.mop" />
+      <resource name="HF_CPS_P04.mop" />
+      <resource name="HF_CPS_P05.mop" />
+      <resource name="HF_CPS_P06.mop" />
+      <resource name="HF_CPS_P07.mop" />
+      <resource name="HF_CPS_P08.mop" />
+      <resource name="HF_PCC_B01.mop" />
+    </human_female>
+    <dwarf_male>
+      <resource name="DM_CPS_P01.mop" />
+      <resource name="DM_CPS_P02.mop" />
+      <resource name="DM_CPS_P03.mop" />
+      <resource name="DM_CPS_P04.mop" />
+      <resource name="DM_CPS_P05.mop" />
+      <resource name="DM_CPS_P06.mop" />
+      <resource name="DM_CPS_P07.mop" />
+      <resource name="DM_CPS_P08.mop" />
+      <resource name="DM_PCC_B01.mop" />
+    </dwarf_male>
+    <dwarf_female>
+      <resource name="DF_CPS_P01.mop" />
+      <resource name="DF_CPS_P02.mop" />
+      <resource name="DF_CPS_P03.mop" />
+      <resource name="DF_CPS_P04.mop" />
+      <resource name="DF_CPS_P05.mop" />
+      <resource name="DF_CPS_P06.mop" />
+      <resource name="DF_CPS_P07.mop" />
+      <resource name="DF_CPS_P08.mop" />
+      <resource name="DF_PCC_B01.mop" />
+    </dwarf_female>
+    <elf_male>
+      <resource name="EM_CPS_P01.mop" />
+      <resource name="EM_CPS_P02.mop" />
+      <resource name="EM_CPS_P03.mop" />
+      <resource name="EM_CPS_P04.mop" />
+      <resource name="EM_CPS_P05.mop" />
+      <resource name="EM_CPS_P06.mop" />
+      <resource name="EM_CPS_P07.mop" />
+      <resource name="EM_CPS_P08.mop" />
+      <resource name="EM_PCC_B01.mop" />
+    </elf_male>
+    <elf_female>
+      <resource name="EF_CPS_P01.mop" />
+      <resource name="EF_CPS_P02.mop" />
+      <resource name="EF_CPS_P03.mop" />
+      <resource name="EF_CPS_P04.mop" />
+      <resource name="EF_CPS_P05.mop" />
+      <resource name="EF_CPS_P06.mop" />
+      <resource name="EF_CPS_P07.mop" />
+      <resource name="EF_CPS_P08.mop" />
+      <resource name="EF_PCC_B01.mop" />
+    </elf_female>
+  </heads>
+  <hairs>
+    <human_male>
+      <resource name="hm_har_blda_0" cut="0234" />
+      <resource name="hm_har_ha1a_0" cut="1" />
+      <resource name="hm_har_ha2a_0" cut="1" />
+      <resource name="hm_har_ha3a_0" cut="1" />
+      <resource name="hm_har_hb1a_0" cut="1" />
+      <resource name="hm_har_hb2a_0" cut="1" />
+      <resource name="hm_har_hb3a_0" cut="1" />
+      <resource name="hm_har_hb4a_0" cut="1" />
+      <resource name="hm_har_hc1a_0" cut="1" />
+      <resource name="hm_har_hc2a_0" cut="1" />
+      <resource name="hm_har_hc3a_0" cut="1" />
+      <resource name="hm_har_hc4a_0" cut="1" />
+      <resource name="hm_har_hd1a_0" cut="1" />
+      <resource name="hm_har_hd2a_0" cut="1" />
+      <resource name="hm_har_hd3a_0" cut="1" />
+      <resource name="hm_har_hd4a_0" cut="0" />
+      <resource name="hm_har_hda2b01a_0" cut="3" />
+      <resource name="hm_har_hda2b02a_0" cut="3" />
+      <resource name="hm_har_hda2b03a_0" cut="2" />
+      <resource name="hm_har_hda2b04a_0" cut="3" />
+      <resource name="hm_har_hda2b05a_0" cut="3" />
+      <resource name="hm_har_hda2b06a_0" cut="3" />
+      <resource name="hm_har_hda2b08a_0" cut="3" />
+      <resource name="hm_har_hda2b09a_0" cut="3" />
+      <resource name="hm_har_hda2b10a_0" cut="3" />
+      <resource name="hm_har_hda2b12a_0" cut="3" />
+      <resource name="hm_har_orsa_0" cut="4" />
+      <resource name="hm_har_ichm_0" cut="3" />
+      <resource name="hm_har_fls_0" cut="1" />
+      <resource name="hm_har_hae3a_0" cut="1" />
+      <resource name="hm_har_hde3a_0" cut="1" />
+    </human_male>
+    <human_female>
+      <resource name="hf_har_blda_0" cut="02" />
+      <resource name="hf_har_ha1a_0" cut="1" />
+      <resource name="hf_har_ha2a_0" cut="1" />
+      <resource name="hf_har_ha3a_0" cut="1" />
+      <resource name="hf_har_ha4a_0" cut="1" />
+      <resource name="hf_har_hb1a_0" cut="1" />
+      <resource name="hf_har_hb2a_0" cut="1" />
+      <resource name="hf_har_hb3a_0" cut="1" />
+      <resource name="hf_har_hb4a_0" cut="1" />
+      <resource name="hf_har_hc1a_0" cut="1" />
+      <resource name="hf_har_hc2a_0" cut="1" />
+      <resource name="hf_har_hc3a_0" cut="1" />
+      <resource name="hf_har_hc4a_0" cut="1" />
+      <resource name="hf_har_hd1a_0" cut="1" />
+      <resource name="hf_har_hd2a_0" cut="1" />
+      <resource name="hf_har_hd3a_0" cut="1" />
+      <resource name="hf_har_hd4a_0" cut="1" />
+      <resource name="hf_har_hat3a_0" cut="1" />
+      <resource name="hf_har_hat3b_0" cut="1" />
+      <resource name="hf_har_hat4c_0" cut="1" />
+      <resource name="hf_har_hat4a_0" cut="1" />
+      <resource name="hf_har_hat4b_0" cut="1" />
+      <resource name="hf_har_hgrla_0" cut="1" />
+      <resource name="hf_har_hbt1a_0" cut="1" />
+      <resource name="hf_har_hbt2a_0" cut="1" />
+      <resource name="hf_har_hbt2b_0" cut="1" />
+      <resource name="hf_har_hbt2c_0" cut="1" />
+      <resource name="hf_har_hbt3a_0" cut="1" />
+      <resource name="hf_har_hbe3a_0" cut="1" />
+      <resource name="hf_har_hbt4a_0" cut="1" />
+      <resource name="hf_har_hct1a_0" cut="1" />
+      <resource name="hf_har_hct1b_0" cut="1" />
+      <resource name="hf_har_hct2a_0" cut="1" />
+      <resource name="hf_har_hct3a_0" cut="1" />
+      <resource name="hf_har_hct4a_0" cut="1" />
+      <resource name="hf_har_hdt2a_0" cut="1" />
+      <resource name="hf_har_hdt3a_0" cut="1" />
+      <resource name="hf_har_hdt5a_0" cut="1" />
+      <resource name="hf_har_hdt5b_0" cut="1" />
+      <resource name="hf_har_hda2c1b_0" cut="1" />
+      <resource name="hf_har_hmorta_0" cut="1" />
+      <resource name="hf_har_beth_0" cut="1" />
+      <resource name="hf_har_hg1a_0" cut="1" />
+      <resource name="hf_har_icon_0" cut="1" />
+      <resource name="hf_har_mth_0" cut="1" />
+      <resource name="hf_har_cass_0" cut="1" />
+      <resource name="hf_har_hb7704c_0" cut="1" />
+      <resource name="hf_har_hmorea_0" cut="1" />
+      <resource name="hf_har_anda_0" cut="1" />
+      <resource name="hf_har_andd_0" cut="1" />
+      <resource name="hf_har_talb_0" cut="1" />
+    </human_female>
+    <dwarf_male>
+      <resource name="dm_har_blda_0" cut="0234" />
+      <resource name="dm_har_ha1a_0" cut="1" />
+      <resource name="dm_har_ha2a_0" cut="1" />
+      <resource name="dm_har_ha3a_0" cut="1" />
+      <resource name="dm_har_hb1a_0" cut="1" />
+      <resource name="dm_har_hb2a_0" cut="1" />
+      <resource name="dm_har_hb3a_0" cut="1" />
+      <resource name="dm_har_hb4a_0" cut="1" />
+      <resource name="dm_har_hc1a_0" cut="1" />
+      <resource name="dm_har_hc2a_0" cut="1" />
+      <resource name="dm_har_hc3a_0" cut="1" />
+      <resource name="dm_har_hc4a_0" cut="1" />
+      <resource name="dm_har_hd1a_0" cut="1" />
+      <resource name="dm_har_hd2a_0" cut="1" />
+      <resource name="dm_har_hd3a_0" cut="1" />
+      <resource name="dm_har_hd4a_0" cut="0" />
+      <resource name="dm_har_hae3a_0" cut="1" />
+      <resource name="dm_har_hde3a_0" cut="1" />
+    </dwarf_male>
+    <dwarf_female>
+      <resource name="df_har_blda_0" cut="02" />
+      <resource name="df_har_ha1a_0" cut="1" />
+      <resource name="df_har_ha2a_0" cut="1" />
+      <resource name="df_har_ha3a_0" cut="1" />
+      <resource name="df_har_ha4a_0" cut="1" />
+      <resource name="df_har_hb1a_0" cut="1" />
+      <resource name="df_har_hb2a_0" cut="1" />
+      <resource name="df_har_hb3a_0" cut="1" />
+      <resource name="df_har_hb4a_0" cut="1" />
+      <resource name="df_har_hc1a_0" cut="1" />
+      <resource name="df_har_hc2a_0" cut="1" />
+      <resource name="df_har_hc3a_0" cut="1" />
+      <resource name="df_har_hc4a_0" cut="1" />
+      <resource name="df_har_hd1a_0" cut="1" />
+      <resource name="df_har_hd2a_0" cut="1" />
+      <resource name="df_har_hd3a_0" cut="1" />
+      <resource name="df_har_hd4a_0" cut="1" />
+      <resource name="df_har_hat1a_0" cut="1" />
+      <resource name="df_har_hat3a_0" cut="1" />
+      <resource name="df_har_hat3b_0" cut="1" />
+      <resource name="df_har_hat4c_0" cut="1" />
+      <resource name="df_har_hat4a_0" cut="1" />
+      <resource name="df_har_hat4b_0" cut="1" />
+      <resource name="df_har_hgrla_0" cut="1" />
+      <resource name="df_har_hbt1a_0" cut="1" />
+      <resource name="df_har_hbt2a_0" cut="1" />
+      <resource name="df_har_hbt2b_0" cut="1" />
+      <resource name="df_har_hbt2c_0" cut="1" />
+      <resource name="df_har_hbt3a_0" cut="1" />
+      <resource name="df_har_hbt4a_0" cut="1" />
+      <resource name="df_har_hct1a_0" cut="1" />
+      <resource name="df_har_hct1b_0" cut="1" />
+      <resource name="df_har_hct2a_0" cut="1" />
+      <resource name="df_har_hct3a_0" cut="1" />
+      <resource name="df_har_hct4a_0" cut="1" />
+      <resource name="df_har_hdt2a_0" cut="1" />
+      <resource name="df_har_hdt3a_0" cut="1" />
+      <resource name="df_har_hdt5a_0" cut="1" />
+      <resource name="df_har_hdt5b_0" cut="1" />
+      <resource name="df_har_hmorta_0" cut="1" />
+    </dwarf_female>
+    <elf_male>
+      <resource name="em_har_blda_0" cut="0234" />
+      <resource name="em_har_ha1a_0" cut="1" />
+      <resource name="em_har_ha2a_0" cut="1" />
+      <resource name="em_har_ha3a_0" cut="1" />
+      <resource name="em_har_hb1a_0" cut="1" />
+      <resource name="em_har_hb2a_0" cut="1" />
+      <resource name="em_har_hb3a_0" cut="1" />
+      <resource name="em_har_hb4a_0" cut="1" />
+      <resource name="em_har_hc1a_0" cut="1" />
+      <resource name="em_har_hc2a_0" cut="1" />
+      <resource name="em_har_hc3a_0" cut="1" />
+      <resource name="em_har_hc4a_0" cut="1" />
+      <resource name="em_har_hd1a_0" cut="1" />
+      <resource name="em_har_hd2a_0" cut="1" />
+      <resource name="em_har_hd3a_0" cut="1" />
+      <resource name="em_har_hd4a_0" cut="0" />
+      <resource name="em_har_hae3a_0" cut="1" />
+      <resource name="em_har_hde3a_0" cut="1" />
+      <resource name="em_har_hda2b01a_0" cut="3" />
+      <resource name="em_har_hda2b02a_0" cut="3" />
+      <resource name="em_har_hda2b03a_0" cut="2" />
+      <resource name="em_har_hda2b04a_0" cut="3" />
+      <resource name="em_har_hda2b05a_0" cut="3" />
+      <resource name="em_har_hda2b06a_0" cut="3" />
+      <resource name="em_har_hda2b08a_0" cut="3" />
+      <resource name="em_har_hda2b09a_0" cut="3" />
+      <resource name="em_har_hda2b10a_0" cut="3" />
+      <resource name="em_har_hda2b12a_0" cut="3" />
+      <resource name="em_har_hda2a1a_0" cut="1" />
+      <resource name="em_har_hda2b1a_0" cut="1" />
+      <resource name="em_har_hda2c1a_0" cut="1" />
+      <resource name="em_har_orsa_0" cut="4" />
+      <resource name="em_har_fls_0" cut="1" />
+    </elf_male>
+    <elf_female>
+      <resource name="ef_har_blda_0" cut="02" />
+      <resource name="ef_har_ha1a_0" cut="1" />
+      <resource name="ef_har_ha2a_0" cut="1" />
+      <resource name="ef_har_ha3a_0" cut="1" />
+      <resource name="ef_har_ha4a_0" cut="1" />
+      <resource name="ef_har_hb1a_0" cut="1" />
+      <resource name="ef_har_hb2a_0" cut="1" />
+      <resource name="ef_har_hb3a_0" cut="1" />
+      <resource name="ef_har_hb4a_0" cut="1" />
+      <resource name="ef_har_hc1a_0" cut="1" />
+      <resource name="ef_har_hc2a_0" cut="1" />
+      <resource name="ef_har_hc3a_0" cut="1" />
+      <resource name="ef_har_hc4a_0" cut="1" />
+      <resource name="ef_har_hd1a_0" cut="1" />
+      <resource name="ef_har_hd2a_0" cut="1" />
+      <resource name="ef_har_hd3a_0" cut="1" />
+      <resource name="ef_har_hd4a_0" cut="1" />
+      <resource name="ef_har_hat1a_0" cut="1" />
+      <resource name="ef_har_hat3a_0" cut="1" />
+      <resource name="ef_har_hat3b_0" cut="1" />
+      <resource name="ef_har_hat4c_0" cut="1" />
+      <resource name="ef_har_hat4a_0" cut="1" />
+      <resource name="ef_har_hat4b_0" cut="1" />
+      <resource name="ef_har_hgrla_0" cut="1" />
+      <resource name="ef_har_hbt1a_0" cut="1" />
+      <resource name="ef_har_hbt2a_0" cut="1" />
+      <resource name="ef_har_hbt2b_0" cut="1" />
+      <resource name="ef_har_hbt2c_0" cut="1" />
+      <resource name="ef_har_hbt3a_0" cut="1" />
+      <resource name="ef_har_hbt4a_0" cut="1" />
+      <resource name="ef_har_hct1a_0" cut="1" />
+      <resource name="ef_har_hct1b_0" cut="1" />
+      <resource name="ef_har_hct2a_0" cut="1" />
+      <resource name="ef_har_hct3a_0" cut="1" />
+      <resource name="ef_har_hct4a_0" cut="1" />
+      <resource name="ef_har_hdt2a_0" cut="1" />
+      <resource name="ef_har_hdt3a_0" cut="1" />
+      <resource name="ef_har_hdt5a_0" cut="1" />
+      <resource name="ef_har_hdt5b_0" cut="1" />
+      <resource name="ef_har_hmorta_0" cut="1" />
+      <resource name="ef_har_hda2a1a_0" cut="1" />
+      <resource name="ef_har_hda2b1a_0" cut="1" />
+      <resource name="ef_har_hda2c1a_0" cut="1" />
+      <resource name="ef_har_hda2c1b_0" cut="1" />
+      <resource name="ef_har_hda2d1a_0" cut="1" />
+      <resource name="ef_har_cass_0" cut="1" />
+      <resource name="ef_har_anda_0" cut="1" />
+      <resource name="ef_har_andd_0" cut="1" />
+      <resource name="ef_har_ande_0" cut="1" />
+      <resource name="ef_har_talb_0" cut="1" />
+    </elf_female>
+  </hairs>
+  <beards>
+    <human_male>
+      <resource name="" />
+      <resource name="hm_brd_b1a_0" />
+      <resource name="hm_brd_b2a_0" />
+      <resource name="hm_brd_b3a_0" />
+      <resource name="hm_brd_b4a_0" />
+      <resource name="hm_brd_b5a_0" />
+      <resource name="hm_brd_b6a_0" />
+    </human_male>
+    <dwarf_male>
+      <resource name="" />
+      <resource name="dm_brd_b1a_0" />
+      <resource name="dm_brd_b2a_0" />
+      <resource name="dm_brd_b3a_0" />
+      <resource name="dm_brd_b4a_0" />
+      <resource name="dm_brd_b5a_0" />
+      <resource name="dm_brd_b6a_0" />
+    </dwarf_male>
+  </beards>
+  <hair_colors>
+    <resource name="t3_har_wht" />
+    <resource name="t3_har_bln" />
+    <resource name="t3_har_dbl" />
+    <resource name="t3_har_org" />
+    <resource name="t3_har_red" />
+    <resource name="t3_har_lbr" />
+    <resource name="t3_har_rbr" />
+    <resource name="t3_har_dbr" />
+    <resource name="t3_har_blk" />
+  </hair_colors>
+  <skin_colors>
+    <resource name="t1_skn_001" />
+    <resource name="t1_skn_002" />
+    <resource name="t1_skn_003" />
+    <resource name="t1_skn_004" />
+    <resource name="t1_skn_006" />
+    <resource name="t1_skn_005" />
+    <resource name="t1_skn_007" />
+  </skin_colors>
+  <eyes_colors>
+    <resource name="t3_eye_ice" />
+    <resource name="t3_eye_lbl" />
+    <resource name="t3_eye_dbl" />
+    <resource name="t3_eye_tea" />
+    <resource name="t3_eye_grn" />
+    <resource name="t3_eye_hzl" />
+    <resource name="t3_eye_lbr" />
+    <resource name="t3_eye_amb" />
+    <resource name="t3_eye_dbr" />
+    <resource name="t3_eye_gry" />
+    <resource name="t3_eye_blk" />
+  </eyes_colors>
+  <eyes_makeup_colors>
+    <resource name="" />
+    <resource name="t1_mue_bl1" />
+    <resource name="t1_mue_bl2" />
+    <resource name="t1_mue_bl3" />
+    <resource name="t1_mue_gn1" />
+    <resource name="t1_mue_gn2" />
+    <resource name="t1_mue_gn3" />
+    <resource name="t1_mue_gr1" />
+    <resource name="t1_mue_gr2" />
+    <resource name="t1_mue_gr3" />
+    <resource name="t1_mue_or1" />
+    <resource name="t1_mue_or2" />
+    <resource name="t1_mue_or3" />
+    <resource name="t1_mue_pi1" />
+    <resource name="t1_mue_pi2" />
+    <resource name="t1_mue_pi3" />
+    <resource name="t1_mue_pu1" />
+    <resource name="t1_mue_pu2" />
+    <resource name="t1_mue_pu3" />
+    <resource name="t1_mue_re1" />
+    <resource name="t1_mue_re2" />
+    <resource name="t1_mue_re3" />
+    <resource name="t1_mue_ro1" />
+    <resource name="t1_mue_ro2" />
+    <resource name="t1_mue_ro3" />
+    <resource name="t1_mue_te1" />
+    <resource name="t1_mue_te2" />
+    <resource name="t1_mue_te3" />
+    <resource name="t1_mue_ye1" />
+    <resource name="t1_mue_ye2" />
+    <resource name="t1_mue_ye3" />
+  </eyes_makeup_colors>
+  <blush_makeup_colors>
+    <resource name="" />
+    <resource name="t1_mub_br1" />
+    <resource name="t1_mub_br2" />
+    <resource name="t1_mub_br3" />
+    <resource name="t1_mub_or1" />
+    <resource name="t1_mub_or2" />
+    <resource name="t1_mub_or3" />
+    <resource name="t1_mub_pi1" />
+    <resource name="t1_mub_pi2" />
+    <resource name="t1_mub_pi3" />
+    <resource name="t1_mub_pu1" />
+    <resource name="t1_mub_pu2" />
+    <resource name="t1_mub_pu3" />
+    <resource name="t1_mub_re1" />
+    <resource name="t1_mub_re2" />
+    <resource name="t1_mub_re3" />
+    <resource name="t1_mub_ro1" />
+    <resource name="t1_mub_ro2" />
+    <resource name="t1_mub_ro3" />
+    <resource name="t1_mub_ta1" />
+    <resource name="t1_mub_ta2" />
+    <resource name="t1_mub_ta3" />
+    <resource name="t1_mub_te1" />
+    <resource name="t1_mub_te2" />
+    <resource name="t1_mub_te3" />
+  </blush_makeup_colors>
+  <lip_makeup_colors>
+    <resource name="" />
+    <resource name="t1_mul_bk1" />
+    <resource name="t1_mul_bk2" />
+    <resource name="t1_mul_bk3" />
+    <resource name="t1_mul_br1" />
+    <resource name="t1_mul_br2" />
+    <resource name="t1_mul_br3" />
+    <resource name="t1_mul_pi1" />
+    <resource name="t1_mul_pi2" />
+    <resource name="t1_mul_pi3" />
+    <resource name="t1_mul_pu1" />
+    <resource name="t1_mul_pu2" />
+    <resource name="t1_mul_pu3" />
+    <resource name="t1_mul_re1" />
+    <resource name="t1_mul_re2" />
+    <resource name="t1_mul_re3" />
+    <resource name="t1_mul_ro1" />
+    <resource name="t1_mul_ro2" />
+    <resource name="t1_mul_ro3" />
+    <resource name="t1_mul_ta1" />
+    <resource name="t1_mul_ta2" />
+    <resource name="t1_mul_ta3" />
+    <resource name="t1_mul_te1" />
+    <resource name="t1_mul_te2" />
+    <resource name="t1_mul_te3" />
+  </lip_makeup_colors>
+  <brow_stubble_colors>
+    <resource name="t1_stb_wht" />
+    <resource name="t1_stb_bln" />
+    <resource name="t1_stb_dbl" />
+    <resource name="t1_stb_org" />
+    <resource name="t1_stb_red" />
+    <resource name="t1_stb_lbr" />
+    <resource name="t1_stb_rbr" />
+    <resource name="t1_stb_dbr" />
+    <resource name="t1_stb_blk" />
+  </brow_stubble_colors>
+  <crew_cut_colors>
+    <resource name="t1_stb_wht" />
+    <resource name="t1_stb_bln" />
+    <resource name="t1_stb_dbl" />
+    <resource name="t1_stb_org" />
+    <resource name="t1_stb_red" />
+    <resource name="t1_stb_lbr" />
+    <resource name="t1_stb_rbr" />
+    <resource name="t1_stb_dbr" />
+    <resource name="t1_stb_blk" />
+  </crew_cut_colors>
+  <tattoo_colors>
+    <resource name="T1_TAT_BLK" />
+    <resource name="T1_TAT_GRY" />
+    <resource name="T1_TAT_BRN" />
+    <resource name="T1_TAT_DBR" />
+    <resource name="T1_TAT_GRN" />
+    <resource name="T1_TAT_DGN" />
+    <resource name="T1_TAT_BLU" />
+    <resource name="T1_TAT_DBL" />
+    <resource name="T1_TAT_PUR" />
+    <resource name="T1_TAT_DPU" />
+    <resource name="T1_TAT_RED" />
+    <resource name="T1_TAT_DRD" />
+    <resource name="T1_TAT_ORG" />
+    <resource name="T1_TAT_YEL" />
+    <resource name="T1_TAT_PNK" />
+  </tattoo_colors>
+  <tattoos>
+    <resource name="uh_tat_av1_0t" />
+    <resource name="uh_tat_av2_0t" />
+    <resource name="uh_tat_av3_0t" />
+    <resource name="uh_tat_da1_0t" />
+    <resource name="uh_tat_da2_0t" />
+    <resource name="uh_tat_da3_0t" />
+    <resource name="uh_tat_dw1_0t" />
+    <resource name="uh_tat_dw2_0t" />
+    <resource name="uh_tat_p01_0t" />
+  </tattoos>
+  <skins>
+    <resource name="uh_hed_fema_0d" />
+    <resource name="uh_hed_elfa_0d" />
+    <resource name="uh_hed_kida_0d" />
+    <resource name="uh_hed_masa_0d" />
+    <resource name="uh_hed_dwfa_0d" />
+    <resource name="uh_hed_quna_0d" />
+  </skins>
+</morph_config>
