@@ -1,0 +1,8 @@
+// Plot defines
+
+// Mercenary Hunt
+const string PLT_DEN200PT_ASSASSIN_NRD = "FC4C3426657E4737AE205BB812112C0A";
+	const int ASSASSIN_NRD_QUEST_ACCEPTED = 0;
+	const int ASSASSIN_NRD_QUEST_DONE = 1;
+	const int ASSINATED_QUNARI = 2;
+	const int ASSASSIN_NRD_REWARD_PLACED = 3;

@@ -1,0 +1,9 @@
+// Plot defines
+
+// Sarel the Bard
+const string PLT_NTB100PT_SAREL = "31CE40C77F764903B386EB4708E55348";
+	const int NTB_SAREL_CODEX_HISTORY_1 = 0;
+	const int NTB_SAREL_TOLD_PC_FOREST_STORY = 1;
+	const int NTB_SAREL_GAVE_END_PLOT_SPEECH = 2;
+	const int NTB_SAREL_CODEX_HISTORY_2 = 3;
+	const int NTB_SAREL_CODEX_CULTURE = 4;
