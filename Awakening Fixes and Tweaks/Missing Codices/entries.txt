@@ -1,0 +1,5 @@
+"A List of Instructions" - a note near the Treasury in Kal'Hirol's Trade Quarter.  The note is present in the area file, but inactive, so I've activated it.  
+
+"Kristoff's Note" - presumably meant to be obtained from Kristoff or in his room, it'll now be found near his body.
+
+"Baroness of the Blackmarsh" - meant to be acquired upon defeating the Queen of the Blackmarsh, apr_gxa contained an invalid plot flag, which is now fixed. 
