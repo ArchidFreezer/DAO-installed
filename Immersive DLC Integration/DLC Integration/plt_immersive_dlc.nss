@@ -1,0 +1,39 @@
+// Plot defines
+
+// immersive_dlc
+const string PLT_IMMERSIVE_DLC = "FE4B1791AA8847F9895122FDD442BC66";
+	const int MEMORY_BAND_OSTAGAR = 0;
+	const int MEMORY_BAND_RETURN = 1;
+	const int FERAL_WOLF_CHARM = 2;
+	const int LIONS_PAW = 3;
+	const int BLIGHTBLOOD = 4;
+	const int LUCKY_STONE = 5;
+	const int HIGH_REGARD_OF_HOUSE_DACE = 6;
+	const int REAPERS_CUDGEL = 7;
+	const int SASH_OF_FORBIDDEN_SECRETS = 8;
+	const int BERGENS_HONOR = 9;
+	const int HELM_OF_THE_DEEP = 10;
+	const int CINCH_OF_SKILLFUL_MANEUVERING = 11;
+	const int DALISH_PROMISE_RING = 12;
+	const int SORROWS_OF_ARLATHAN = 13;
+	const int DRAGONBONE_CLEAVER = 14;
+	const int AMULET_OF_THE_WAR_MAGE = 15;
+	const int VESTMENTS_OF_THE_SEER = 16;
+	const int FINAL_REASON = 17;
+	const int EMBRIS_MANY_POCKETS = 18;
+	const int BAND_OF_FIRE = 19;
+	const int MARK_OF_VIGILANCE = 20;
+	const int FORMATI_TOME = 21;
+	const int BLOOD_DRAGON_PLATE = 22;
+	const int BLOOD_DRAGON_PLATE_GAUNTLETS = 23;
+	const int BLOOD_DRAGON_PLATE_BOOTS = 24;
+	const int BLOOD_DRAGON_PLATE_HELMET = 25;
+	const int GRIMOIRE_OF_THE_FROZEN_WASTES = 26;
+	const int WICKED_OATH = 27;
+	const int GUILDMASTERS_BELT = 28;
+	const int EDGE = 29;
+	const int BULWARK_OF_THE_TRUE_KING = 30;
+	const int BATTLEDRESS_OF_THE_PROVOCATEUR = 31;
+	const int PEARL_OF_THE_ANOINTED = 34;
+	const int DARKSPAWN_CHRONICLES = 36;
+	const int BREGANS_BOW = 37;
