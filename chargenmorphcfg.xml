@@ -101,6 +101,26 @@
       <resource name="hm_har_fls_0" cut="1" />
       <resource name="hm_har_hae3a_0" cut="1" />
       <resource name="hm_har_hde3a_0" cut="1" />
+      <resource name="hm_har_ducb_0" cut="1" />
+      <resource name="hm_har_lofb_0" cut="1" />
+      <resource name="hm_har_lofc_0" cut="1" />
+      <resource name="hm_har_ren01_0" cut="1" />
+      <resource name="hm_har_ren02_0" cut="1" />
+      <resource name="hm_har_ren03_0" cut="1" />
+      <resource name="hm_har_ren03a_0" cut="1" />
+      <resource name="hm_har_ren05_0" cut="1" />
+      <resource name="hm_har_ren06_0" cut="1" />
+      <resource name="hm_har_ren07_0" cut="1" />
+      <resource name="hm_har_ren08_0" cut="1" />
+      <resource name="hm_har_idk01_0" cut="1" />
+      <resource name="hm_har_ren10_0" cut="1" />
+      <resource name="hm_har_ren11_0" cut="1" />
+      <resource name="hm_har_lell_0" cut="1" />
+      <resource name="hm_har_ren12_0" cut="1" />
+      <resource name="hm_har_ren18_0" cut="1" />
+      <resource name="hm_har_idk20_0" cut="1" />
+      <resource name="hm_har_dsch01a_0" cut="1" />
+      <resource name="hm_har_ward_0" cut="1" />
     </human_male>
     <human_female>
       <resource name="hf_har_blda_0" cut="02" />
@@ -154,6 +174,32 @@
       <resource name="hf_har_anda_0" cut="1" />
       <resource name="hf_har_andd_0" cut="1" />
       <resource name="hf_har_talb_0" cut="1" />
+      <resource name="hf_har_lofb_0" cut="1" />
+      <resource name="hf_har_lofc_0" cut="1" />
+      <resource name="hf_har_ren01_0" cut="1" />
+      <resource name="hf_har_ren02_0" cut="1" />
+      <resource name="hf_har_ren03_0" cut="1" />
+      <resource name="hf_har_ren03a_0" cut="1" />
+      <resource name="hf_har_ren05_0" cut="1" />
+      <resource name="hf_har_ren06_0" cut="1" />
+      <resource name="hf_har_ren07_0" cut="1" />
+      <resource name="hf_har_ren08_0" cut="1" />
+      <resource name="hf_har_ren09_0" cut="1" />
+      <resource name="hf_har_ren10_0" cut="1" />
+      <resource name="hf_har_ren11_0" cut="1" />
+      <resource name="hf_har_lell_0" cut="1" />
+      <resource name="hf_har_ren12_0" cut="1" />
+      <resource name="hf_har_ren18_0" cut="1" />
+      <resource name="hf_har_idk03_0" cut="1" />
+      <resource name="hf_har_idk05_0" cut="1" />
+      <resource name="hf_har_idk09_0" cut="1" />
+      <resource name="hf_har_idk10_0" cut="1" />
+      <resource name="hf_har_idk12_0" cut="1" />
+      <resource name="hf_har_idk20_0" cut="1" />
+      <resource name="hf_har_dsch01_0" cut="1" />
+      <resource name="hf_har_dsch01a_0" cut="1" />
+      <resource name="hf_har_jx001_0" cut="1" />
+      <resource name="hf_har_jx002_0" cut="1" />
     </human_female>
     <dwarf_male>
       <resource name="dm_har_blda_0" cut="0234" />
@@ -174,6 +220,8 @@
       <resource name="dm_har_hd4a_0" cut="0" />
       <resource name="dm_har_hae3a_0" cut="1" />
       <resource name="dm_har_hde3a_0" cut="1" />
+      <resource name="dm_har_ren01_0" cut="1" />
+      <resource name="dm_har_ward_0" cut="1" />
     </dwarf_male>
     <dwarf_female>
       <resource name="df_har_blda_0" cut="02" />
@@ -216,6 +264,29 @@
       <resource name="df_har_hdt5a_0" cut="1" />
       <resource name="df_har_hdt5b_0" cut="1" />
       <resource name="df_har_hmorta_0" cut="1" />
+      <resource name="df_har_mora_0" cut="1" />
+      <resource name="df_har_lofc_0" cut="1" />
+      <resource name="df_har_ren01_0" cut="1" />
+      <resource name="df_har_ren02_0" cut="1" />
+      <resource name="df_har_ren03_0" cut="1" />
+      <resource name="df_har_ren03a_0" cut="1" />
+      <resource name="df_har_ren05_0" cut="1" />
+      <resource name="df_har_ren06_0" cut="1" />
+      <resource name="df_har_ren07_0" cut="1" />
+      <resource name="df_har_ren08_0" cut="1" />
+      <resource name="df_har_ren09_0" cut="1" />
+      <resource name="df_har_ren10_0" cut="1" />
+      <resource name="df_har_ren11_0" cut="1" />
+      <resource name="df_har_ren18_0" cut="1" />
+      <resource name="df_har_lell_0" cut="1" />
+      <resource name="df_har_dsch01a_0" cut="1" />
+      <resource name="df_har_idk03_0" cut="1" />
+      <resource name="df_har_idk04_0" cut="1" />
+      <resource name="df_har_idk05_0" cut="1" />
+      <resource name="df_har_idk09_0" cut="1" />
+      <resource name="df_har_idk10_0" cut="1" />
+      <resource name="df_har_idk12_0" cut="1" />
+      <resource name="df_har_idk20_0" cut="1" />
     </dwarf_female>
     <elf_male>
       <resource name="em_har_blda_0" cut="0234" />
@@ -251,6 +322,28 @@
       <resource name="em_har_hda2c1a_0" cut="1" />
       <resource name="em_har_orsa_0" cut="4" />
       <resource name="em_har_fls_0" cut="1" />
+      <resource name="em_har_ducb_0" cut="1" />
+      <resource name="em_har_ren01_0" cut="1" />
+      <resource name="em_har_ren02_0" cut="1" />
+      <resource name="em_har_ren03_0" cut="1" />
+      <resource name="em_har_ren03a_0" cut="1" />
+      <resource name="em_har_ren05_0" cut="1" />
+      <resource name="em_har_ren06_0" cut="1" />
+      <resource name="em_har_ren07_0" cut="1" />
+      <resource name="em_har_ren08_0" cut="1" />
+      <resource name="em_har_ren09_0" cut="1" />
+      <resource name="em_har_ren10_0" cut="1" />
+      <resource name="em_har_ren11_0" cut="1" />
+      <resource name="em_har_ren12_0" cut="1" />
+      <resource name="em_har_ren18_0" cut="1" />
+      <resource name="em_har_idk03_0" cut="1" />
+      <resource name="em_har_idk04_0" cut="1" />
+      <resource name="em_har_idk05_0" cut="1" />
+      <resource name="em_har_idk09_0" cut="1" />
+      <resource name="em_har_idk10_0" cut="1" />
+      <resource name="em_har_idk12_0" cut="1" />
+      <resource name="em_har_idk20_0" cut="1" />
+      <resource name="em_har_ward_0" cut="1" />
     </elf_male>
     <elf_female>
       <resource name="ef_har_blda_0" cut="02" />
@@ -303,6 +396,32 @@
       <resource name="ef_har_andd_0" cut="1" />
       <resource name="ef_har_ande_0" cut="1" />
       <resource name="ef_har_talb_0" cut="1" />
+      <resource name="ef_har_mora_0" cut="1" />
+      <resource name="ef_har_lofb_0" cut="1" />
+      <resource name="ef_har_lofc_0" cut="1" />
+      <resource name="ef_har_ren01_0" cut="1" />
+      <resource name="ef_har_ren02_0" cut="1" />
+      <resource name="ef_har_ren03_0" cut="1" />
+      <resource name="ef_har_ren03a_0" cut="1" />
+      <resource name="ef_har_ren05_0" cut="1" />
+      <resource name="ef_har_lell_0" cut="1" />
+      <resource name="ef_har_ren06_0" cut="1" />
+      <resource name="ef_har_ren07_0" cut="1" />
+      <resource name="ef_har_ren08_0" cut="1" />
+      <resource name="ef_har_ren09_0" cut="1" />
+      <resource name="ef_har_ren10_0" cut="1" />
+      <resource name="ef_har_ren11_0" cut="1" />
+      <resource name="ef_har_ren12_0" cut="1" />
+      <resource name="ef_har_ren18_0" cut="1" />
+      <resource name="ef_har_idk03_0" cut="1" />
+      <resource name="ef_har_idk04_0" cut="1" />
+      <resource name="ef_har_idk05_0" cut="1" />
+      <resource name="ef_har_idk20_0" cut="1" />
+      <resource name="ef_har_dsch01_0" cut="1" />
+      <resource name="ef_har_dsch01a_0" cut="1" />
+      <resource name="ef_har_dsch02_0" cut="1" />
+      <resource name="ef_har_dsch03_0" cut="1" />
+      <resource name="ef_har_ren19_0" cut="1" />
     </elf_female>
   </hairs>
   <beards>
