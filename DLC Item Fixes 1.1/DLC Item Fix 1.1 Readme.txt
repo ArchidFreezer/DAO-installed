@@ -1,0 +1,27 @@
+This mod fixes the issue where certain DLC items would be sorted incorrectly and appear near the bottom of your inventory and in merchant's stock, rather than with other items of the same type. Most of these items come from the Witch Hunt DLC. All alternate versions found in the different campaigns have also been corrected.
+
+Version: 1.1
+- Fixed Battledress of the Provocateur being invisible in Awakening.
+- Further reduced the price for Manual of Focus, since it ended up more expensive than intended. Might require new game to take effect.
+
+The following items have been fixed:
+- Dragonbone Cleaver
+- The Sorrows of Arlathan
+- Vestments of the Seer
+- Cinch of Skillfull Manuvering
+- Battledress of the Provocateur
+- Manual of Focus
+
+Other Bug fixes:
+- The bug that caused the version of The Sorrows of Arlathan found during Witch Hunt to be made of Volcanic Aurum rather than Ancestral Heartwood, resulting in slightly lower stats, should be fixed.
+- Vestments of the Seer should no longer turn permanently red if it ends up upgraded.
+- A typo in Dragonbone Cleaver's description has been corrected.
+
+Tweaks:
+- Reduced the price of Manual of Focus, mostly to make it more useful when using i9h's "Manual of Focus - For Origins" mod.
+- Changed the appearance for Dragonbone Cleaver to match its unique icon, which looks like and actual cleaver.
+- Changed the icon of Battledress of the Provocateur to use its unique icon from the Leliana's Song DLC.
+
+Version: 1.1
+- Fixed Battledress of the Provocateur being invisible in Awakening.
+- Further reduced the price for Manual of Focus, since it ended up more expensive than intended. Might require new game to take effect.
