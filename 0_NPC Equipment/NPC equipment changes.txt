@@ -1,0 +1,174 @@
+NPC Equipment Changes
+!Warning! Will conflict with any mods that alters the equipment of the npc’s included below. 
+I recommend deleting the entries that you don’t need in order to avoid conflicts.
+
+Note: All items used are vanilla and will therefore not conflict with any item mods added, mods that change models or retextures will affect certain items, however.
+________________________________________
+Origin Stories
+City Elf (11)
+-	Changed some of the helmets worn by the guards
+-	Gave some of the guards inside of the estate swords instead of daggers
+-	Removed the helmets from the dog trainers
+-	Gave Mother Boann Revered Mother robes
+-	Added Denerim shields to some of the guards and soldiers inside the estate
+Dalish Elf (14) note that the first entry will make the opening cinematic look un-immersive)
+-	The human hunters were given armor and bows (they are hunters after all)
+-	Tamlen’s starting gear has been changed to Dalish equipment
+-	Fenarel’s dagger has been changed to a longsword
+-	I removed the helmets from the hunters and changed their shields to those of clan Sabrae (with the halla head)
+-	Merrill was given a different staff
+-	Changed Pol’s bow to a Dalish one
+Dwarf Commoner (5)
+-	Changed all the armors worn by Carta members (excluding Beraht, but including Jarvia) to the Duster set
+-	Changed Jarvia’s daggers to axes
+Dwarf Noble (22)
+-	Changed Trian’s armor to match that of Bhelen and the PC
+-	Various guards were using darkspawn weapons, they’ve been changed to dwarven ones
+-	Guards named “Orzammar guards” have had their armor changed to match the other regular guards, shields were changed as well if needed
+-	The weapon merchant has added gloves
+-	Adal Helmi had her armor matched to her gloves and boots
+-	Aller Bemot had his boots changed and shield removed (he already uses a two-handed weapon)
+-	Frandlin Ivo had his armor matched to his gloves and boots
+-	The Proving trainer had his armor matched to his gloves and boots
+-	The Wardens accompanying Duncan were given gloves and one of them now has changed boots
+-	The Royal guards were given an Aeducan shield and different armor
+-	Some of the mercenaries (in the Deep Roads) have changed armor and weapons
+-	Trian’s guard with the shield now has an Aeducan one
+-	The prison guard (both instances) has a changed weapon, and an added one in his second appearance
+Human Noble (6)
+-	Changed Mallol’s robes to those of a Revered Mother
+-	Changed Aldous’ robes to Chantry robes
+-	One of the Howe soldiers was using a dagger with a shield, the dagger was changed to a longsword
+Magi (10)
+-	Changed the staves of several of the mages
+-	Gave Cullen a sword and shield to tie in with his fighting style in DA2 and Inquisition
+-	Changed the armors worn by the Sentinels
+-	Added Greagoir’s shield
+-	Changed Mouse’s robes to apprentice robes as opposed to senior enchanter to better match his dialogue
+________________________________________
+Redcliffe (9)
+-	Changed the helmets of several of the guards in Redcliffe
+-	Added armor to Bann Teagan
+________________________________________
+Broken Circle (15)
+-	Gave Carroll a Templar shield
+-	Gave the Templar who appears after Broken Circle is complete a sword and shield so he can defend himself if a fight breaks out nearby
+-	Added Greagoir’s shield as equipped and no longer loot able
+-	Changed the staves used by the survivors (the ones with Wynne)
+-	Changed the shields of all the Templars to Templar shields
+-	Changed the armor of the quartermaster to that of a templar, with matching sword and shield
+-	Added gloves to the wounded Templar
+-	Changed Uldred’s robes to those of a Senior Enchanter
+-	Added gloves to one of the Fade Grey Wardens
+________________________________________
+Climax and Epilogue (26)
+-	Kardol’s weapons changed to dwarven waraxe and Legion shield
+-	Changed the helmet used by the Redcliffe bodyguards
+-	One of the defending knights in Denerim now has a Denerim shield
+-	Two of the other soldiers also have new shields
+-	A pair of dead soldiers were missing pieces as well, they’ve been added
+-	At the coronation, changed the helmets used by the door guards and gave them a Ferelden shield
+
+Funeral: 
+-	Greagoir has his own shield equipped and a different sword, Cullen has a sword and shield equipped
+-	Connor has his own face morph as opposed to a random elven one
+-	Dulin Forender has a shield with the Harrowmont heraldry
+-	Gorim has his own sword and a shield with Aeducan heraldry
+-	Kardol has a Legion shield
+-	Oghren has his armor changed to that of the Legion
+-	Keepers Marethari, Lanaya and Zathrian had their clothing changed, they also have a staff
+-	Vartag Gavorn has matching armor
+-	Arl Wulff has matching armor and his bow
+-	Wynne has Senior enchanter robes
+-	Bann Teagan has matching armor and a Redcliffe shield
+________________________________________
+Denerim (54)
+Note: I added some custom shields with in-game heraldries for some of the npc’s, do note these shields are only for aesthetic purposes and have no proper stats.
+-	Added gloves to the bouncers at the Pearl
+-	Gave clothing as opposed to armor to some of the Pearl’s workers
+-	Gave a different shield to some of the ambient knights to represent one of the Bannorns (Waking Sea)
+-	Added a shield to Habren’s guard to represent her father (South Reach)
+-	Added my personal headmorph to Isabela
+-	Gave a bow to Bann Alfstanna
+-	Added a tranquil brand to the proprietor at the Wonders of Thedas shop (requires DA redesigned)
+-	Added missing equipment to the guards at Fort Drakon (gloves and boots mostly) and the Arl of Denerim estate
+-	Gave a different helmet to the royal guard at the Landsmeet
+-	Mother Perpetua was given Revered Mother robes
+-	The soldiers at the Landsmeet were given shields to represent their Bannorn
+-	Sergeant Kylon’s guards wear Denerim guard shields
+-	Ser Landry was given a shield to represent Gwaren, the same goes for his allies
+-	The White Falcon and Crimson Oars mercenaries have added gloves
+-	Ser Nancine has her own sword equipped as opposed to the Green Blade
+-	One of Howe’s men (during Trials of Crows) has a Cousland shield, he now has a proper Howe one
+-	Several thugs had either mismatching armor pieces or missing ones, they now have them matched or added
+-	Ser Friden has added armor
+________________________________________
+Light Content (22)
+-	Blackstone Irregular deserters have their armors matched
+-	Removed Raelnor Hawkwind’s shield since he has a two-handed weapon.
+-	Matched Taoran Hawkwind’s gloves to the rest of his armor
+-	Matched the armors of the adventurers (careless accusations)
+-	Gave the Mages collective npc’s different robes and hoods
+-	Added gloves to the Dalish emissary and matched Redcliffe’s emissary’s armor pieces
+-	Fixed armor pieces of various npc’s
+________________________________________
+Lothering (19)
+-	Fixed some of the armors worn by the bandits
+-	Gave the Templars templar shields and different swords
+-	Added gloves to the Chasind
+-	Gave Ser Donnal a sword
+-	Gave one of the soldiers at the inn a Gwaren shield (since they are Loghain’s men)
+-	Changed Leliana's beginner equipment to a bow as opposed to a dagger, sinc. she's an archer
+________________________________________
+Nature of the Beast (11)
+-	Some of the hunters were using a generic sword and shield, they now use a Dalish sword and clan shield (the one with the leaf mask)
+-	Removed the helmets worn by the hunters
+-	Gave Elora Tevinter robes, did the same for Zathrian and Aneirin (Wynne’s quest)
+-	Gave Lanaya a different staff
+________________________________________
+Orzammar (29)
+-	Gave one of the Warden hunters (mountain pass) a different helmet
+-	Matched the armors of the guards in the Hall of Heroes and gave them different shields
+-	Matched the gloves of the dwarf supporting Bhelen (cutscene when first entering Orzammar) to the rest of his armor
+-	Changed the armors of Roggar’s thugs to Duster armor (Roggar is encountered in the Commons shaking down a merchant during Jarvia’s hideout quest)
+-	Matched the armor pieces of Nevin (Tapster’s tavern)
+-	Changed the armors worn by Carta members to duster armor (including Jarvia)
+-	Matched the armor pieces of Baizyl (Proving grounds)
+-	Gave one of Piotin Aeducan’s henchmen an Aeducan shield
+-	Adjusted some of the armor pieces worn in the informal Proving matches
+-	Gave the Dust town thugs Duster armor
+-	Added gloves to Ruck
+________________________________________
+Prelude (40)
+-	Added various Ferelden or Gwaren shields to some of the soldiers and knights
+-	Gave Cailan’s guards different helmets (removed the helmet of the one near his tent)
+-	Added a Ferelden shield to the kennel master
+-	Changed the dress the nurse was wearing to a commoner one
+-	Changed the robes of Uldred and Wynne to Senior Enchanter robes
+-	Gave Flemeth Tevinter styled robes in all her appearances
+-	Changed Morrigan’s initial staff so it doesn't conflict with mods that might change staff models
+________________________________________
+Random Encounters (52)
+-	Gave Tamlen’s ghoul form gloves
+-	Gave the two apprentices (random encounter after recruiting the Circle) apprentice robes as opposed to tranquil ones
+-	Adjusted most armors found on random bandits or travelers
+-	Changed some armor parts of the Bannorn knight (Loghain’s push quest), gave Loghain’s troops Gwaren’s heraldry
+-	Adjusted the armors worn by the Crow ambushers (meeting Zevran)
+-	Changed the armors worn by the assassins sent after Leliana
+________________________________________
+Urn of Sacred Ashes (1)
+-	Adjusted the armor worn by the Cultist leader at Lake Callenhad
+________________________________________
+Awakening Expansion (79)
+-	Added a custom shield with the Amaranthine (Howe) heraldry to any and all guards and soldiers found in the Arling.
+-	Gave a different helmet to the Dark Wolf to better match with the armor he’s wearing.
+-	Made some minor adjustments to gear worn by random characters
+________________________________________
+Recommended mods to use alongside this one:
+Dragon Age Redesigned - Dracomies
+Grey Wardens of Ferelden - NeoKingArthur
+Mages of Ferelden - TommyIrianto
+Better Bannhammer - theskymoves (remove my Bann Teagan files)
+Elven orphanage - PerdyNerdy
+Clothes prisoners - danscott84
+DLC Tweaks and Cameos - Shanamah
