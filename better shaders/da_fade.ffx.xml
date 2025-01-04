@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Effect id="da_fade" layer="10" minlod="1">
+
+    <resources>
+				
+				<target id="BackBufferCopy" width="BACKBUFFER_WIDTH" height="BACKBUFFER_HEIGHT" format="A8R8G8B8" shared="true"/>
+				
+    </resources>
+    
+    <implementation>
+				
+        <stage id="default" event="EndFrame">
+						
+            <filter id="Distortion" library="DAEffects" material="GaussianBlur">
+              Decal0       = BackBufferCopy
+              bind BACKBUFFER at 0
+              run semantic FadeDistortion
+            </filter>
+						
+            <!-- Finish by keeping our effects chainable -->
+            <filter id="Finish" >
+                copy BACKBUFFER to BackBufferCopy
+            </filter>
+            
+        </stage>
+    </implementation>
+</Effect>

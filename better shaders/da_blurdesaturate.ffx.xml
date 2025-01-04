@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Effect id="da_blurdesaturate" layer="15" minlod="0">
+
+    <!-- The header contains readable information that gets ignored by our parser -->
+    <header>
+        <description>
+            This is a post process effect to blur and desaturate the 3D scene 
+            when the in game GUI panel is brought up (inventory, character, 
+            journal, etc) so that the GUI draws the majority of the player's
+            attention.
+
+            This is done by first desaturating the existing scene then running 
+            a 2-pass gaussian filter over it.  
+        </description>
+        <author>Pat Chan</author>
+    </header>
+    
+    <!-- The resources section contains all the ingredients for this effect -->
+    <resources>
+              
+        <!-- Shared resources. These only exist once for the lifetime of the game -->
+        <target id="BackBufferCopy" width="BACKBUFFER_WIDTH" height="BACKBUFFER_HEIGHT" format="A8R8G8B8" shared="true"/>
+        <target id="Downsampled16"  width="BACKBUFFER_WIDTH" height="BACKBUFFER_HEIGHT" format="A8R8G8B8" shared="true"/>
+        <target id="LightMask"      width="BACKBUFFER_WIDTH" height="BACKBUFFER_HEIGHT" format="A8R8G8B8" shared="true"/>
+
+        <!-- Exposed parameters -->
+        <float id="TimeToFade"    value="0.25"  range="0 10"     expose = "true" />
+        <float id="FadeDirection" value="1"     range="0 1"      expose = "true" />
+        <float id="FadeOutStart"  value="0"     range="0 10"     expose = "true" />
+        <float id="HBlurWidth"    value="3"     range="0 50"     expose = "true" animatable="true" />
+        <float id="VBlurWidth"    value="3"     range="0 50"     expose = "true" animatable="true" />
+
+        <float id="Hue"         value="1.0"  range="0.0 360.0"  expose = "true" animatable="true" />
+        <float id="Saturation"  value="0.5"  range="0.0 10.0"   expose = "true" animatable="true" />
+        <float id="Brightness"  value="1.0"  range="0.0 10.0"   expose = "true" animatable="true" />
+        <float id="Contrast"    value="1.0"  range="-10.0 10.0" expose = "true" animatable="true" />
+
+        <!-- These come from the engine, and are needed for the blurring  -->
+        <runtime id="WindowWidth"  value="backbuffer_width" />
+        <runtime id="WindowHeight" value="backbuffer_height" />
+        <runtime id="Time"         value="effect_time" range = "0 6"/>
+
+    </resources>
+    
+    <!-- This section contains the effect itself -->
+    <implementation>
+
+        <!-- Generates the bloom mask by desaturating, applying brightness, and contrast -->
+        <stage id="default" event="EndFrame">
+             
+            <!-- This filter blurs the partial result -->
+            <filter id="Gaussian Blur" library="DAEffects" material="GaussianBlur">
+                bind LightMask at 0
+                fBlurWidth   = HBlurWidth
+                fWindowWidth = WindowWidth
+                Decal0       = BackBufferCopy
+                run semantic HBlur
+            </filter>
+
+            <filter id="Gaussian Blur B" library="DAEffects" material="GaussianBlur">
+                bind Downsampled16 at 0
+                fBlurWidth    = VBlurWidth
+                fWindowHeight = WindowHeight
+                Decal0        = LightMask
+                run semantic VBlur
+            </filter>
+
+            <filter id="HSL Filter" library="DAEffects" material="HSLMatrix">
+                # These are for the actual effect
+                Input       = Downsampled16
+                Original    = BackBufferCopy
+                fHue        = Hue
+                fSaturation = Saturation
+                fBrightness = Brightness
+                fContrast   = Contrast
+                fDeltaT     = Time
+                fTimeToFade = TimeToFade
+                fFadeDirection = FadeDirection
+                fStartFadeOut = FadeOutStart
+
+
+                # Run the effect
+                bind BACKBUFFER at 0
+                run semantic HSLMatrixFade
+            </filter>
+
+            <!-- Finish by keeping our effects chainable -->
+            <filter id="Finish" >
+                copy BACKBUFFER to BackBufferCopy
+            </filter>
+            
+        </stage>
+    </implementation>
+</Effect>

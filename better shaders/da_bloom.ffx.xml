@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Effect id="da_bloom" layer="10" minlod="0">
+
+    <!-- The header contains readable information that gets ignored by our parser -->
+    <header>
+        <description>
+            This is the final bloom post process effect that Dean Andersen and
+            Daniel Torres designed for the Aurora version of Dragon Age. Here,
+            it serves as an initial experiment for the design of a framebuffer
+            effect object, or series of objects for the Eclipse Engine.
+
+            The way it work is as follows: First we create a mask from a downsampled
+            version of the current scene, by desaturating the scene, reducing the
+            brightness, and increasing the contrast. Using this mask, a combination
+            of screen and dodge blending is done to obtain a new sheet, which is
+            then blurred with a 2-pass gaussian filter to make the final effect.
+        </description>
+        <author>Dan Torres</author>
+    </header>
+    
+    <!-- The resources section contains all the ingredients for this effect -->
+    <resources>
+              
+        <!-- Shared resources. These only exist once for the lifetime of the game -->
+        <target id="BackBufferCopy" width="BACKBUFFER_WIDTH" height="BACKBUFFER_HEIGHT" format="A8R8G8B8" shared="true"/>
+        <target id="Downsampled16"  width="BACKBUFFER_WIDTH" height="BACKBUFFER_HEIGHT" format="A8R8G8B8" shared="true"/>
+        <target id="LightMask"      width="BACKBUFFER_WIDTH" height="BACKBUFFER_HEIGHT" format="A8R8G8B8" shared="true"/>
+
+        <!-- Exposed parameters -->
+        <float id="Brightness"    value="0.5"   range="-1.0 1.0" expose = "true" animatable="true" />
+        <float id="Contrast"      value="0.5"   range="0 20"     expose = "true" animatable="true" />
+        <float id="GlowIntensity" value="0.25"  range="0.0 5.0"  expose = "true" animatable="true" />
+        <float id="HBlurWidth"    value="8"     range="0 50"     expose = "true" animatable="true" /><!-- Modder note: Vanilla value: 2 -->
+        <float id="VBlurWidth"    value="8"     range="0 50"     expose = "true" animatable="true" /><!-- Modder note: Vanilla value: 2 -->
+                
+        <!-- These come from the engine, and are needed for the blurring  -->
+        <runtime id="WindowWidth" value="backbuffer_width" />
+        <runtime id="WindowHeight" value="backbuffer_height" />
+        
+    </resources>
+    
+    <!-- This section contains the effect itself -->
+    <implementation>
+
+        <!-- Generates the bloom mask by desaturating, applying brightness, and contrast -->
+        <stage id="default" event="EndFrame">
+            
+            <filter id="CreateParams" library="DAEffects" material="DABloom">
+
+                # Required brightness and contrast parameters
+                fBrightness = Brightness
+                fContrast   = Contrast
+
+                # bind our downsampled scene into the shader. Decal0 is the
+                # name of the resource in the material file.
+                Decal0 = BackBufferCopy
+
+                # Set our target at chain zero. Multiple targets are supported.
+                bind LightMask at 0
+
+                # Generate the mask using our downsampled scene
+                run semantic GenerateAppliedLightMask
+            </filter>
+            
+            <!-- This filter blurs the partial result -->
+            <filter id="Gaussian Blur" library="DAEffects" material="GaussianBlur">
+                bind Downsampled16 at 0
+                fBlurWidth   = HBlurWidth
+                fWindowWidth = WindowWidth
+                Decal0       = LightMask
+                run semantic HBlurBloom
+            </filter>
+            
+            <filter id="Gaussian Blur B" library="DAEffects" material="GaussianBlur">
+                bind LightMask at 0
+                fBlurWidth    = VBlurWidth
+                fWindowHeight = WindowHeight
+                Decal0        = Downsampled16
+                run semantic VBlurBloom
+            </filter>
+            
+            <!-- Final composition -->
+            <filter id="Final" library="DAEffects" material="DABloom">
+                bind BACKBUFFER at 0            # render to the original backbuffer
+                fGlowIntensity = GlowIntensity  # how much we blend
+                LightMaskDecal = LightMask      # Our blurred mask
+                run semantic FinalComp          # trigger the desired semantic
+            </filter>
+
+            <!-- Finish by keeping our effects chainable -->
+            <filter id="Finish" >
+                copy BACKBUFFER to BackBufferCopy
+            </filter>
+            
+        </stage>
+    </implementation>
+</Effect>

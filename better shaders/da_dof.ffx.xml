@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Effect id="da_dof" layer="5" minlod="0">
+
+    <!-- The header contains readable information that gets ignored by our parser -->
+    <header>
+        <description>
+           Applies a depth of field filter using two simple linear equations, one
+           for the foreground region, and one for the background region. The artist
+           sets the maximum near and far blur weights, as well as the beginning
+           and end of the focus region, and the effect does all the work.
+           
+           This algorithm is based on the GPU Gems 3 article by H.Earl.
+        </description>
+        <author>Dan Torres</author>
+    </header>
+    
+    <!-- The resources section contains all the ingredients for this effect -->
+    <resources>
+        
+        <!-- Effect parameters                                                  -->
+        <!-- ****************************************************************** -->
+
+        <!-- Focal area center -->
+        <float id="FocusDistance" value="5" range="0 100" expose="true" animatable="true" />
+        
+        <!-- Focal area radius -->
+        <float id="FocalRadius" value="2" range="0.1 100" expose="true" animatable="true" />
+                
+        <!-- How much we blur on the near field-->
+        <float id="NearFade" value="8" range="0 10" expose="true" animatable="true" />
+        
+        <!-- How much we blur on the far field-->
+        <float id="FarFade" value="8" range="0 10" expose="true" animatable="true" />
+                       
+        <!-- [Optional] blur for the CoC blend -->
+        <float id="WeightBlur" value="2" range="0 2" expose="true" animatable="true" />
+        
+        <!-- [Optional], blur for removing any artifacts after linear equations -->
+        <float id="ArtifactBlur" value="1.3" range="0 50" />
+        
+        <!-- [Optional, toolset] If enabled, the final pass renders the CoC -->
+        <float id="RenderBlurRadius" value="1" range="0 1" expose="true" />
+        
+        <!-- Maximum blur amount -->
+        <float id="MaxBlur" value="2" range="0 1" expose="true" animatable="true" />
+
+        <!-- Resources                                                          -->
+        <!-- ****************************************************************** -->
+
+        <!-- Required shared effects -->
+        <requires id="da_copybackbuffer" effectid="da_copybackbuffer"/>
+        
+         <!-- Input resources -->
+        <!-- The engine is hard coded to provide the scene depth texture as the 
+                preallocated backbuffer at index 1. Never change the index of this resource to something other than 1 -->
+        <backbuffer id="SceneDepthTexture"      index="1" /> 
+        
+        <target id="BackBufferCopy"     width="BACKBUFFER_WIDTH"   height="BACKBUFFER_HEIGHT"   format="A8R8G8B8" shared="true"/>
+        <target id="DOFDownsampledCoC"  width="BACKBUFFER_WIDTH"
+ height="BACKBUFFER_HEIGHT" format="A8R8G8B8" shared="true"/>
+        <target id="DOFBlurredA"        width="BACKBUFFER_WIDTH"
+ height="BACKBUFFER_HEIGHT" format="A8R8G8B8" shared="true"/>
+        <target id="DOFBlurredB"        width="BACKBUFFER_WIDTH"
+ height="BACKBUFFER_HEIGHT" format="A8R8G8B8" shared="true"/>
+
+        <!-- Parameters provided by the engine -->
+        <runtime id="WindowWidth"   value="backbuffer_width" />
+        <runtime id="WindowHeight"  value="backbuffer_height" />
+        <runtime id="focalplane"    value ="scene_focalplane" />
+
+    </resources>
+
+    <implementation>
+
+        <stage id="rangeDOF" event="EndFrame">
+
+            <!-- Create the foreground CoC downsampled texture -->
+            <filter id="CreateCoCTexture" library="DAEffects" material="dof" >
+                smpCurrentScene = BackBufferCopy
+                smpDepth        = SceneDepthTexture
+                fWindowWidth    = WindowWidth
+                fWindowHeight   = WindowHeight
+                fFocalPlane     = focalplane
+                fNearFade       = NearFade
+                fFocusDistance  = FocusDistance
+                fFocalRadius    = FocalRadius
+
+                bind null at 1
+                bind DOFDownsampledCoC at 0
+                run semantic CreateDownsampledCoC
+            </filter>
+
+            <!-- Blur CoC texture. Horizontal must happen before vertical, as -->
+            <!-- The vertical step also calculates our final near CoC         -->
+            <filter id="CoCBlurH" library="DAEffects" material="GaussianBlur">
+                bind DOFBlurredA at 0 
+
+                fBlurWidth     = WeightBlur
+                fWindowWidth   = DOFBlurredA.width
+                DownsampledCoC = DOFDownsampledCoC
+
+                run semantic HBlurCoC
+		run semantic HBlurCoC
+            </filter>
+            <filter id="CoCBlurV" library="DAEffects" material="GaussianBlur">
+                bind DOFBlurredB at 0 
+
+                fBlurWidth     = WeightBlur
+                fWindowHeight  = DOFBlurredA.height
+                HorizontalBlur = DOFBlurredA
+                DownsampledCoC = DOFDownsampledCoC
+
+                run semantic VBlurCoC
+		run semantic VBlurCoC
+            </filter>
+
+            <!-- A small blur to get rid of artifacts.                       -->
+            <filter id="ArtifactBlur" library="DAEffects" material="GaussianBlur">
+                bind DOFBlurredA at 0 
+
+                fBlurWidth    = ArtifactBlur
+                fWindowWidth  = DOFBlurredB.width
+                fWindowHeight = DOFBlurredB.height
+                Decal0        = DOFBlurredB
+                
+		run semantic SmallBlur
+                run semantic SmallBlur
+	    </filter>
+
+            <!-- Apply to buffer. So far, BlurredB has the small blur sampler -->
+            <!-- and Downsampled16 has the output of the large blur sampler   -->
+            <filter id="FinalDoFComposition" library="DAEffects" material="dof">
+                bind BACKBUFFER at 0 viewport original
+
+                # Textures
+                # --------------------------------------------------------------
+                ColorScene      = BackBufferCopy
+                DownsampledCoC  = DOFDownsampledCoC
+                BlurredCoC      = DOFBlurredA
+                SceneDepth      = SceneDepthTexture
+
+                # Parameters
+                # --------------------------------------------------------------
+                fWindowWidth    = WindowWidth
+                fWindowHeight   = WindowHeight
+                fFarFade        = FarFade
+                fFocusDistance  = FocusDistance
+                fFocalRadius    = FocalRadius
+                fFocalPlane     = focalplane
+                fMaxBlur        = MaxBlur
+
+                # Optional parameter for the cutscene editor
+                # --------------------------------------------------------------
+                Debug_RenderBlurRadius = RenderBlurRadius
+
+                run semantic ComposeOnScreenDoF
+            </filter>
+
+            <!-- Finish by keeping our effects chainable -->
+            <filter id="Finish" >
+                copy BACKBUFFER to BackBufferCopy
+            </filter>
+
+
+        </stage>
+        
+        
+        
+    </implementation>
+</Effect>
