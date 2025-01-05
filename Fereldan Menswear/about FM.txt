@@ -1,0 +1,4 @@
+Retextures for all male clothing in the game. Some are significantly more altered than others.  Mix & match as you like. 
+Will conflict with anything else that also alters the pm_cth**.dds files.
+
+Optional files change the Noble A clothing to use the noble tints instead of the commoner tints.
