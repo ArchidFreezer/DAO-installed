@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest Type="AddIn">
+	<AddInsList>
+		<AddInItem UID="7704_wardenarmor" Name="Warden Armour" ExtendedModuleUID="Single Player" Priority="100" Enabled="1" State="2" Format="1">
+			<Title DefaultText="Warden Armours">
+				<en-us>
+					<![CDATA[Warden Armours]]>
+				</en-us>
+				<fr-fr>
+					<![CDATA[Warden Armours]]>
+				</fr-fr>
+				<it-it>
+					<![CDATA[Warden Armours]]>
+				</it-it>
+				<de-de>
+					<![CDATA[Warden Armours]]>
+				</de-de>
+				<es-es>
+					<![CDATA[Warden Armours]]>
+				</es-es>
+				<pl-pl>
+					<![CDATA[Warden Armours]]>
+				</pl-pl>
+				<ru-ru>
+					<![CDATA[Warden Armours]]>
+				</ru-ru>
+				<pseudo>
+					<![CDATA[Warden Armours]]>
+				</pseudo>
+				<cs-cz>
+					<![CDATA[Warden Armours]]>
+				</cs-cz>
+				<hu-hu>
+					<![CDATA[Warden Armours]]>
+				</hu-hu>
+			</Title>
+			<Description DefaultText="Adds two new armour variations to the Single Player module, adapted from DA2 resources. Copies of sample items utilizing these variations can be found in chest on ground level of the Redcliffe Castle after the Landsmeet arc has been completed.  (technical notes: the pieces use variation IDs in range 177-182)">
+				<en-us>
+					<![CDATA[Adds two new armour variations to the Single Player module, adapted from DA2 resources. Copies of sample items utilizing these variations can be found in chest on ground level of the Redcliffe Castle after the Landsmeet arc has been completed.
+
+(technical notes: the pieces use variation IDs in range 177-182)]]>
+				</en-us>
+				<fr-fr>
+					<![CDATA[Adds two new armour variations to the Single Player module, adapted from DA2 resources. Copies of sample items utilizing these variations can be found in chest on ground level of the Redcliffe Castle after the Landsmeet arc has been completed.
+
+(technical notes: the pieces use variation IDs in range 177-182)]]>
+				</fr-fr>
+				<it-it>
+					<![CDATA[Adds two new armour variations to the Single Player module, adapted from DA2 resources. Copies of sample items utilizing these variations can be found in chest on ground level of the Redcliffe Castle after the Landsmeet arc has been completed.
+
+(technical notes: the pieces use variation IDs in range 177-182)]]>
+				</it-it>
+				<de-de>
+					<![CDATA[Adds two new armour variations to the Single Player module, adapted from DA2 resources. Copies of sample items utilizing these variations can be found in chest on ground level of the Redcliffe Castle after the Landsmeet arc has been completed.
+
+(technical notes: the pieces use variation IDs in range 177-182)]]>
+				</de-de>
+				<es-es>
+					<![CDATA[Adds two new armour variations to the Single Player module, adapted from DA2 resources. Copies of sample items utilizing these variations can be found in chest on ground level of the Redcliffe Castle after the Landsmeet arc has been completed.
+
+(technical notes: the pieces use variation IDs in range 177-182)]]>
+				</es-es>
+				<pl-pl>
+					<![CDATA[Adds two new armour variations to the Single Player module, adapted from DA2 resources. Copies of sample items utilizing these variations can be found in chest on ground level of the Redcliffe Castle after the Landsmeet arc has been completed.
+
+(technical notes: the pieces use variation IDs in range 177-182)]]>
+				</pl-pl>
+				<ru-ru>
+					<![CDATA[Adds two new armour variations to the Single Player module, adapted from DA2 resources. Copies of sample items utilizing these variations can be found in chest on ground level of the Redcliffe Castle after the Landsmeet arc has been completed.
+
+(technical notes: the pieces use variation IDs in range 177-182)]]>
+				</ru-ru>
+				<pseudo>
+					<![CDATA[Adds two new armour variations to the Single Player module, adapted from DA2 resources. Copies of sample items utilizing these variations can be found in chest on ground level of the Redcliffe Castle after the Landsmeet arc has been completed.
+
+(technical notes: the pieces use variation IDs in range 177-182)]]>
+				</pseudo>
+				<cs-cz>
+					<![CDATA[Adds two new armour variations to the Single Player module, adapted from DA2 resources. Copies of sample items utilizing these variations can be found in chest on ground level of the Redcliffe Castle after the Landsmeet arc has been completed.
+
+(technical notes: the pieces use variation IDs in range 177-182)]]>
+				</cs-cz>
+				<hu-hu>
+					<![CDATA[Adds two new armour variations to the Single Player module, adapted from DA2 resources. Copies of sample items utilizing these variations can be found in chest on ground level of the Redcliffe Castle after the Landsmeet arc has been completed.
+
+(technical notes: the pieces use variation IDs in range 177-182)]]>
+				</hu-hu>
+			</Description>
+			<Image>ico_armor_massive_wmd</Image>
+			<Rating DefaultText="">
+				<en-us>
+					<![CDATA[]]>
+				</en-us>
+				<fr-fr>
+					<![CDATA[]]>
+				</fr-fr>
+				<it-it>
+					<![CDATA[]]>
+				</it-it>
+				<de-de>
+					<![CDATA[]]>
+				</de-de>
+				<es-es>
+					<![CDATA[]]>
+				</es-es>
+				<pl-pl>
+					<![CDATA[]]>
+				</pl-pl>
+				<ru-ru>
+					<![CDATA[]]>
+				</ru-ru>
+				<pseudo>
+					<![CDATA[]]>
+				</pseudo>
+				<cs-cz>
+					<![CDATA[]]>
+				</cs-cz>
+				<hu-hu>
+					<![CDATA[]]>
+				</hu-hu>
+			</Rating>
+			<RatingDescription DefaultText="">
+				<en-us>
+					<![CDATA[]]>
+				</en-us>
+				<fr-fr>
+					<![CDATA[]]>
+				</fr-fr>
+				<it-it>
+					<![CDATA[]]>
+				</it-it>
+				<de-de>
+					<![CDATA[]]>
+				</de-de>
+				<es-es>
+					<![CDATA[]]>
+				</es-es>
+				<pl-pl>
+					<![CDATA[]]>
+				</pl-pl>
+				<ru-ru>
+					<![CDATA[]]>
+				</ru-ru>
+				<pseudo>
+					<![CDATA[]]>
+				</pseudo>
+				<cs-cz>
+					<![CDATA[]]>
+				</cs-cz>
+				<hu-hu>
+					<![CDATA[]]>
+				</hu-hu>
+			</RatingDescription>
+			<URL DefaultText="">
+				<en-us>
+					<![CDATA[]]>
+				</en-us>
+				<fr-fr>
+					<![CDATA[]]>
+				</fr-fr>
+				<it-it>
+					<![CDATA[]]>
+				</it-it>
+				<de-de>
+					<![CDATA[]]>
+				</de-de>
+				<es-es>
+					<![CDATA[]]>
+				</es-es>
+				<pl-pl>
+					<![CDATA[]]>
+				</pl-pl>
+				<ru-ru>
+					<![CDATA[]]>
+				</ru-ru>
+				<pseudo>
+					<![CDATA[]]>
+				</pseudo>
+				<cs-cz>
+					<![CDATA[]]>
+				</cs-cz>
+				<hu-hu>
+					<![CDATA[]]>
+				</hu-hu>
+			</URL>
+			<ReleaseDate>30/4/2011</ReleaseDate>
+			<Version/>
+			<GameVersion/>
+			<Type>1</Type>
+			<Publisher DefaultText="">
+				<en-us>
+					<![CDATA[]]>
+				</en-us>
+				<fr-fr>
+					<![CDATA[]]>
+				</fr-fr>
+				<it-it>
+					<![CDATA[]]>
+				</it-it>
+				<de-de>
+					<![CDATA[]]>
+				</de-de>
+				<es-es>
+					<![CDATA[]]>
+				</es-es>
+				<pl-pl>
+					<![CDATA[]]>
+				</pl-pl>
+				<ru-ru>
+					<![CDATA[]]>
+				</ru-ru>
+				<pseudo>
+					<![CDATA[]]>
+				</pseudo>
+				<cs-cz>
+					<![CDATA[]]>
+				</cs-cz>
+				<hu-hu>
+					<![CDATA[]]>
+				</hu-hu>
+			</Publisher>
+			<PrereqList/>
+			<FileList>
+				<Folder src="packages/" Type="package"/>
+				<Folder src="addins/" Type="addin"/>
+			</FileList>
+		</AddInItem>
+	</AddInsList>
+</Manifest>
