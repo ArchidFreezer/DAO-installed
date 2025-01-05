@@ -1,0 +1,22 @@
+Author: Wizzyrm
+
+This mod changes non-dwarves in Orzammar to Dwarves. Equipment is pulled from other vanilla dwarves using scripts in order to dynamically support UTC mods such as Dwarven Loincloth Fashion.
+
+
+NPCs changed:
+Carta:
+Elven/Qunari Mercenary -> Carta Berserker (Items from orz260cr_prov_fight_3)
+
+Proving:
+Elven Healer/Blood Mage/Arcane Warrior -> Berserker (Items from orz260cr_prov_fight_3) 
+Human Champion -> Dwarf Champion (Items from orz260cr_prov_fight_2) 
+
+Caradin's Cross:
+Elven Mercenary -> Carta Berserker (Items from orz510cr_ambusher)
+
+NPCs NOT changed:
+Embassador Gainley and his bodyguards
+
+Changelog:
+V1.1 - Added missed npc in Caradin's Cross
+v1.0 - Initial release
