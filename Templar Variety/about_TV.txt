@@ -1,0 +1,32 @@
+Ports of medium templar armors from DAI, and a collection of edits to diversify the templars.  
+Install in the override folder.  If you have floating heads, the likely cause is a GDA conflict, or missing meshes. 
+
+Several character files (UTCs) have been edited - mostly one-off, background characters.  For characters with multiple instances (largely enemies), scripting was used instead. 
+The UTC edits will likely conflict with mods that change the default templar massive armor.  You'll have to decide which mod's edits you prefer. 
+
+Human-only.  If you want a set of each for yourself, use 'runscript give_templar'.  The stats are the same as the default steel templar armor, but without attribute requirements.  
+(+3 willpower, +20% spell resistance, +5 mental resistance on the chestpiece; nothing on the other pieces)
+
+
+
+character files altered:
+bhm100cr_door_templar_2.utc
+cir200cr_templar2.utc
+cir200cr_templar3.utc
+cir200cr_wounded_templar.utc
+cir220cr_templar_shield.utc
+den700cr_templarguard2.utc
+lot100cr_templar3.utc
+lot110cr_generictemplar.utc
+pre100cr_templar_1.utc
+coa140cr_templar_apostate.utc (Awakening)
+coa160cr_templar_f.utc (Awakening)
+str200cr_templarguard.utc (Witch Hunt)
+
+item GDA#s used:
+armor_massive_variation: 120
+gloves_massive_variation: 120
+helmet_medium_variation: 120
+armor_light_variation: 50
+gloves_light_variation: 50
+boots_light_variation: 50
