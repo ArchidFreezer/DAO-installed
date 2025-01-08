@@ -54,6 +54,8 @@ void main()
                 object oAlistair = Party_GetFollowerByTag(GEN_FL_ALISTAIR);
                 object oPrisoner = UT_GetNearestCreatureByTag(oPC, DEN_CR_PRISONER);
                 DEN_StoreInventory(oPC);
+                object oPrisonClothes = UT_AddItemToInventory( BDN_IM_PRISON_CLOTHES_R );
+                EquipItem( oPC, oPrisonClothes, INVENTORY_SLOT_CHEST );
                 HealPartyMembers();
                 Injury_RemoveAllInjuriesFromParty();
                 object[] arrParty = GetPartyList(oPC);
@@ -67,6 +69,8 @@ void main()
                 if (WR_GetPlotFlag(PLT_DENPT_CAPTURED, DEN_CAPTURED_ALISTAIR_CAPTURED))
                 {
                     DEN_StoreInventory(oAlistair);
+                    object oPrisonClothes = UT_AddItemToInventory( BDN_IM_PRISON_CLOTHES_R );
+                    EquipItem( oAlistair, oPrisonClothes, INVENTORY_SLOT_CHEST );
 
                     WR_SetObjectActive(oPrisoner, FALSE);
                     UT_LocalJump(oAlistair, DEN_WP_CAPTURED_ALISTAIR);
@@ -81,11 +85,10 @@ void main()
                     SetCreatureGoreLevel( arTeam[nIndex], 0.75 );
 
                 WR_SetPlotFlag(PLT_DENPT_CAPTURED, DEN_CAPTURED_PC_AWAKE, TRUE, TRUE);
-                
+
                 // Qwinn added
                 object oTrig = UT_GetNearestObjectByTag(oPC,"den400tr_augustine_ambient");
                 SetLocalInt(oTrig, TRIG_TALK_ACTIVE_FOR_FLAG, 0);                
-
             }
 
             break;
