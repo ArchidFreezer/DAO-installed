@@ -1,0 +1,4 @@
+#!/bin/bash
+rm -rf package_override/toolsetexport
+rm addin/core/override/toolsetexport/*
+rm addin/module/override/toolsetexport/*
