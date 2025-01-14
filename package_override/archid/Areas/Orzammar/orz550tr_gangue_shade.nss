@@ -83,7 +83,7 @@ void main()
                 {  oBoots  = GetItemInEquipSlot( INVENTORY_SLOT_SHALE_LEFTARM, oPartyMember ); }
                 else
                 {  oBoots  = GetItemInEquipSlot( INVENTORY_SLOT_BOOTS, oPartyMember ); }
-      
+                
                 bArmor  = GetTag( oArmor  ) == ORZ_IM_LEGION_ARMOR;
                 bHelmet = GetTag( oHelmet ) == ORZ_IM_LEGION_HELMET;
                 bGloves = GetTag( oGloves ) == ORZ_IM_LEGION_GLOVES;

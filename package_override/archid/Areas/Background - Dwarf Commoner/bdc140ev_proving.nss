@@ -64,15 +64,17 @@ void main()
             // Dectivate the fighters in the area to avoid stage conflict.
             UT_TeamAppears( PROVING_TEAM_NON_COMBATANT, FALSE );
 
+            /* This block is incompatable with the no helmet hack mod functionality
             if (nFightID == PROVING_FIGHT_001_BDC_MAINAR)
             {
                 //Make Everd's armor and helmet irremovable.
                 object oArmor = GetItemInEquipSlot(INVENTORY_SLOT_CHEST, oPC);
                 object oHelmet = GetItemInEquipSlot(INVENTORY_SLOT_HEAD, oPC);
-                // No way due to no helmet hack
-                // SetItemIrremovable(oArmor, TRUE);
-                // SetItemIrremovable(oHelmet, TRUE);
+
+                SetItemIrremovable(oArmor, TRUE);
+                SetItemIrremovable(oHelmet, TRUE);
             }
+            */
 
             object oDuncan = UT_GetNearestObjectByTag(oPC, BDC_CR_DUNCAN);
             SetPhysicsController(oDuncan, FALSE);

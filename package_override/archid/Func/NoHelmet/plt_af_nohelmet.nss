@@ -1,7 +1,7 @@
 // Plot defines
 
-// no_helmet_plot
-const string PLT_NO_HELMET_PLOT = "9F9A195FB1A34890B690E563ABECC0CB";
+// af_nohelmet
+const string PLT_AF_NOHELMET = "4F21206F97BC4E20B5AC35B4BD067008";
 	const int NO_HELMET_ADDED_FLAG = 0;
 	const int HELMET_SLOT_ACTIVE = 1;
 	const int SHOW_LIGHT_HELMETS = 2;
