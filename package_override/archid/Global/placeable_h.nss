@@ -17,7 +17,8 @@
 #include "plt_tut_placeable_locked"
 
 #include "achievement_core_h"
-#include "autoloot_h"
+#include "af_autoloot_h"
+#include "af_constants_h"
 
 const string STRING_VAR_NONE  = "none";
 
@@ -420,7 +421,7 @@ void Placeable_HandleUsed(event ev)
 
             if (FindSubString(GetTag(OBJECT_SELF), "_autoloot") >= 0)
                 MoveAllItems(OBJECT_SELF, oUser);
-            else if (HasImportantItems(OBJECT_SELF) || LootObject(OBJECT_SELF, oUser) != LOOT_RETURN_OK)
+            else if (GetTag(OBJECT_SELF) == AF_IP_CAMP_MERCH_CHEST || HasImportantItems(OBJECT_SELF) || LootObject(OBJECT_SELF, oUser) != LOOT_RETURN_OK)
                 OpenInventory(OBJECT_SELF, oUser);
 
             if(GetLocalInt(GetModule(), TUTORIAL_ENABLED))
