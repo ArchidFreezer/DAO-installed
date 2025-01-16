@@ -1,0 +1,36 @@
+This mod lets you cast all spells with your weapons drawn with the exception of Power of Blood spells.
+
+Installation:
+
+- Overwrite the GDA files of Cone of Cold, Winter's Grasp, Haste, and Power of Blood spells from the Dain's Fixes with the ones found in this folder
+  - Add abi_coneofcold.gda is added to Dain's Fixes\Dain's Fixes\Bug Fixes\Cone of Cold
+  - Add abi_rangedaim.gda is added to Dain's Fixes\Dain's Fixes\Bug Fixes\Ranged aim speed
+  - Add abi_powerofblood.gda is added to Dain's Fixes\Dain's Fixes\Bug Fixes\Power of Blood
+  - Add abi_wintersgrasp.gda is added to Dain's Fixes\Dain's Fixes\Tweaks\Winter's Grasp freeze
+- Add the remaining file 'ABI_weaponsdrawn.GDA' to Documents\Bioware\Dragon Age\packages\core\override
+
+Compatibitity: I've only checked compatibility with Dain's Fixes and nothing else. If you have GDA files coming from other mods then check if they affect the spells listed below:
+
+FLAME_BLAST
+FIREBALL
+REJUVINATION
+HEROIC_DEFENSE
+HEROIC_OFFENSE
+ANTIMAGIC_BURST
+DEATH_HEX
+PARALYZE
+HORROR
+WAKING_NIGHTMARE
+MASS_PARALYSIS
+VULNERABILITY_HEX
+SLEEP
+STONEFIST
+WALKING_BOMB
+MIND_BLAST
+BLIZZARD
+SHOCK
+LIGHTNING
+DRAIN_LIFE
+AFFLICTION_HEX
+
+These are the spells that force weapons to be sheathed and these are the only ones modified by my GDA(plus Winter's Grasp, Cone of Cold, Haste and Dark Sustenance)
