@@ -20,7 +20,7 @@
 #include "plt_cod_mgc_enchantment"
 
 // Merchant Scaling
-#include "scalestorefix_h"
+#include "af_scalestorefix_h"
 
 int StartingConditional()
 {

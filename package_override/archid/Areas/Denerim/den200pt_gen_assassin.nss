@@ -25,7 +25,7 @@
 #include "plt_mnp000pt_main_events"
 
 // Merchant Scaling
-#include "scalestorefix_h"
+#include "af_scalestorefix_h"
 //------------------------------------------------------------------------------
 
 int StartingConditional()

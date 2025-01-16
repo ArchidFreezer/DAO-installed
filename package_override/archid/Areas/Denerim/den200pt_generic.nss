@@ -22,7 +22,7 @@
 #include "plt_gen00pt_generic_actions"
 
 // Merchant Scaling
-#include "scalestorefix_h"
+#include "af_scalestorefix_h"
 
 const string DEN_STORE_PREFIX = "store_";
 

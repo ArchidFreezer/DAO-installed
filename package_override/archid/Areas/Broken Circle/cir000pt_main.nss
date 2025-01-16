@@ -41,7 +41,7 @@
 // Qwinn added
 #include "plt_genpt_morrigan_main"
 // Merchant Scaling
-#include "scalestorefix_h"
+#include "af_scalestorefix_h"
 //------------------------------------------------------------------------------
 
 int StartingConditional()

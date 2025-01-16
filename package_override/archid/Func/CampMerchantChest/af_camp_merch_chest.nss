@@ -1,5 +1,5 @@
 #include "placeable_h"
-#include "scalestorefix_h"
+#include "af_scalestorefix_h"
 
 void main()
 {
@@ -23,7 +23,7 @@ void main()
                 ScaleStoreEdited(oStore);
                 OpenStore(oStore);
             }
-           
+
             bEventHandled = TRUE;
             break;
         }

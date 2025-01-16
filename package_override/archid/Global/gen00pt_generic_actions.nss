@@ -14,7 +14,7 @@
 #include "utility_h"
 #include "plot_h"
 
-#include "scalestorefix_h"
+#include "af_scalestorefix_h"
 
 const string STORE_PREFIX = "store_";
 

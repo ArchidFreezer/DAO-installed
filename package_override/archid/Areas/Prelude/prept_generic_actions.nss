@@ -25,7 +25,7 @@
 #include "plt_prept_defined_cond"
 
 // Merchant Scaling
-#include "scalestorefix_h"
+#include "af_scalestorefix_h"
 
 int StartingConditional()
 {

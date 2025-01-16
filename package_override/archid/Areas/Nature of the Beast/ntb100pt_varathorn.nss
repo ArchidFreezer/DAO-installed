@@ -28,7 +28,7 @@
 #include "plt_ntb000pt_plot_items"
 
 // Merchant Scaling
-#include "scalestorefix_h"
+#include "af_scalestorefix_h"
 
 int StartingConditional()
 {

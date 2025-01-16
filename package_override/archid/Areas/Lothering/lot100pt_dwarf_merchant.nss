@@ -18,7 +18,7 @@
 
 // Qwinn added for the discount variable
 #include "campaign_h"
-#include "scalestorefix_h"
+#include "af_scalestorefix_h"
 
 //------------------------------------------------------------------------------
 
