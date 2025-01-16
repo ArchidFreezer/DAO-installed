@@ -18,6 +18,7 @@
 
 // Qwinn added for the discount variable
 #include "campaign_h"
+#include "scalestorefix_h"
 
 //------------------------------------------------------------------------------
 
@@ -80,7 +81,9 @@ int StartingConditional()
                 if (bDiscount)
                    SetStoreMarkUp(oStore, LOT_DWARF_MERCHANT_DISCOUNT_EXTRA);
 
-                   ScaleStoreItems(oStore);
+                // Merchant Scaling
+                ScaleStoreEdited(oStore);
+
 
                 OpenStore(oStore);
 

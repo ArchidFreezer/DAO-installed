@@ -27,6 +27,9 @@
 #include "plt_gen00pt_backgrounds"
 #include "plt_ntb000pt_plot_items"
 
+// Merchant Scaling
+#include "scalestorefix_h"
+
 int StartingConditional()
 {
     event eParms = GetCurrentEvent();                // Contains all input parameters
@@ -186,7 +189,7 @@ int StartingConditional()
                     sTag = "store_ntb100cr_varathorn";
                 }
                 object oStore = GetObjectByTag(sTag);
-                ScaleStoreItems(oStore);
+                ScaleStoreEdited(oStore); // Merchant Scaling
                 OpenStore(oStore);
                 break;
             }

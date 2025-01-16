@@ -40,8 +40,8 @@
 
 // Qwinn added
 #include "plt_genpt_morrigan_main"
-
-
+// Merchant Scaling
+#include "scalestorefix_h"
 //------------------------------------------------------------------------------
 
 int StartingConditional()
@@ -105,7 +105,7 @@ int StartingConditional()
                     oStore = GetObjectByTag(CIR_RUMOUR_DEFAULT);
                 }
 
-                ScaleStoreItems(oStore);
+                ScaleStoreEdited(oStore); // Merchant Scaling
 
                 OpenStore(oStore); //Open the store
 
