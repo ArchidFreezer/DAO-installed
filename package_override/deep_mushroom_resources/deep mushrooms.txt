@@ -1,0 +1,15 @@
+Install in the override.  Can be installed/uninstalled at any time. 
+This mod adds lootable deep mushrooms throughout the game, mostly in underground areas, but a few are above ground where they might make at 
+least a little bit of sense. ;)
+
+The default model is ported from DAI; an apparently unused "ghoul mushroom" model, since that most closely resembles the DAO icon.  I've also 
+included the spider-parasitizing version used in DAI as an alternate.  Overwrite the files in the main 'Deep Mushroom Resources' folder with 
+the ones from the 'Alternate Model' folder if you want to use them (or make sure the alternate folder loads after).  The alternate folder also 
+contains an icon replacement to match the new model; if you don't want it, delete "gen_im_cft_reg_mushroom.uti" and "rgt_ico_deepmush_dai.dds".  
+
+
+Shouldn't conflict with anything, really, since the additions were done via scripting for maximum compatibility.
+
+There are two areas that may not have any deep mushrooms the first time you enter them, depending on where you entered from and if you 
+installed mid-game (thanks to the weirdness of area lists): the Frostback Mountain Pass, and the Darkspawn Tunnels underneath the Tower of Ishal.  
+Doing a quick save/reload will make the mushrooms appear.  :)
