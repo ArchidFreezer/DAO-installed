@@ -1,2 +1,3 @@
 # Ignore the upscaled bik cutscenes
 dabik_for_dao_full/
+package_override/rescue_at_ishal/*.bik
