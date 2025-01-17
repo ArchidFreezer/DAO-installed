@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest Type="AddIn">
+	<AddInsList>
+		<AddInItem UID="BPSpiders" Name="Spiders and Knives" ExtendedModuleUID="Single Player" Priority="100" Enabled="1" State="2" Format="1">
+			<Title DefaultText="Spiders and Knives">
+				<en-us>
+					<![CDATA[Spiders and Knives]]>
+				</en-us>
+				<fr-fr>
+					<![CDATA[Spiders and Knives]]>
+				</fr-fr>
+				<it-it>
+					<![CDATA[Spiders and Knives]]>
+				</it-it>
+				<de-de>
+					<![CDATA[Spiders and Knives]]>
+				</de-de>
+				<es-es>
+					<![CDATA[Spiders and Knives]]>
+				</es-es>
+				<pl-pl>
+					<![CDATA[Spiders and Knives]]>
+				</pl-pl>
+				<ru-ru>
+					<![CDATA[Spiders and Knives]]>
+				</ru-ru>
+				<pseudo>
+					<![CDATA[Spiders and Knives]]>
+				</pseudo>
+				<cs-cz>
+					<![CDATA[Spiders and Knives]]>
+				</cs-cz>
+				<hu-hu>
+					<![CDATA[Spiders and Knives]]>
+				</hu-hu>
+			</Title>
+			<Description DefaultText="Spiders and Knives">
+				<en-us>
+					<![CDATA[Spiders and Knives]]>
+				</en-us>
+				<fr-fr>
+					<![CDATA[Spiders and Knives]]>
+				</fr-fr>
+				<it-it>
+					<![CDATA[Spiders and Knives]]>
+				</it-it>
+				<de-de>
+					<![CDATA[Spiders and Knives]]>
+				</de-de>
+				<es-es>
+					<![CDATA[Spiders and Knives]]>
+				</es-es>
+				<pl-pl>
+					<![CDATA[Spiders and Knives]]>
+				</pl-pl>
+				<ru-ru>
+					<![CDATA[Spiders and Knives]]>
+				</ru-ru>
+				<pseudo>
+					<![CDATA[Spiders and Knives]]>
+				</pseudo>
+				<cs-cz>
+					<![CDATA[Spiders and Knives]]>
+				</cs-cz>
+				<hu-hu>
+					<![CDATA[Spiders and Knives]]>
+				</hu-hu>
+			</Description>
+			<Image/>
+			<Rating DefaultText="">
+				<en-us>
+					<![CDATA[]]>
+				</en-us>
+				<fr-fr>
+					<![CDATA[]]>
+				</fr-fr>
+				<it-it>
+					<![CDATA[]]>
+				</it-it>
+				<de-de>
+					<![CDATA[]]>
+				</de-de>
+				<es-es>
+					<![CDATA[]]>
+				</es-es>
+				<pl-pl>
+					<![CDATA[]]>
+				</pl-pl>
+				<ru-ru>
+					<![CDATA[]]>
+				</ru-ru>
+				<pseudo>
+					<![CDATA[]]>
+				</pseudo>
+				<cs-cz>
+					<![CDATA[]]>
+				</cs-cz>
+				<hu-hu>
+					<![CDATA[]]>
+				</hu-hu>
+			</Rating>
+			<RatingDescription DefaultText="">
+				<en-us>
+					<![CDATA[]]>
+				</en-us>
+				<fr-fr>
+					<![CDATA[]]>
+				</fr-fr>
+				<it-it>
+					<![CDATA[]]>
+				</it-it>
+				<de-de>
+					<![CDATA[]]>
+				</de-de>
+				<es-es>
+					<![CDATA[]]>
+				</es-es>
+				<pl-pl>
+					<![CDATA[]]>
+				</pl-pl>
+				<ru-ru>
+					<![CDATA[]]>
+				</ru-ru>
+				<pseudo>
+					<![CDATA[]]>
+				</pseudo>
+				<cs-cz>
+					<![CDATA[]]>
+				</cs-cz>
+				<hu-hu>
+					<![CDATA[]]>
+				</hu-hu>
+			</RatingDescription>
+			<URL DefaultText="">
+				<en-us>
+					<![CDATA[]]>
+				</en-us>
+				<fr-fr>
+					<![CDATA[]]>
+				</fr-fr>
+				<it-it>
+					<![CDATA[]]>
+				</it-it>
+				<de-de>
+					<![CDATA[]]>
+				</de-de>
+				<es-es>
+					<![CDATA[]]>
+				</es-es>
+				<pl-pl>
+					<![CDATA[]]>
+				</pl-pl>
+				<ru-ru>
+					<![CDATA[]]>
+				</ru-ru>
+				<pseudo>
+					<![CDATA[]]>
+				</pseudo>
+				<cs-cz>
+					<![CDATA[]]>
+				</cs-cz>
+				<hu-hu>
+					<![CDATA[]]>
+				</hu-hu>
+			</URL>
+			<ReleaseDate>29/4/2014</ReleaseDate>
+			<Version>3.1</Version>
+			<GameVersion/>
+			<Type>1</Type>
+			<Publisher DefaultText="">
+				<en-us>
+					<![CDATA[]]>
+				</en-us>
+				<fr-fr>
+					<![CDATA[]]>
+				</fr-fr>
+				<it-it>
+					<![CDATA[]]>
+				</it-it>
+				<de-de>
+					<![CDATA[]]>
+				</de-de>
+				<es-es>
+					<![CDATA[]]>
+				</es-es>
+				<pl-pl>
+					<![CDATA[]]>
+				</pl-pl>
+				<ru-ru>
+					<![CDATA[]]>
+				</ru-ru>
+				<pseudo>
+					<![CDATA[]]>
+				</pseudo>
+				<cs-cz>
+					<![CDATA[]]>
+				</cs-cz>
+				<hu-hu>
+					<![CDATA[]]>
+				</hu-hu>
+			</Publisher>
+			<PrereqList/>
+			<FileList>
+				<Folder src="packages/" Type="package"/>
+				<Folder src="addins/" Type="addin"/>
+			</FileList>
+		</AddInItem>
+	</AddInsList>
+</Manifest>
