@@ -1,9 +1,11 @@
 #include "effects_h"
 #include "ability_h"
-#include "ss_dheu_constants_h"
+#include "af_constants_h"
 
-const int TABLE_EFFECT_OVERRIDE = 700524475;
-const int TABLE_EFFECT_MANAGER = 739227090;
+// Code based on work by dainbramage - Dain's Fixes (https://www.nexusmods.com/dragonage/mods/4384)
+
+const int TABLE_EFFECT_OVERRIDE = 6610000;
+const int TABLE_EFFECT_MANAGER = 6610001;
 
 int CheckCriterion(int nRow, string sCol, int nComparison) {
     int nVal = GetM2DAInt(TABLE_EFFECT_MANAGER, sCol, nRow);
@@ -13,7 +15,7 @@ int CheckCriterion(int nRow, string sCol, int nComparison) {
 int IsSpellShapingApplicable(int nEffectType, object oCreator) {
     return (nEffectType == EFFECT_TYPE_DAMAGE || IsEffectTypeHostile(nEffectType) || nEffectType == EFFECT_TYPE_PETRIFY || nEffectType == EFFECT_TYPE_SLIP) &&
         IsObjectValid(oCreator) && IsObjectValid(OBJECT_SELF) && !IsDead(oCreator) &&
-        HasAbility(oCreator,SPELLSHAPING) && Ability_IsAbilityActive(oCreator, SPELLSHAPING) &&
+        HasAbility(oCreator, AF_SKL_SPELLSHAPING) && Ability_IsAbilityActive(oCreator, AF_SKL_SPELLSHAPING) &&
         !IsObjectHostile(OBJECT_SELF, oCreator);
 }
 
@@ -41,7 +43,7 @@ float GetCostMultiplier(object oCreator, int nDifficulty) {
         }
     }
 
-    int nRanks = HasAbility(oCreator,IMPROVED_SPELLSHAPING) + HasAbility(oCreator,EXPERT_SPELLSHAPING) + HasAbility(oCreator,MASTER_SPELLSHAPING);
+    int nRanks = HasAbility(oCreator, AF_SKL_IMPROVED_SPELLSHAPING) + HasAbility(oCreator, AF_SKL_EXPERT_SPELLSHAPING) + HasAbility(oCreator, AF_SKL_MASTER_SPELLSHAPING);
     return fManacost - nRanks*fAdjust;
 }
 
@@ -54,7 +56,6 @@ int HandleDamage(object oCreator, int nAbility, float fDamage) {
         return TRUE;
 
     float fCost = fDamage * GetCostMultiplier(oCreator, nDifficulty);
-    //if (Ability_IsBloodMagic(oCreator)) {
     if (Ability_IsBloodMagic(oCreator)) {
         int nBloodMagicVFX = 1519;
         float fMultiplier = 0.8f;
@@ -101,7 +102,7 @@ void main() {
     int nEffectType = GetEffectType(ef);
 
     // Time to check spell shaping
-    if (nEventType == 33 && CheckSpellShaping(ef)) {
+    if (nEventType == EVENT_TYPE_APPLY_EFFECT && CheckSpellShaping(ef)) {
         return;
     }
 
@@ -130,9 +131,9 @@ void main() {
     // Execute override if present or else default functionality
     if (sOverride != "")
         HandleEvent_String(ev, sOverride);
-    else if (nEventType == 33)
+    else if (nEventType == EVENT_TYPE_APPLY_EFFECT)
         Effects_HandleApplyEffect();
-    else if (nEventType == 34)
+    else if (nEventType == EVENT_TYPE_REMOVE_EFFECT)
         Effects_HandleRemoveEffect();
 
     // Handle listeners

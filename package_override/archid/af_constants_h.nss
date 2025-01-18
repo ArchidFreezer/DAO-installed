@@ -1,11 +1,17 @@
 /*
   List of constants used by the Archid mod
 */
+//------------------------------------------------------------------------------
+// ABILITIES
+//------------------------------------------------------------------------------
+const resource AF_ABI_BLIZZARD_OVERRIDE_SCRIPT = R"af_blizzard_override.ncs";
+const resource AF_ABI_GREASE_OVERRIDE_SCRIPT   = R"af_grease_override.ncs";
 
 //------------------------------------------------------------------------------
 // AREAS
 //------------------------------------------------------------------------------
 const string AF_AR_PRE_KORCARI_WILDS           = "pre200ar_korcari_wilds";
+const string AF_AR_PRE_TOWER_ISHAL_1           = "pre410ar_tower_level_1";
 
 //------------------------------------------------------------------------------
 // ITEMS
@@ -112,6 +118,19 @@ const string   AF_IT_RING_SURVIVAL              = "af_ring_survival";
 // PLACEABLES
 //------------------------------------------------------------------------------
 const resource AF_IPR_CAMP_MERCH_CHEST          = R"af_camp_merch_chest.utp";
-
 const string AF_IP_CAMP_MERCH_CHEST             = "af_camp_merch_chest";
 const string AF_IP_PRE200_IRONCHEST             = "pre200ip_iron_chest2";
+
+
+//------------------------------------------------------------------------------
+// SKILLS
+//------------------------------------------------------------------------------
+ const int AF_SKL_SPELLSHAPING = 43433;
+ const int AF_SKL_IMPROVED_SPELLSHAPING = 43434;
+ const int AF_SKL_EXPERT_SPELLSHAPING = 43435;
+ const int AF_SKL_MASTER_SPELLSHAPING = 43436;
+
+ //------------------------------------------------------------------------------
+// STRING REFERENCS
+//------------------------------------------------------------------------------
+ const int SPELLSHAPING_WARNING_STRREFID = 627214951;

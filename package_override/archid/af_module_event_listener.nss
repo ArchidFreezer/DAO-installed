@@ -2,6 +2,18 @@
 #include "wrappers_h"
 #include "events_h"
 #include "af_nohelmet_h"
+#include "af_constants_h"
+
+void testSpellShapingConfig() {
+    PrintToLog("---> Spell Shaping : EVENT_TYPE_MODULE_LOAD");
+    string appStr = GetM2DAString(TABLE_EVENTS, "Script", EVENT_TYPE_APPLY_EFFECT);
+    string ablStr = GetM2DAString(TABLE_EVENTS, "Script", EVENT_TYPE_ABILITY_CAST_IMPACT);
+
+    if ((appStr != "ss_dheu_app_eff_override" && appStr != "effectmanager") || (ablStr != "ss_dheu_impact_override" && ablStr != "eventmanager"))
+    {
+        ShowPopup(SPELLSHAPING_WARNING_STRREFID, 1, OBJECT_INVALID, FALSE, 0);
+    }
+}
 
 void main()
 {
@@ -17,10 +29,11 @@ void main()
         // Sent by: The engine
         // When: The module loads from a save game. This event can fire more than
         //       once for a single module or game instance.
-        ////////////////////////////////////////////////////////////////////////        
+        ////////////////////////////////////////////////////////////////////////
         case EVENT_TYPE_MODULE_LOAD:
         {
             NoHelmetBookAdd();
+            testSpellShapingConfig();
             break;
         }
         case EVENT_TYPE_GUI_OPENED:
