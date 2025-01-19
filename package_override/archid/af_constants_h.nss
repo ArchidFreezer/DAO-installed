@@ -6,6 +6,10 @@
 //------------------------------------------------------------------------------
 const resource AF_ABI_BLIZZARD_OVERRIDE_SCRIPT = R"af_blizzard_override.ncs";
 const resource AF_ABI_GREASE_OVERRIDE_SCRIPT   = R"af_grease_override.ncs";
+const int AF_ABI_SPELLSHAPING = 6610002;
+const int AF_ABI_SPELLSHAPING_2 = 6610003;
+const int AF_ABI_SPELLSHAPING_3 = 6610004;
+const int AF_ABI_SPELLSHAPING_4 = 6610005;
 
 //------------------------------------------------------------------------------
 // AREAS
@@ -123,14 +127,6 @@ const string AF_IP_PRE200_IRONCHEST             = "pre200ip_iron_chest2";
 
 
 //------------------------------------------------------------------------------
-// SKILLS
-//------------------------------------------------------------------------------
- const int AF_SKL_SPELLSHAPING = 43433;
- const int AF_SKL_IMPROVED_SPELLSHAPING = 43434;
- const int AF_SKL_EXPERT_SPELLSHAPING = 43435;
- const int AF_SKL_MASTER_SPELLSHAPING = 43436;
-
- //------------------------------------------------------------------------------
 // STRING REFERENCS
 //------------------------------------------------------------------------------
  const int SPELLSHAPING_WARNING_STRREFID = 627214951;

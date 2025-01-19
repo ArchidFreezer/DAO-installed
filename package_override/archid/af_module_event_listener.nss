@@ -9,7 +9,7 @@ void testSpellShapingConfig() {
     string appStr = GetM2DAString(TABLE_EVENTS, "Script", EVENT_TYPE_APPLY_EFFECT);
     string ablStr = GetM2DAString(TABLE_EVENTS, "Script", EVENT_TYPE_ABILITY_CAST_IMPACT);
 
-    if ((appStr != "ss_dheu_app_eff_override" && appStr != "effectmanager") || (ablStr != "ss_dheu_impact_override" && ablStr != "eventmanager"))
+    if (ablStr != "af_ablity_cast_impact" && ablStr != "eventmanager")
     {
         ShowPopup(SPELLSHAPING_WARNING_STRREFID, 1, OBJECT_INVALID, FALSE, 0);
     }

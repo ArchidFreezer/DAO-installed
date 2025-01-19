@@ -9,13 +9,13 @@
  */
 int IsSpellShapingTarget(object oCaster, object oTarget) {
     // Both caster and target need to be valid and the caster must have spellshaping active
-   if (!IsObjectValid(oCaster) || !IsObjectValid(oTarget) || !Ability_IsAbilityActive(oCaster, AF_SKL_SPELLSHAPING))
+   if (!IsObjectValid(oCaster) || !IsObjectValid(oTarget) || !Ability_IsAbilityActive(oCaster, AF_ABI_SPELLSHAPING))
         return FALSE;
 
     // All higher level skills are passive upgrades so we can check in descending order.
-    if (HasAbility(oCaster,AF_SKL_MASTER_SPELLSHAPING) && IsObjectHostile(oTarget,oCaster))
+    if (HasAbility(oCaster,AF_ABI_SPELLSHAPING_4) && IsObjectHostile(oTarget,oCaster))
         return TRUE;
-    else if (HasAbility(oCaster,AF_SKL_IMPROVED_SPELLSHAPING) && !IsPartyMember(oTarget))
+    else if (HasAbility(oCaster,AF_ABI_SPELLSHAPING_2) && !IsPartyMember(oTarget))
         // Code for expert is the same as improved since expert only protects allies from damage and that is handled elsewhere.
         return TRUE;
     else if (oTarget != oCaster)

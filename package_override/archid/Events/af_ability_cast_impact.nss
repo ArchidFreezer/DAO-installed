@@ -48,7 +48,7 @@ void main() {
     if(IsDead(oCaster))     // If the caster is dead for some reasons, ignore
         return;
     // If user is not using skill, passing control to another handler
-    if (!HasAbility(oCaster,AF_SKL_SPELLSHAPING) || !Ability_IsAbilityActive(oCaster, AF_SKL_SPELLSHAPING)) {
+    if (!HasAbility(oCaster,AF_ABI_SPELLSHAPING) || !Ability_IsAbilityActive(oCaster, AF_ABI_SPELLSHAPING)) {
          EventManager_ReleaseLock();
          return;
     }

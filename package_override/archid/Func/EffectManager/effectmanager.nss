@@ -15,7 +15,7 @@ int CheckCriterion(int nRow, string sCol, int nComparison) {
 int IsSpellShapingApplicable(int nEffectType, object oCreator) {
     return (nEffectType == EFFECT_TYPE_DAMAGE || IsEffectTypeHostile(nEffectType) || nEffectType == EFFECT_TYPE_PETRIFY || nEffectType == EFFECT_TYPE_SLIP) &&
         IsObjectValid(oCreator) && IsObjectValid(OBJECT_SELF) && !IsDead(oCreator) &&
-        HasAbility(oCreator, AF_SKL_SPELLSHAPING) && Ability_IsAbilityActive(oCreator, AF_SKL_SPELLSHAPING) &&
+        HasAbility(oCreator, AF_ABI_SPELLSHAPING) && Ability_IsAbilityActive(oCreator, AF_ABI_SPELLSHAPING) &&
         !IsObjectHostile(OBJECT_SELF, oCreator);
 }
 
@@ -43,7 +43,7 @@ float GetCostMultiplier(object oCreator, int nDifficulty) {
         }
     }
 
-    int nRanks = HasAbility(oCreator, AF_SKL_IMPROVED_SPELLSHAPING) + HasAbility(oCreator, AF_SKL_EXPERT_SPELLSHAPING) + HasAbility(oCreator, AF_SKL_MASTER_SPELLSHAPING);
+    int nRanks = HasAbility(oCreator, AF_ABI_SPELLSHAPING_2) + HasAbility(oCreator, AF_ABI_SPELLSHAPING_3) + HasAbility(oCreator, AF_ABI_SPELLSHAPING_4);
     return fManacost - nRanks*fAdjust;
 }
 
