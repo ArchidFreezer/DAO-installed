@@ -103,18 +103,13 @@ void EventManager_Broadcast(event ev)
         HandleEvent_String(ev, arPreListeners[i]);
 
     int nOverSize = GetArraySize(arOverride);
-
     for (i = 0; i < nOverSize; i++)
-    {
-        if (EventManager_GetLock() == TRUE)
-            HandleEvent_String(ev, arOverride[i]);
-    }
+        if (EventManager_GetLock()) HandleEvent_String(ev, arOverride[i]);
 
-    if (EventManager_GetLock() == TRUE)
-        HandleEvent(ev);
-
+    if (EventManager_GetLock())
+        HandleEvent(ev);                 
+    
     int nPostSize = GetArraySize(arPostListeners);
-
     for (i = 0; i < nPostSize; i++)
         HandleEvent_String(ev, arPostListeners[i]);
 }

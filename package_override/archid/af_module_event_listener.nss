@@ -5,7 +5,6 @@
 #include "af_constants_h"
 
 void testSpellShapingConfig() {
-    PrintToLog("---> Spell Shaping : EVENT_TYPE_MODULE_LOAD");
     string appStr = GetM2DAString(TABLE_EVENTS, "Script", EVENT_TYPE_APPLY_EFFECT);
     string ablStr = GetM2DAString(TABLE_EVENTS, "Script", EVENT_TYPE_ABILITY_CAST_IMPACT);
 

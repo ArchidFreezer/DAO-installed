@@ -33,7 +33,7 @@
 // A little from the IMPACT event of any handled spells.
 //
 
-const int AF_SS_SPELL_STANDARD = 0;
+const int AF_SS_SPELL_STANDARD = 0; 
 const int AF_SS_SPELL_GREASE = 1;
 const int AF_SS_SPELL_BLIZZARD = 2;
 
@@ -41,8 +41,6 @@ void main() {
 
     event ev = GetCurrentEvent();
     int nEventType = GetEventType(ev);
-
-    ////PrintToLog("Spell Shaping : EVENT_TYPE_ABILITY_CAST_IMPACT caught");
 
     object  oCaster     = GetEventObject(ev, 0);
     if(IsDead(oCaster))     // If the caster is dead for some reasons, ignore
@@ -72,7 +70,6 @@ void main() {
             nSpellCast = AF_SS_SPELL_BLIZZARD;
             break;
         default:
-            ////PrintToLog("Spell Shaping : Dont care about ability, passing control to another handler");
             EventManager_ReleaseLock();
             return;
     }
