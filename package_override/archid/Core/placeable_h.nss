@@ -381,7 +381,7 @@ void Placeable_HandleUsed(event ev)
                     AwardDisableDeviceXP(oUser, nLockLevel);
             }
             else
-            {`
+            {
                 if (bKeyRequired)
                 {
                     UI_DisplayMessage(OBJECT_SELF, UI_MESSAGE_KEY_REQUIRED);

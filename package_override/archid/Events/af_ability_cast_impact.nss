@@ -33,7 +33,7 @@
 // A little from the IMPACT event of any handled spells.
 //
 
-const int AF_SS_SPELL_STANDARD = 0; 
+const int AF_SS_SPELL_STANDARD = 0;
 const int AF_SS_SPELL_GREASE = 1;
 const int AF_SS_SPELL_BLIZZARD = 2;
 
