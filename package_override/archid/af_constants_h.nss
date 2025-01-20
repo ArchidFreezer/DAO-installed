@@ -1,6 +1,9 @@
 /*
   List of constants used by the Archid mod
 */
+
+const int AF_LOG_ACTIVE = TRUE;
+
 //------------------------------------------------------------------------------
 // ABILITIES
 //------------------------------------------------------------------------------
@@ -129,4 +132,6 @@ const string AF_IP_PRE200_IRONCHEST             = "pre200ip_iron_chest2";
 //------------------------------------------------------------------------------
 // STRING REFERENCS
 //------------------------------------------------------------------------------
- const int SPELLSHAPING_WARNING_STRREFID = 627214951;
+const int SPELLSHAPING_WARNING_STRREFID = 627214951;
+ 
+ 
