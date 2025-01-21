@@ -1,7 +1,8 @@
 #include "abi_templates"
 #include "spell_constants_h"
 #include "placeable_h"
-#include "af_utility_h"
+#include "af_constants_h"
+#include "af_logging_h"
 
 const int LOG_LEVEL = AF_LOG_DEBUG;
 const float SPELL_UNLOCK_1_POWER = 10.0f;
@@ -46,7 +47,7 @@ void _HandleImpact(struct EventSpellScriptImpactStruct stEvent)
         }
         case AF_ABI_SPELL_UNLOCK_3: {
             fCasterLevel = (SPELL_UNLOCK_3_POWER + fSpellpower);
-            afLogDebug("Spell Unlock - SPELL_UNLOCK_2 - Caster level: " + FloatToString(fCasterLevel), LOG_LEVEL);
+            afLogDebug("Spell Unlock - SPELL_UNLOCK_3 - Caster level: " + FloatToString(fCasterLevel), LOG_LEVEL);
             break;
         }
     }
@@ -76,8 +77,7 @@ void _HandleImpact(struct EventSpellScriptImpactStruct stEvent)
  **/
 int checkTargetIsValid(event ev) {
 
-    object oTarget = GetEventObject(ev, 1);
-    int nLockLevel = GetPlaceablePickLockLevel(oTarget);
+    object oTarget = GetEventObject(ev, 1);    int nLockLevel = GetPlaceablePickLockLevel(oTarget);
 
     int bTargetValid = TRUE;
 

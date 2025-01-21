@@ -1,9 +1,6 @@
 /*
   List of constants used by the Archid mod
 */
-
-const int AF_LOG_ACTIVE = TRUE;
-
 //------------------------------------------------------------------------------
 // ABILITIES
 //------------------------------------------------------------------------------
@@ -13,9 +10,9 @@ const int AF_ABI_SPELLSHAPING = 6610002;
 const int AF_ABI_SPELLSHAPING_2 = 6610003;
 const int AF_ABI_SPELLSHAPING_3 = 6610004;
 const int AF_ABI_SPELLSHAPING_4 = 6610005;
-const int AF_ABI_SPELL_UNLOCK_1 = 6610006; 
-const int AF_ABI_SPELL_UNLOCK_2 = 6610007; 
-const int AF_ABI_SPELL_UNLOCK_3 = 6610008; 
+const int AF_ABI_SPELL_UNLOCK_1 = 6610006;
+const int AF_ABI_SPELL_UNLOCK_2 = 6610007;
+const int AF_ABI_SPELL_UNLOCK_3 = 6610008;
 
 //------------------------------------------------------------------------------
 // AREAS
@@ -136,9 +133,8 @@ const string AF_IP_PRE200_IRONCHEST             = "pre200ip_iron_chest2";
 // STRING REFERENCES
 //------------------------------------------------------------------------------
 const int SPELLSHAPING_WARNING_STRREFID = 627214951;
- 
+
 const int AF_STR_MAGIC_UNLOCK_FAIL = 6610014;
 const int AF_STR_MAGIC_UNLOCK_INVALID = 6610015;
 const int AF_STR_MAGIC_UNLOCK_INVALID_PLACEABLE_TYPE = 6610016;
 const int AF_STR_MAGIC_UNLOCK_TARGET_UNLOCKED = 6610017;
- 

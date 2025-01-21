@@ -3,6 +3,7 @@
 #include "events_h"
 #include "af_nohelmet_h"
 #include "af_constants_h"
+#include "af_logging_h"
 
 void testSpellShapingConfig() {
     string appStr = GetM2DAString(TABLE_EVENTS, "Script", EVENT_TYPE_APPLY_EFFECT);
@@ -31,6 +32,7 @@ void main()
         ////////////////////////////////////////////////////////////////////////
         case EVENT_TYPE_MODULE_LOAD:
         {
+            ReadIniLogLevel();
             NoHelmetBookAdd();
             testSpellShapingConfig();
             break;
