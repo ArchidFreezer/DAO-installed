@@ -5,7 +5,7 @@
 #include "plt_tut_armor_archer"
 #include "plt_mnp000pt_generic"
 
-const int TABLE_EQUIP_MGR = 791576301;
+const int TABLE_EQUIP_MGR = 6610003;
 
 void HandleEquip(event ev) {
     ItemSet_Update(OBJECT_SELF);

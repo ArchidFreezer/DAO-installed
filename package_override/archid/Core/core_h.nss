@@ -2721,6 +2721,8 @@ float DmgGetWeaponMaxDamage(object oWeapon)
     }
 
     float fMax  = DmgGetWeaponBaseDamage(oWeapon) *  MaxF(1.0, GetM2DAFloat(TABLE_ITEMSTATS,"DamageRange", nType ));
+    if (fMax == 0.0 && GetM2DAInt(TABLE_ITEMS,"Type",nType) == ITEM_TYPE_SHIELD)
+        fMax = 5.0;
     return fMax;
 }
 
@@ -2872,17 +2874,86 @@ float CalculateWeaponDamage(object oCreature, object oWeapon, int nHand = HAND_M
     @author Georg
 
    ---------------------------------------------------------------------------*/
+float _GetAverageDamage(object oCreature, object oWeapon) {
 
-void RecalculateDisplayDamage(object oCreature, int nSlot= INVENTORY_SLOT_INVALID)
+    if (GetBaseItemType(oWeapon) == BASE_ITEM_TYPE_STAFF) {
+        if (GetHasEffects(oCreature, EFFECT_TYPE_SHAPECHANGE))
+            oWeapon = OBJECT_INVALID;
+        else
+            return Combat_Damage_GetMageStaffDamage(oCreature, OBJECT_INVALID, oWeapon, TRUE);
+    }
+    int nHand = (GetItemEquipSlot(oWeapon) == INVENTORY_SLOT_OFFHAND) ? HAND_OFFHAND : HAND_MAIN;
+    float fDamage = Combat_Damage_GetAttributeBonus(oCreature, nHand, oWeapon, TRUE) * GetWeaponAttributeBonusFactor(oWeapon);
+    fDamage += IsObjectValid(oWeapon) ? 0.5 * (DmgGetWeaponBaseDamage(oWeapon) + DmgGetWeaponMaxDamage(oWeapon)) : COMBAT_DEFAULT_UNARMED_DAMAGE;
+/* Archid - not including crit damage, code removed (see dains effect manager code) */
+    fDamage += GetCreatureProperty(oCreature, PROPERTY_ATTRIBUTE_DAMAGE_BONUS);
+    if (IsModalAbilityActive(oCreature, ABILITY_TALENT_BLOOD_FRENZY))
+    {
+        float fCur = GetCreatureProperty(oCreature, PROPERTY_DEPLETABLE_HEALTH, PROPERTY_VALUE_CURRENT);
+        float fMax = GetCreatureProperty(oCreature, PROPERTY_DEPLETABLE_HEALTH, PROPERTY_VALUE_TOTAL);
+        fDamage += (10.0 * MaxF(0.0, 1.0 - fCur/fMax));
+    }
+/* Archid not including on-hit effects, code removed (see dains effect manager code) */
+    return  MaxF(1.0, fDamage);
+}
+float _GetAttackLoopDuration(object oCreature) {
+    float fTime;
+    object oMain = GetItemInEquipSlot(INVENTORY_SLOT_MAIN,oCreature);
+    if (IsUsingRangedWeapon(oCreature, oMain)) {
+        int nArmorType = GetBaseItemType(GetItemInEquipSlot(INVENTORY_SLOT_CHEST, oCreature));
+        int bSlow = nArmorType == BASE_ITEM_TYPE_ARMOR_MASSIVE || nArmorType == BASE_ITEM_TYPE_ARMOR_SUPERMASSIVE;
+        bSlow |= nArmorType == BASE_ITEM_TYPE_ARMOR_HEAVY && !HasAbility(oCreature, ABILITY_TALENT_MASTER_ARCHER);
+        int nBaseItemType = GetBaseItemType(oMain);
+        float fAimDuration = GetCreatureRangedDrawSpeed(OBJECT_SELF, oMain);
+        float fAttackDuration = (nBaseItemType == BASE_ITEM_TYPE_STAFF) ? 0.3 : bSlow ? 1.5 : 0.8;
+        float fResetDuration;
+        switch (nBaseItemType) {
+            case BASE_ITEM_TYPE_SHORTBOW:
+            case BASE_ITEM_TYPE_LONGBOW:
+            fResetDuration = 0.8;
+            break;
+            case 21 /* crossbow */:
+            fResetDuration = 0.9;
+            break;
+            case BASE_ITEM_TYPE_STAFF:
+            fResetDuration = 1.25;
+            break;
+        }
+        fTime = fAimDuration + fAttackDuration + fResetDuration;
+    } else {
+        int nStyle = GetWeaponStyle(oCreature);
+        if (nStyle == WEAPONSTYLE_DUAL) {
+            object oOff = GetItemInEquipSlot(INVENTORY_SLOT_MAIN,oCreature);
+            float fMainTime = BASE_TIMING_DUAL_WEAPONS + GetM2DAFloat(TABLE_ITEMSTATS,"dspeed",GetBaseItemType(oMain));
+            float fOffTime = BASE_TIMING_DUAL_WEAPONS + GetM2DAFloat(TABLE_ITEMSTATS,"dspeed",GetBaseItemType(oOff));            
+            if (IsModalAbilityActive(oCreature, ABILITY_TALENT_DUAL_WEAPON_DOUBLE_STRIKE))
+                fTime =0.5 * (fMainTime + fOffTime); // Archid including Dual Striking timing
+            else
+                fTime = fMainTime + fOffTime;
+        } else {
+            fTime = GetM2DAFloat(TABLE_ITEMSTATS,"dspeed",GetBaseItemType(oMain));
+            switch (nStyle) {
+                case WEAPONSTYLE_NONE:
+                case WEAPONSTYLE_SINGLE:
+                fTime += BASE_TIMING_WEAPON_SHIELD;
+                break;
+                case WEAPONSTYLE_TWOHANDED:
+                fTime += BASE_TIMING_TWO_HANDED;
+                break;
+            }
+        }
+    }
+    return fTime;
+}
+void _CrappyDefaultDisplayDamage(object oCreature, int nSlot= INVENTORY_SLOT_INVALID)
 {
 
     if (nSlot == INVENTORY_SLOT_INVALID || nSlot == INVENTORY_SLOT_MAIN)
     {
         object oMain = GetItemInEquipSlot(INVENTORY_SLOT_MAIN,oCreature);
+        float fStat =1.0f;
         if (IsObjectValid(oMain))
         {
-            float fStat =1.0f;
-
             if (GetHasEffects(oCreature, EFFECT_TYPE_SHAPECHANGE))
             {
                 fStat = CalculateWeaponDamage(oCreature, OBJECT_INVALID);
@@ -2891,16 +2962,16 @@ void RecalculateDisplayDamage(object oCreature, int nSlot= INVENTORY_SLOT_INVALI
             {
                 fStat = CalculateWeaponDamage(oCreature, oMain);
             }
-            SetCreatureProperty(oCreature, 50, fStat);
         }
         // ---------------------------------------------------------------------
         // Unarmed
         // ---------------------------------------------------------------------
         else
         {
-            float fStat = DmgGetWeaponDamage(OBJECT_INVALID) +  Combat_Damage_GetAttributeBonus(oCreature, HAND_MAIN, OBJECT_INVALID, TRUE) + GetCreatureProperty(oCreature, PROPERTY_ATTRIBUTE_DAMAGE_BONUS);
-            SetCreatureProperty(oCreature, 50, fStat);
+            // Archid fix rune stacking
+            fStat = CalculateWeaponDamage(oCreature, OBJECT_INVALID);
         }
+        SetCreatureProperty(oCreature, 50, fStat);
     }
 
 
@@ -2950,6 +3021,43 @@ void RecalculateDisplayDamage(object oCreature, int nSlot= INVENTORY_SLOT_INVALI
         }
     }
 
+}
+
+void RecalculateDisplayDamage(object oCreature, int nSlot = INVENTORY_SLOT_INVALID) {
+    // Archid raw damage only in inventory
+    int nDisplayMode = 1;
+    // If DPS
+    if (nDisplayMode == 2) {
+        object oMain = GetItemInEquipSlot(INVENTORY_SLOT_MAIN,oCreature);
+        object oOff = GetItemInEquipSlot(INVENTORY_SLOT_OFFHAND,oCreature);
+        int nStyle = GetWeaponStyle(oCreature);
+        float fDmg = _GetAverageDamage(oCreature, oMain);
+        if (nStyle == WEAPONSTYLE_DUAL)
+            fDmg += _GetAverageDamage(oCreature, oOff);
+        
+        float fTime = _GetAttackLoopDuration(oCreature);
+        float fSpeedMod = 1.0;
+        if (IsUsingMeleeWeapon(oCreature, oMain)) {
+            fSpeedMod = GetCreatureProperty(oCreature, PROPERTY_ATTRIBUTE_ATTACK_SPEED_MODIFIER);
+            fSpeedMod = (fSpeedMod < 0.5f) ? 1.0 : MinF(1.5, MaxF(0.5, fSpeedMod));
+        }
+
+        float fDps = fDmg/(fTime*fSpeedMod);
+        SetCreatureProperty(oCreature, 50, fDps);
+        SetCreatureProperty(oCreature, 49, -100.0);
+    // Raw damage
+    } else if (nDisplayMode == 1) {
+        object oMain = GetItemInEquipSlot(INVENTORY_SLOT_MAIN,oCreature);
+        SetCreatureProperty(oCreature, 50, _GetAverageDamage(oCreature, oMain));
+        if (GetWeaponStyle(oCreature) == WEAPONSTYLE_DUAL) {
+            object oOff = GetItemInEquipSlot(INVENTORY_SLOT_OFFHAND,oCreature);
+            SetCreatureProperty(oCreature, 49, _GetAverageDamage(oCreature, oOff));
+        } else {
+            SetCreatureProperty(oCreature, 49, -100.0);
+        }
+    } else {
+        _CrappyDefaultDisplayDamage(oCreature, nSlot);
+    }
 }
 
 // @brief  Returns if an ability can be interrupted by damage

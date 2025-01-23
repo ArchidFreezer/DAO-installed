@@ -40,9 +40,9 @@ void ScaleStoreEdited(object oStore, int bReset = FALSE)
     SetLocalInt(oStore, "MERCHANT_IS_SCALED", 1);
 
     int nStoreBase = GetLocalInt(oStore, "MERCHANT_LEVEL_OVERRIDE");
-    int nStoreLevel; 
+    int nStoreLevel;
     int nPlayer = GetLevel(GetHero());
-    if (nStoreBase > 0)  
+    if (nStoreBase > 0)
     {
         nStoreLevel = nStoreBase;
     } else
@@ -72,9 +72,9 @@ void ScaleStoreEdited(object oStore, int bReset = FALSE)
 
         if ((nItemType == ITEM_TYPE_ARMOUR) || (nItemType == ITEM_TYPE_SHIELD) || (nItemType == ITEM_TYPE_WEAPON_MELEE) || (nItemType == ITEM_TYPE_WEAPON_RANGED) || (nItemType == ITEM_TYPE_WEAPON_WAND))
         {
-            SetLocalInt(oItems[nCount], "ITEM_RUNE_ENABLED", 1); 
-            
-            // if not unique         
+            SetLocalInt(oItems[nCount], "ITEM_RUNE_ENABLED", 1);
+
+            // if not unique
             if (GetItemUnique(oItems[nCount]) == FALSE)
             {
                 // get material progression
