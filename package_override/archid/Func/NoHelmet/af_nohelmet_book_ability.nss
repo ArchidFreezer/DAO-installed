@@ -34,7 +34,7 @@ void main()
                     WR_SetPlotFlag( PLT_AF_NOHELMET, PLAYER_HELMET,TRUE );
                     iUniqueAction=2;
                 }
-            } else if (sUser=="Alistair") {      
+            } else if (sUser=="Alistair") {
                 if (WR_GetPlotFlag( PLT_AF_NOHELMET, ALISTAIR_HELMET)) {
                     WR_SetPlotFlag( PLT_AF_NOHELMET, ALISTAIR_HELMET,FALSE );
                     iUniqueAction=1;
@@ -177,7 +177,7 @@ void main()
                     EquipItem(oUser,oCloakHelm,5);
                 }
             }
-            
+
             UT_RemoveItemFromInventory(AF_ITR_MISC_BOOK_NOHELMET, 1, GetHero());
             UT_AddItemToInventory(AF_ITR_MISC_BOOK_NOHELMET, 1);
 

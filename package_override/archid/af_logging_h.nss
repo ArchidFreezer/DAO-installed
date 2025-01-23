@@ -21,10 +21,10 @@ const int AF_LOG_DEBUG = 3;
 *
 * @param sLogGroup Name of the log group to check against
 **/
-int GetGroupLogLevel(string sLogGroup) {  
+int GetGroupLogLevel(string sLogGroup) {
     // Get the maximum logging level for all groups
-    int nMaxLevel = GetLocalInt(GetModule(),AF_LOG_LEVEL); 
-    
+    int nMaxLevel = GetLocalInt(GetModule(),AF_LOG_LEVEL);
+
     // If the log group is not defined then use the max, otherwise get the lower of the global/group
     if (sLogGroup == "") {
         return nMaxLevel;
@@ -85,20 +85,20 @@ void ReadIniLogLevel() {
     if (sLogGlobalLevel == "3") nLogGlobalLevel = AF_LOG_DEBUG;
     else if (sLogGlobalLevel == "2") nLogGlobalLevel = AF_LOG_WARN;
     else if (sLogGlobalLevel == "1") nLogGlobalLevel = AF_LOG_INFO;
-    
+
     string sLogGroupsNone = ReadIniEntry("Archid", "LogGroupsNone");
     string sLogGroupsInfo = ReadIniEntry("Archid", "LogGroupsInfo");
     string sLogGroupsWarn = ReadIniEntry("Archid", "LogGroupsWarn");
     string sLogGroupsDebug = ReadIniEntry("Archid", "LogGroupsDebug");
-    
+
     if (nLogGlobalLevel >= AF_LOG_INFO) {
-        PrintToLog("[INFO ReadIniLogLevel: Global - '" + IntToString(nLogGlobalLevel) + "'");
-        PrintToLog("[INFO ReadIniLogLevel: NoneGroups - '" + sLogGroupsNone + "'");
-        PrintToLog("[INFO ReadIniLogLevel: InfoGroups - '" + sLogGroupsInfo + "'");
-        PrintToLog("[INFO ReadIniLogLevel: WarnGroups - '" + sLogGroupsWarn + "'");
-        PrintToLog("[INFO ReadIniLogLevel: DebugGroups - '" + sLogGroupsDebug + "'");
+        PrintToLog("[INFO Logging] ReadIniLogLevel: Global - '" + IntToString(nLogGlobalLevel) + "'");
+        PrintToLog("[INFO Logging] ReadIniLogLevel: NoneGroups - '" + sLogGroupsNone + "'");
+        PrintToLog("[INFO Logging] ReadIniLogLevel: InfoGroups - '" + sLogGroupsInfo + "'");
+        PrintToLog("[INFO Logging] ReadIniLogLevel: WarnGroups - '" + sLogGroupsWarn + "'");
+        PrintToLog("[INFO Logging] ReadIniLogLevel: DebugGroups - '" + sLogGroupsDebug + "'");
     }
-    
+
     SetLogLevels(nLogGlobalLevel, sLogGroupsNone, sLogGroupsInfo, sLogGroupsWarn, sLogGroupsDebug);
 }
 

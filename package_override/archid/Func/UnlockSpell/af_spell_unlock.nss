@@ -3,7 +3,7 @@
 #include "placeable_h"
 #include "af_constants_h"
 #include "af_logging_h"
-                             
+
 const string LOG_GROUP = "UnlockSpell";
 const float SPELL_UNLOCK_1_POWER = 10.0f;
 const float SPELL_UNLOCK_2_POWER = 25.0f;
