@@ -8,7 +8,7 @@
     See the end of this file for examples.
 */
 
-const int TABLE_EVENT_MANAGER = 100000;
+const int TABLE_EVENT_MANAGER = 6610002;
 
 /* This variable need to be an integer in the original var_module 2da table */
 const string EVENT_MANAGER_LOCK = "MODULE_COUNTER_3";
@@ -16,8 +16,7 @@ const string EVENT_MANAGER_LOCK = "MODULE_COUNTER_3";
 /**
 * @brief Get a lock for overriding an event.
 *
-* Each time an event is broadcasted, the lock is released. The first module that
-* override the event lock it.
+* Each time an event is broadcasted, the lock is released. The first module that overrides the event locks it.
 *
 * @returns  A boolean. TRUE if you got the lock and can override the event. FALSE means an other module has already overrided this event.
 *
@@ -37,10 +36,10 @@ int EventManager_GetLock()
 }
 
 /**
-* @brief This function release the override lock.
+* @brief Releases the override lock.
 *
 * By releasing the lock, you allow other module to override the event. Do this
-* if you overrided an event and finally don't want to override it.
+* if you override an event and want other override event handlers to trigger.
 *
 * @author Anakin
 **/
@@ -52,7 +51,7 @@ void EventManager_ReleaseLock()
 /**
 * @brief Broadcast an event.
 *
-* The broadcasted events is send to all script defined in eventmanager 2DA table.
+* The broadcast events are send to all script defined in eventmanager 2DA table.
 *
 * @param ev The event to broadcast
 *
@@ -107,8 +106,8 @@ void EventManager_Broadcast(event ev)
         if (EventManager_GetLock()) HandleEvent_String(ev, arOverride[i]);
 
     if (EventManager_GetLock())
-        HandleEvent(ev);                 
-    
+        HandleEvent(ev);
+
     int nPostSize = GetArraySize(arPostListeners);
     for (i = 0; i < nPostSize; i++)
         HandleEvent_String(ev, arPostListeners[i]);
@@ -120,8 +119,7 @@ void EventManager_Broadcast(event ev)
 
 /* # How to listen/override an event with the Event Manager ?
 
-You don't need to change your habits concerning overriding events in
-engineevents.GDA
+You don't need to change your habits concerning overriding events in engineevents.GDA
 So fill the engineevents.GDA with all events you want to listen or override.
 But redirect them to eventmanager.
 
@@ -136,10 +134,8 @@ ID    Label                                Script
 
 
 
-Then create a new .xls file following the example in the archive. Its name is
-eventmanager_my_mod.xls.
-It is a new M2DA table that need to be extend. Choose a random ID as big as you
-want for your mod.
+Then create a new .xls file following the example in the archive. Its name is eventmanager_my_mod.xls.
+It is a new M2DA table that need to be extend. Choose a random ID as big as you want for your mod.
 Here you have to enter what the name of the scripts that will handler the events.
 
 ID  EventType  Label                          Script        Mode
