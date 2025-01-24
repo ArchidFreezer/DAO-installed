@@ -1,7 +1,6 @@
 #include "abi_templates"
 #include "spell_constants_h"
 #include "placeable_h"
-#include "af_constants_h"
 #include "af_logging_h"
 
 // This must match the row in the logging_ m2da table
@@ -12,6 +11,11 @@ const int AF_STR_MAGIC_UNLOCK_FAIL = 6610014;
 const int AF_STR_MAGIC_UNLOCK_INVALID = 6610015;
 const int AF_STR_MAGIC_UNLOCK_INVALID_PLACEABLE_TYPE = 6610016;
 const int AF_STR_MAGIC_UNLOCK_TARGET_UNLOCKED = 6610017;
+
+// Abilities
+const int AF_ABI_SPELL_UNLOCK_1 = 6610006;
+const int AF_ABI_SPELL_UNLOCK_2 = 6610007;
+const int AF_ABI_SPELL_UNLOCK_3 = 6610008;
 
 const float SPELL_UNLOCK_1_POWER = 10.0f;
 const float SPELL_UNLOCK_2_POWER = 25.0f;
