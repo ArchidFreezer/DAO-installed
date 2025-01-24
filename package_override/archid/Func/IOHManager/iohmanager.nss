@@ -1,5 +1,7 @@
 #include "sys_itemprops_h"
 
+const int TABLE_IOH_MANAGER = 6610006;
+
 void main() {
     if (GetGameMode() == GM_COMBAT)
     {
@@ -7,7 +9,7 @@ void main() {
         int nOnHitEffectId = GetEventInteger(ev,0);
         int nForceProc = GetEventInteger(ev,2);
 
-        string sScript = GetM2DAString(611660526, "Script", nOnHitEffectId);
+        string sScript = GetM2DAString(TABLE_IOH_MANAGER, "Script", nOnHitEffectId);
         // default behaviour
         if (sScript == "") {
             // First determine proc chance. If no proc, no point in wasting cpu time on the rest
@@ -20,7 +22,7 @@ void main() {
                     // We don't care about dead targets or non creatures
                     if (GetObjectType(oTarget) == OBJECT_TYPE_CREATURE && !IsDeadOrDying(oTarget)) {
                         object oItem = GetEventObject(ev,1);
-                        int nPower = IsObjectValid(oItem) ? GetItemPropertyPower(oItem,nOnHitEffectId,!GetM2DAInt(453215378, "enabled", 7)) : 1;
+                        int nPower = IsObjectValid(oItem) ? GetItemPropertyPower(oItem,nOnHitEffectId,!GetM2DAInt(TABLE_OPTIONS, "enabled", 7)) : 1;
                         ItemProp_DoEffect(oAttacker,oTarget,nOnHitEffectId,nPower);
                     }
                 }
