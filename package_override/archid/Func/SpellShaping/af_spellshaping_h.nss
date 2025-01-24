@@ -1,5 +1,10 @@
 #include "ability_h"
-#include "af_constants_h"
+
+const int AF_ABI_SPELLSHAPING = 6610002;
+const int AF_ABI_SPELLSHAPING_2 = 6610003;
+const int AF_ABI_SPELLSHAPING_3 = 6610004;
+const int AF_ABI_SPELLSHAPING_4 = 6610005;
+
 /*
  * Checks if a target is protected by SpellShaping from the effects of a spell
  * oCaster - The person casting the spell

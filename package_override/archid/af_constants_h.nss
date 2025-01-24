@@ -6,10 +6,6 @@
 //------------------------------------------------------------------------------
 const resource AF_ABI_BLIZZARD_OVERRIDE_SCRIPT = R"af_blizzard_override.ncs";
 const resource AF_ABI_GREASE_OVERRIDE_SCRIPT   = R"af_grease_override.ncs";
-const int AF_ABI_SPELLSHAPING = 6610002;
-const int AF_ABI_SPELLSHAPING_2 = 6610003;
-const int AF_ABI_SPELLSHAPING_3 = 6610004;
-const int AF_ABI_SPELLSHAPING_4 = 6610005;
 const int AF_ABI_SPELL_UNLOCK_1 = 6610006;
 const int AF_ABI_SPELL_UNLOCK_2 = 6610007;
 const int AF_ABI_SPELL_UNLOCK_3 = 6610008;

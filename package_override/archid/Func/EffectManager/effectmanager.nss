@@ -1,6 +1,6 @@
 #include "effects_h"
 #include "ability_h"
-#include "af_constants_h"
+#include "af_spellshaping_h"
 
 // Code based on work by dainbramage - Dain's Fixes (https://www.nexusmods.com/dragonage/mods/4384)
 
