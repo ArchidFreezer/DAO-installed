@@ -1,17 +1,8 @@
 /*
-  List of constants used by the Archid mod
+* List of constants used by multiple functional components in the Archid mod
+* Constants that are tied to functionality should be defined in a fuunctional specific script to remove the
+*  number of scripts that require recompilation on changes to this file
 */
-//------------------------------------------------------------------------------
-// ABILITIES
-//------------------------------------------------------------------------------
-const resource AF_ABI_BLIZZARD_OVERRIDE_SCRIPT = R"af_blizzard_override.ncs";
-const resource AF_ABI_GREASE_OVERRIDE_SCRIPT   = R"af_grease_override.ncs";
-
-//------------------------------------------------------------------------------
-// AREAS
-//------------------------------------------------------------------------------
-const string AF_AR_PRE_KORCARI_WILDS           = "pre200ar_korcari_wilds";
-
 //------------------------------------------------------------------------------
 // ITEMS
 //------------------------------------------------------------------------------
@@ -62,7 +53,6 @@ const resource AF_ITR_SBOW_PHOENIX4             = R"af_sbow_pnx4.uti";
 const resource AF_ITR_SBOW_PHOENIX7             = R"af_sbow_pnx7.uti";
 const resource AF_ITR_SHIELD_NIGHTFALL_BLOOM    = R"af_shield_tow_nfb.uti";
 const resource AF_ITR_STAFF_WINGS               = R"af_staff_wings.uti";
-const resource AF_ITR_RING_SURVIVAL             = R"af_ring_survival.uti";
 
 const string   AF_IT_AMMO_PHOENIX_DISRUPT       = "af_ammo_pnxdisrupt";
 const string   AF_IT_AMMO_PHOENIX_FLASH         = "af_ammo_pnxflash";
@@ -111,9 +101,7 @@ const string   AF_IT_SBOW_PHOENIX4              = "af_sbow_pnx4";
 const string   AF_IT_SBOW_PHOENIX7              = "af_sbow_pnx7";
 const string   AF_IT_SHIELD_NIGHTFALL_BLOOM     = "af_shield_tow_nfb";
 const string   AF_IT_STAFF_WINGS                = "af_staff_wings";
-const string   AF_IT_RING_SURVIVAL              = "af_ring_survival";
 
 //------------------------------------------------------------------------------
 // PLACEABLES
 //------------------------------------------------------------------------------
-const string AF_IP_PRE200_IRONCHEST             = "pre200ip_iron_chest2";
