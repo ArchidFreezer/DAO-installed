@@ -1,5 +1,5 @@
 // -----------------------------------------------------------------------------
-// Blizzard Override spell script based on code from Dheuster 
+// Blizzard Override spell script based on code from Dheuster
 // Modified by Archid to reduce code duplication and generally improve readability
 // -----------------------------------------------------------------------------
 
@@ -9,6 +9,9 @@
 #include "spell_constants_h"
 #include "plt_cod_aow_spellcombo3"
 #include "af_spellshaping_h"
+
+// First floor of the Tower of Ishal in the prequel
+const string AF_AR_PRE_TOWER_ISHAL_1           = "pre410ar_tower_level_1";
 
 //------------------------------------------------------------------------------
 // Spellscript Impact Damage and Effects

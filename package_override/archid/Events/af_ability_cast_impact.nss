@@ -31,6 +31,11 @@
 // A little from the IMPACT event of any handled spells.
 //
 
+
+// Spell specific scripts
+const resource AF_ABI_BLIZZARD_OVERRIDE_SCRIPT = R"af_blizzard_override.ncs";
+const resource AF_ABI_GREASE_OVERRIDE_SCRIPT   = R"af_grease_override.ncs";
+
 const int AF_SS_SPELL_STANDARD = 0;
 const int AF_SS_SPELL_GREASE = 1;
 const int AF_SS_SPELL_BLIZZARD = 2;

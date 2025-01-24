@@ -11,7 +11,6 @@ const resource AF_ABI_GREASE_OVERRIDE_SCRIPT   = R"af_grease_override.ncs";
 // AREAS
 //------------------------------------------------------------------------------
 const string AF_AR_PRE_KORCARI_WILDS           = "pre200ar_korcari_wilds";
-const string AF_AR_PRE_TOWER_ISHAL_1           = "pre410ar_tower_level_1";
 
 //------------------------------------------------------------------------------
 // ITEMS
