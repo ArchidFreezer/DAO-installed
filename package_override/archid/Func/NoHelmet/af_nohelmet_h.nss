@@ -2,8 +2,9 @@
 #include "utility_h"
 #include "plt_af_nohelmet"
 #include "af_logging_h"
-
-const string LOG_GROUP = "NoHelmet";
+                             
+// This must match the row in the logging_ m2da table
+const int AF_LOG_NO_HELMET = 1;
 
 const resource AF_ITR_MISC_BOOK_NOHELMET      = R"af_misc_book_nohelmet.uti";
 const string   AF_IT_MISC_BOOK_NOHELMET       = "af_misc_book_nohelmet";
@@ -21,7 +22,7 @@ void NoHelmetBookAdd() {
 // Show any helmet in the inventory screen
 //
 void NoHelmetShowInventory() {
-    afLogDebug("Showing inventory", LOG_GROUP);
+    afLogDebug("Showing inventory", AF_LOG_NO_HELMET);
     if (WR_GetPlotFlag( PLT_AF_NOHELMET, HELMET_SLOT_ACTIVE ) == FALSE ) {
         // Swap helmets to make visible
         string oAreaStr = ObjectToString(GetArea(GetHero()));
@@ -54,7 +55,7 @@ void NoHelmetShowInventory() {
 //
 void NoHelmetItemSetUpdate(object oCreature) {
 
-    afLogInfo("Item set update", LOG_GROUP);
+    afLogInfo("Item set update", AF_LOG_NO_HELMET);
 
     // remove all flag effects
     effect[] eEffects = GetEffectsByAbilityId(oCreature, ABILITY_ITEM_SET);
@@ -96,8 +97,8 @@ void NoHelmetItemSetUpdate(object oCreature) {
         if (IsObjectValid(oItems[nCount])) nSlotArray += nCountValue;
         nCountValue *= 2;
     }
-    
-    afLogDebug("nSlotArray = " + ToString(nSlotArray), LOG_GROUP);
+
+    afLogDebug("nSlotArray = " + ToString(nSlotArray), AF_LOG_NO_HELMET);
 
     // if there are items equipped
     if (nSlotArray > 0) {
@@ -167,7 +168,7 @@ void NoHelmetItemSetUpdate(object oCreature) {
 // Show/hide helmets as appropriate on leaving a GUI screen
 //
 void NoHelmetLeaveGUI() {
-    afLogDebug("Leaving GUI", LOG_GROUP);
+    afLogDebug("Leaving GUI", AF_LOG_NO_HELMET);
     // Test if helmets have been swapped
     if (WR_GetPlotFlag( PLT_AF_NOHELMET, HELMET_SLOT_ACTIVE )) {
         // hide the helmets if plot flag allows it
