@@ -122,27 +122,6 @@ const string   AF_IT_STAFF_WINGS                = "af_staff_wings";
 const string   AF_IT_RING_SURVIVAL              = "af_ring_survival";
 
 //------------------------------------------------------------------------------
-// LOGGING
-// 
-// The values in the AF_LOG_xxx constants must match the row in the logging_ m2da tables
-//------------------------------------------------------------------------------
-const int AF_TABLE_LOGGING = 6610004;
-const int AF_LOG_GLOBAL = 0;
-
-//------------------------------------------------------------------------------
 // PLACEABLES
 //------------------------------------------------------------------------------
-const resource AF_IPR_CAMP_MERCH_CHEST          = R"af_camp_merch_chest.utp";
-const string AF_IP_CAMP_MERCH_CHEST             = "af_camp_merch_chest";
 const string AF_IP_PRE200_IRONCHEST             = "pre200ip_iron_chest2";
-
-
-//------------------------------------------------------------------------------
-// STRING REFERENCES
-//------------------------------------------------------------------------------
-const int SPELLSHAPING_WARNING_STRREFID = 627214951;
-
-const int AF_STR_MAGIC_UNLOCK_FAIL = 6610014;
-const int AF_STR_MAGIC_UNLOCK_INVALID = 6610015;
-const int AF_STR_MAGIC_UNLOCK_INVALID_PLACEABLE_TYPE = 6610016;
-const int AF_STR_MAGIC_UNLOCK_TARGET_UNLOCKED = 6610017;

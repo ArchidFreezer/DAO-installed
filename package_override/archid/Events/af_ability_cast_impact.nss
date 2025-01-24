@@ -3,7 +3,6 @@
 // Need Effects_HandleApplyEffect
 #include "effects_h"
 #include "spell_constants_h" // ABILITY_XYZ
-#include "af_constants_h"
 #include "plt_cod_aow_spellcombo3" // BLIZZARD TRIPLE COMBO REPORTING
 #include "eventmanager_h"
 #include "af_spellshaping_h"
@@ -17,7 +16,6 @@
 // individual effects trickle back up through the event tree (such as Damage), but
 // secondary effects do not. They are broadcaste as individual events and loop directly
 // back to the handler script.
-//
 // Example: Ability FIREBALL is handled by spell_aoe_instant.nss. The primary effect
 //          (damage) is applied to each target and trickles back up through the event
 //          tree as EVENT_TYPE_APPLY_EFFECT. However the secondary effects like

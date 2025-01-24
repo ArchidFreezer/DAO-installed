@@ -4,6 +4,8 @@
 #include "af_nohelmet_h"
 #include "af_constants_h"
 
+const int SPELLSHAPING_WARNING_STRREFID = 627214951;
+
 void testSpellShapingConfig() {
     string appStr = GetM2DAString(TABLE_EVENTS, "Script", EVENT_TYPE_APPLY_EFFECT);
     string ablStr = GetM2DAString(TABLE_EVENTS, "Script", EVENT_TYPE_ABILITY_CAST_IMPACT);

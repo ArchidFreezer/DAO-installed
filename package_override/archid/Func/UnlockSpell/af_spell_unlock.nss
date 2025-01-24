@@ -7,6 +7,12 @@
 // This must match the row in the logging_ m2da table
 const int AF_LOG_UNLOCK_SPELL = 2;
 
+// String references
+const int AF_STR_MAGIC_UNLOCK_FAIL = 6610014;
+const int AF_STR_MAGIC_UNLOCK_INVALID = 6610015;
+const int AF_STR_MAGIC_UNLOCK_INVALID_PLACEABLE_TYPE = 6610016;
+const int AF_STR_MAGIC_UNLOCK_TARGET_UNLOCKED = 6610017;
+
 const float SPELL_UNLOCK_1_POWER = 10.0f;
 const float SPELL_UNLOCK_2_POWER = 25.0f;
 const float SPELL_UNLOCK_3_POWER = 40.0f;

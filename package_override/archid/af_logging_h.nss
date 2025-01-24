@@ -1,6 +1,11 @@
-#include "af_constants_h"
 #include "core_h"
 
+// 2DA table ID with log level definitions
+const int AF_TABLE_LOGGING = 6610004;     
+// 2DA row with the global log level
+const int AF_LOGGROUP_GLOBAL = 0;
+                    
+// Defined log levels
 const int AF_LOG_NONE  = 0;
 const int AF_LOG_INFO  = 1;
 const int AF_LOG_WARN = 2;
@@ -17,7 +22,7 @@ const int AF_LOG_DEBUG = 3;
 **/
 int GetGroupLogLevel(int nLogGroup) {
     // Get the maximum logging level for all groups
-    int nMaxLevel = GetM2DAInt(AF_TABLE_LOGGING, "value", AF_LOG_GLOBAL);   
+    int nMaxLevel = GetM2DAInt(AF_TABLE_LOGGING, "value", AF_LOGGROUP_GLOBAL);   
     // Thgis will return 0 if the log group is not defined, turning off logging
     int nLogGroupLevel = GetM2DAInt(AF_TABLE_LOGGING, "value", nLogGroup);
 

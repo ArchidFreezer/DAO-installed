@@ -1,6 +1,9 @@
 #include "placeable_h"
 #include "af_scalestorefix_h"
 
+/*
+* This script is attached to the camp chest placeable
+*/
 void main()
 {
     event ev          = GetCurrentEvent();
