@@ -18,7 +18,7 @@
 
 #include "achievement_core_h"
 #include "af_autoloot_h"
-#include "af_constants_h"
+#include "af_camp_merch_chest_h"
 
 const string STRING_VAR_NONE  = "none";
 
