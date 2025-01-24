@@ -8,11 +8,14 @@
     with additional checking for the Skill SpellShaping.
 */
 
-#include "log_h"
+// This must match the row in the logging_ m2da table
+const int AF_LOG_GROUP = 5;
+
 #include "aoe_effects_h"
 #include "spell_constants_h"
 #include "effect_dot2_h"
 #include "af_spellshaping_h"
+#include "af_logging_h"
 
 void main()
 {
@@ -22,11 +25,10 @@ void main()
     switch(nEventType)
     {
         case EVENT_TYPE_SPELLSCRIPT_CAST: {
-            //PrintToLog("Spell Shaping : EVENT_TYPE_SPELLSCRIPT_CAST (af_grease_override) caught");
             // Get a structure with the event parameters
             struct EventSpellScriptCastStruct stEvent = Events_GetEventSpellScriptCastParameters(ev);
 
-            Log_Trace(LOG_CHANNEL_EVENTS, GetCurrentScriptName() + " EVENT_TYPE_SPELLSCRIPT_CAST");
+            afLogInfo("EVENT_TYPE_SPELLSCRIPT_CAST", AF_LOG_GROUP);
 
             // we just hand this through to cast_impact
             SetAbilityResult(stEvent.oCaster, stEvent.nResistanceCheckResult);
@@ -34,14 +36,11 @@ void main()
         }
 
         case EVENT_TYPE_ENTER: {
-            //PrintToLog("Spell Shaping : EVENT_TYPE_ENTER (af_grease_override) caught");
             int nAbility = GetEventInteger(ev,0);
             object oTarget = GetEventTarget(ev);
             object oCreator = GetEventCreator(ev);
 
-            Log_Trace(LOG_CHANNEL_EVENTS, GetCurrentScriptName() + " EVENT_TYPE_ENTER " + ToString(oTarget));
-
-            DEBUG_PrintToScreen("Entering Grease: " + ToString(oTarget));
+            afLogInfo("Entering Grease: " + ToString(oTarget), AF_LOG_GROUP);
 
             if (IsSpellShapingTarget(oCreator, oTarget)) {
                 if (!CheckSpellResistance(oTarget, oCreator, nAbility)) {
@@ -55,16 +54,15 @@ void main()
         }
 
         case EVENT_TYPE_AOE_HEARTBEAT: {
-            //PrintToLog("Spell Shaping : EVENT_TYPE_AOE_HEARTBEAT (af_grease_override) caught");
             int nAbility = GetEventInteger(ev,0);
             object oCreator = GetEventCreator(ev);
 
             int nFlag = GetAOEFlags(OBJECT_SELF);
-            Log_Trace(LOG_CHANNEL_EVENTS, GetCurrentScriptName() + " - Grease EVENT_TYPE_HEARTBEAT " + ToString(oCreator));
+            afLogDebug("Grease Heartbeat " + ToString(oCreator), AF_LOG_GROUP);
 
 
             if ((nFlag & AOE_FLAG_DESTRUCTION_PENDING) == AOE_FLAG_DESTRUCTION_PENDING) {
-                Log_Trace(LOG_CHANNEL_EVENTS, GetCurrentScriptName() + " EVENT_TYPE_HEARTBEAT aborted, flagged for deletion");
+                afLogDebug("Grease Heartbeat aborted, flagged for deletion", AF_LOG_GROUP);
                 return;
             }
 
@@ -80,7 +78,7 @@ void main()
                     if (GetArraySize(dot))
                         oIgniter = GetEffectCreator(dot[0]);
 
-                    Log_Trace(LOG_CHANNEL_EVENTS, GetCurrentScriptName() + " EVENT_TYPE_HEARTBEAT: Igniting grease");
+                    afLogDebug("Grease Heartbeat: Igniting grease", AF_LOG_GROUP);
                     IgniteGreaseAoe(OBJECT_SELF, oTargets[i]);
 
                     break;
@@ -93,13 +91,11 @@ void main()
             break;
         }
         case EVENT_TYPE_EXIT: {
-            //PrintToLog("Spell Shaping : EVENT_TYPE_EXIT (af_grease_override) caught");
-
             int nAbility = GetEventInteger(ev,0);
             object oTarget = GetEventTarget(ev);
-            object oCreator = GetEventCreator(ev);
-
-            Log_Trace(LOG_CHANNEL_EVENTS, GetCurrentScriptName() + " EVENT_TYPE_EXIT " + ToString(oTarget));
+            object oCreator = GetEventCreator(ev);                
+            
+            afLogInfo("EVENT_TYPE_EXIT " + ToString(oTarget), AF_LOG_GROUP);
 
             if (GetObjectType(oTarget) == OBJECT_TYPE_CREATURE)
                 RemoveStackingEffects(oTarget, oCreator, nAbility);
