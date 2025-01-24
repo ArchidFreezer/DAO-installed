@@ -3,12 +3,15 @@
 // Modified by Archid to reduce code duplication and generally improve readability
 // -----------------------------------------------------------------------------
 
-#include "log_h"
 #include "combat_damage_h"
 #include "events_h"
 #include "spell_constants_h"
 #include "plt_cod_aow_spellcombo3"
 #include "af_spellshaping_h"
+#include "af_logging_h"
+
+// This must match the row in the logging_ m2da table
+const int AF_LOG_GROUP = 4;
 
 // First floor of the Tower of Ishal in the prequel
 const string AF_AR_PRE_TOWER_ISHAL_1           = "pre410ar_tower_level_1";
@@ -29,7 +32,7 @@ void main() {
             // Get a structure containing event parameters
             struct EventSpellScriptCastStruct stEvent = Events_GetEventSpellScriptCastParameters(ev);
 
-            Log_Trace(LOG_CHANNEL_EVENTS, GetCurrentScriptName() + "EVENT_TYPE_SPELLSCRIPT_CAST");
+            afLogInfo("EVENT_TYPE_SPELLSCRIPT_CAST", AF_LOG_GROUP);
 
             // Hand through to cast_impact
             SetAbilityResult(stEvent.oCaster, stEvent.nResistanceCheckResult);
@@ -42,7 +45,7 @@ void main() {
             object oTarget = GetEventTarget(ev);
             object oCreator = GetEventCreator(ev);
 
-            Log_Trace(LOG_CHANNEL_EVENTS, GetCurrentScriptName(), "Entering Blizzard: " + ToString(oTarget));
+            afLogInfo("Entering Blizzard: " + ToString(oTarget), AF_LOG_GROUP);
             if (IsObjectValid(oTarget) && GetObjectType(oTarget) == OBJECT_TYPE_CREATURE) {
                 if (IsSpellShapingTarget(oCreator, oTarget)) {
                     if (!CheckSpellResistance(oTarget, oCreator, nAbility)) {
@@ -85,13 +88,13 @@ void main() {
             int nGameMode = GetEventInteger(ev, 2);
             object oCreator = GetEventCreator(ev);
 
-            Log_Trace(LOG_CHANNEL_EVENTS, GetCurrentScriptName(), "Blizzard Heartbeat " + ToString(nPhase));
+            afLogDebug("Blizzard Heartbeat " + ToString(nPhase), AF_LOG_GROUP);
 
             // if the area is PRE tower 1
             object oArea = GetArea(OBJECT_SELF);
             string sTag = GetTag(oArea);
             int nType;
-            Log_Trace(LOG_CHANNEL_EVENTS, GetCurrentScriptName(), "Blizzard Area = " + sTag);
+            afLogDebug("Blizzard Area = " + sTag, AF_LOG_GROUP);
 
             // Custom code for the first flor of the Tower of Ishal in the prequel
             if (sTag == AF_AR_PRE_TOWER_ISHAL_1) {
@@ -99,32 +102,32 @@ void main() {
                 effect[] oVFX = GetEffects(oArea);//GetObjectsInShape(OBJECT_TYPE_VFX, SHAPE_SPHERE, GetLocation(OBJECT_SELF), 20.0f);
                 location lAoE = GetLocation(OBJECT_SELF);
                 if (IsLocationValid(lAoE))
-                    Log_Trace(LOG_CHANNEL_EVENTS, GetCurrentScriptName(), "  AoE location valid.");
+                    afLogDebug("  AoE location valid.", AF_LOG_GROUP);
 
                 int nMax = GetArraySize(oVFX);
-                Log_Trace(LOG_CHANNEL_EVENTS, GetCurrentScriptName(), "  There are " + ToString(nMax) + " VFX present.");
+                afLogDebug("  There are " + ToString(nMax) + " VFX present.", AF_LOG_GROUP);
                 int nCount = 0;
                 for (nCount = 0; nCount < nMax; nCount++)
                 {
                     nType = GetEffectType(oVFX[nCount]);
                     sTag = ToString(nType);
-                    Log_Trace(LOG_CHANNEL_EVENTS, GetCurrentScriptName(), "  Effect Type in AoE = " + sTag);
+                    afLogDebug("  Effect Type in AoE = " + sTag, AF_LOG_GROUP);
                     if (nType == EFFECT_TYPE_VISUAL_EFFECT)
                     {
-                        Log_Trace(LOG_CHANNEL_EVENTS, GetCurrentScriptName(), "    Effect is a VFX.");
+                        afLogDebug("    Effect is a VFX.", AF_LOG_GROUP);
 
                         // if the correct vfx type
                         nType = GetVisualEffectID(oVFX[nCount]);
-                        Log_Trace(LOG_CHANNEL_EVENTS, GetCurrentScriptName(), "    Effect is ID " + ToString(nType) + " vs " + ToString(VFX_IMMOLATE_NO_CRUST));
+                        afLogDebug("    Effect is ID " + ToString(nType) + " vs " + ToString(VFX_IMMOLATE_NO_CRUST), AF_LOG_GROUP);
                         if (nType == VFX_IMMOLATE_NO_CRUST)
                         {
                             // if close enough
                             location lLoc = GetVisualEffectLocation(oVFX[nCount]);
                             if (IsLocationValid(lLoc))
-                                Log_Trace(LOG_CHANNEL_EVENTS, GetCurrentScriptName(), "    VFX location valid.");
+                                afLogDebug("    VFX location valid.", AF_LOG_GROUP);
 
                             float fDistance = GetDistanceBetweenLocations(lAoE, lLoc);
-                            Log_Trace(LOG_CHANNEL_EVENTS, GetCurrentScriptName(), "      Distance = " + ToString(fDistance));
+                            afLogDebug("      Distance = " + ToString(fDistance), AF_LOG_GROUP);
 
                             if (fDistance <= 15.0f)
                             {
@@ -132,10 +135,10 @@ void main() {
 
                                 object[] oSoundSet = GetNearestObjectToLocation(lLoc, OBJECT_TYPE_WAYPOINT);
                                 string sVFXTag = GetTag(oSoundSet[0]);
-                                Log_Trace(LOG_CHANNEL_EVENTS, GetCurrentScriptName(), "        VFX tag = " + sVFXTag);
+                                afLogDebug("        VFX tag = " + sVFXTag, AF_LOG_GROUP);
                                 int nLength = GetStringLength(sVFXTag);
                                 string sSoundTag = "emitter_" + ToString(StringToInt(SubString(sVFXTag, nLength - 1, 1)) + 1);
-                                Log_Trace(LOG_CHANNEL_EVENTS, GetCurrentScriptName(), "        Sound tag = " + sSoundTag);
+                                afLogDebug("        Sound tag = " + sSoundTag, AF_LOG_GROUP);
                                 object oSound = GetObjectByTag(sSoundTag);
                                 StopSoundObject(oSound);
                             }
@@ -193,13 +196,13 @@ void main() {
         }
 
         case EVENT_TYPE_EXIT: {
-            //PrintToLog("Spell Shaping : EVENT_TYPE_EXIT (ss_dheu_blizzard_override) caught");
+            afLogDebug("Spell Shaping : EVENT_TYPE_EXIT (ss_dheu_blizzard_override) caught", AF_LOG_GROUP);
 
             int nAbility = GetEventInteger(ev,0);
             object oTarget = GetEventTarget(ev);
             object oCreator = GetEventCreator(ev);
-
-            Log_Trace(LOG_CHANNEL_EVENTS, GetCurrentScriptName(), "Exiting Blizzard: " + ToString(oTarget));
+            
+            afLogInfo("Exiting Blizzard: " + ToString(oTarget), AF_LOG_GROUP);
             if (GetObjectType(oTarget) == OBJECT_TYPE_CREATURE)
                 RemoveStackingEffects(oTarget, oCreator, nAbility);
 
