@@ -18,6 +18,8 @@
 #include "2da_data_h"
 #include "core_difficulty_h"
 
+const int TABLE_OPTIONS = 6610005;
+
 const float AI_MELEE_RANGE = 3.5; // Any target within this range is considered a melee target
 const int   DA_LEVEL_CAP   = 25;  // Dragon Age level cap. Note: This is one of several values that control this (including max_val on properties.xls!)
 
@@ -2885,7 +2887,38 @@ float _GetAverageDamage(object oCreature, object oWeapon) {
     int nHand = (GetItemEquipSlot(oWeapon) == INVENTORY_SLOT_OFFHAND) ? HAND_OFFHAND : HAND_MAIN;
     float fDamage = Combat_Damage_GetAttributeBonus(oCreature, nHand, oWeapon, TRUE) * GetWeaponAttributeBonusFactor(oWeapon);
     fDamage += IsObjectValid(oWeapon) ? 0.5 * (DmgGetWeaponBaseDamage(oWeapon) + DmgGetWeaponMaxDamage(oWeapon)) : COMBAT_DEFAULT_UNARMED_DAMAGE;
-/* Archid - not including crit damage, code removed (see dains effect manager code) */
+
+    // If including crits
+    if (GetM2DAInt(TABLE_OPTIONS, "enabled", 8)) {
+        int nCritMod = IsUsingRangedWeapon(oCreature, oWeapon) ? CRITICAL_MODIFIER_RANGED : CRITICAL_MODIFIER_MELEE;
+        float fCritChance = GetCreatureProperty(oCreature, nCritMod, PROPERTY_VALUE_TOTAL);
+        fCritChance += GetItemStat(oWeapon, ITEM_STAT_CRIT_CHANCE_MODIFIER);
+        if (HasAbility(oCreature, ABILITY_TALENT_BRAVERY))
+            fCritChance += 3.5 * Max(0,GetArraySize(GetCreaturesInMeleeRing(oCreature,0.0,359.99,TRUE,0))-2);
+        int autoCrit = 0;
+        autoCrit += IsModalAbilityActive(oCreature, ABILITY_SKILL_STEALTH_1);
+        autoCrit += GetHasEffects(oCreature, EFFECT_TYPE_AUTOCRIT);
+        int neverCrit = 0;
+        neverCrit += IsModalAbilityActive(oCreature, ABILITY_TALENT_DUAL_WEAPON_DOUBLE_STRIKE);
+        neverCrit += IsModalAbilityActive(oCreature, ABILITY_TALENT_RAPIDSHOT);
+        if (autoCrit > 0 || neverCrit > 0) {
+            if (GetM2DAInt(TABLE_OPTIONS, "enabled", 1)) {
+                if (autoCrit > neverCrit)
+                    fCritChance = 100.0;
+                else if (autoCrit < neverCrit)
+                    fCritChance = 0.0;
+            } else {
+                if (autoCrit > 0 && neverCrit > 0)
+                    fCritChance = 100.0 - fCritChance;
+                else if (autoCrit > 0)
+                    fCritChance = 100.0;
+                else
+                    fCritChance = 0.0;
+            }
+        }
+        float fCritMod = COMBAT_CRITICAL_DAMAGE_MODIFIER + 0.01*GetCreatureProperty(oCreature, 54);        
+        fDamage *= 1 + MinF(1.0, MaxF(0.0, 0.01*fCritChance))*(fCritMod-1);
+    }
     fDamage += GetCreatureProperty(oCreature, PROPERTY_ATTRIBUTE_DAMAGE_BONUS);
     if (IsModalAbilityActive(oCreature, ABILITY_TALENT_BLOOD_FRENZY))
     {
@@ -2893,8 +2926,22 @@ float _GetAverageDamage(object oCreature, object oWeapon) {
         float fMax = GetCreatureProperty(oCreature, PROPERTY_DEPLETABLE_HEALTH, PROPERTY_VALUE_TOTAL);
         fDamage += (10.0 * MaxF(0.0, 1.0 - fCur/fMax));
     }
-/* Archid not including on-hit effects, code removed (see dains effect manager code) */
-    return  MaxF(1.0, fDamage);
+    fDamage = MaxF(1.0, fDamage);
+    // on-hit effects
+    if (GetM2DAInt(TABLE_OPTIONS, "enabled", 9)) {
+        int[] arProps = GetItemProperties(oWeapon, TRUE);
+        int i, nSize = GetArraySize(arProps);
+        for (i = 0; i < nSize; i++) {
+            int nProp = arProps[i];
+            if (GetM2DAInt(TABLE_ITEMPRPS, "Effect", nProp) == EFFECT_TYPE_DAMAGE) {
+                int nPower = GetItemPropertyPower(oWeapon, nProp, TRUE);
+                float fScale = GetM2DAFloat(TABLE_ITEMPRPS, "Float0", nProp);
+                float fChance = GetM2DAFloat(TABLE_ITEMPRPS, "ProcChance", nProp);
+                fDamage += nPower*fScale*fChance;
+            }
+        }
+    }
+    return fDamage;
 }
 float _GetAttackLoopDuration(object oCreature) {
     float fTime;
@@ -2927,7 +2974,7 @@ float _GetAttackLoopDuration(object oCreature) {
             float fMainTime = BASE_TIMING_DUAL_WEAPONS + GetM2DAFloat(TABLE_ITEMSTATS,"dspeed",GetBaseItemType(oMain));
             float fOffTime = BASE_TIMING_DUAL_WEAPONS + GetM2DAFloat(TABLE_ITEMSTATS,"dspeed",GetBaseItemType(oOff));            
             if (IsModalAbilityActive(oCreature, ABILITY_TALENT_DUAL_WEAPON_DOUBLE_STRIKE))
-                fTime =0.5 * (fMainTime + fOffTime); // Archid including Dual Striking timing
+                fTime = GetM2DAInt(TABLE_OPTIONS, "enabled", 4) ? 0.5 * (fMainTime + fOffTime) : fMainTime;
             else
                 fTime = fMainTime + fOffTime;
         } else {
@@ -2968,8 +3015,7 @@ void _CrappyDefaultDisplayDamage(object oCreature, int nSlot= INVENTORY_SLOT_INV
         // ---------------------------------------------------------------------
         else
         {
-            // Archid fix rune stacking
-            fStat = CalculateWeaponDamage(oCreature, OBJECT_INVALID);
+            fStat = GetM2DAInt(TABLE_OPTIONS, "enabled", 6) ? CalculateWeaponDamage(oCreature, OBJECT_INVALID) : DmgGetWeaponDamage(OBJECT_INVALID) +  Combat_Damage_GetAttributeBonus(oCreature, HAND_MAIN, OBJECT_INVALID, TRUE) + GetCreatureProperty(oCreature, PROPERTY_ATTRIBUTE_DAMAGE_BONUS);
         }
         SetCreatureProperty(oCreature, 50, fStat);
     }
@@ -3024,8 +3070,7 @@ void _CrappyDefaultDisplayDamage(object oCreature, int nSlot= INVENTORY_SLOT_INV
 }
 
 void RecalculateDisplayDamage(object oCreature, int nSlot = INVENTORY_SLOT_INVALID) {
-    // Archid raw damage only in inventory
-    int nDisplayMode = 1;
+    int nDisplayMode = GetM2DAInt(TABLE_OPTIONS, "enabled", 7);
     // If DPS
     if (nDisplayMode == 2) {
         object oMain = GetItemInEquipSlot(INVENTORY_SLOT_MAIN,oCreature);
