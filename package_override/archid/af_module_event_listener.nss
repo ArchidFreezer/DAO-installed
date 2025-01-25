@@ -2,7 +2,6 @@
 #include "wrappers_h"
 #include "events_h"
 #include "af_nohelmet_h"
-#include "af_constants_h"
 
 const int SPELLSHAPING_WARNING_STRREFID = 627214951;
 
