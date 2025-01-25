@@ -1,3 +1,7 @@
+/*
+* Code fom Dainbramage - Dain's Fixes mod
+* Overrides the Mighty Blow talent
+*/
 #include "abi_templates"
 #include "combat_h"
 #include "talent_constants_h"
@@ -50,9 +54,6 @@ void main()
         {
             // Get a structure with the event parameters
             struct EventSpellScriptCastStruct stEvent = Events_GetEventSpellScriptCastParameters(ev);
-            #ifdef DEBUG
-            Log_Trace(LOG_CHANNEL_COMBAT_ABILITY, GetCurrentScriptName() + ".EVENT_TYPE_SPELLSCRIPT_CAST",Log_GetAbilityNameById(stEvent.nAbility));
-            #endif
 
             // we just hand this through to cast_impact
             int nTarget = PROJECTILE_TARGET_INVALID;
@@ -68,10 +69,6 @@ void main()
             // Get a structure with the event parameters
             //--------------------------------------------------------------
             struct EventSpellScriptImpactStruct stEvent = Events_GetEventSpellScriptImpactParameters(ev);
-
-            #ifdef DEBUG
-            Log_Trace(LOG_CHANNEL_COMBAT_ABILITY, GetCurrentScriptName() + ".EVENT_TYPE_SPELLSCRIPT_IMPACT",Log_GetAbilityNameById(stEvent.nAbility));
-            #endif
 
             _HandleImpact(stEvent);
 
