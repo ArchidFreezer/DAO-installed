@@ -27,7 +27,6 @@
 
 #include "stats_core_h"
 
-
 // -----------------------------------------------------------------------------
 //
 //             L I M I T E D   E D I T   P E R M I S S I O N S
@@ -112,7 +111,7 @@ int CheckForDeathblow(object oAttacker, object oTarget)
         fChance *= 1.5;
 
     // Messy kills doubles the chance
-    if (GetM2DAInt(453215378, "enabled", 3) && GetHasEffects(oAttacker, 579873371))
+    if (GetM2DAInt(TABLE_OPTIONS, "enabled", 3) && GetHasEffects(oAttacker, 579873371))
         fChance *= 2.0;
 
     return (fChance > RandomFloat());
@@ -401,7 +400,7 @@ int Combat_GetAttackResult(object oAttacker, object oTarget, object oWeapon, flo
         // if the target has the evasion talent, attribute this miss to the talent
         // (random 50% because the anim is interrupting)
         // ---------------------------------------------------------------------
-        if (HasAbility(oTarget, ABILITY_TALENT_EVASION) && !GetM2DAInt(453215378, "enabled", 5) && fRand < (20.0f - (RandomFloat()*10.0f)))
+        if (HasAbility(oTarget, ABILITY_TALENT_EVASION) && !GetM2DAInt(TABLE_OPTIONS, "enabled", 5) && fRand < (20.0f - (RandomFloat()*10.0f)))
         {
                 command currentCmd = GetCurrentCommand(oTarget);
                 int nCmdType = GetCommandType(currentCmd);
@@ -501,7 +500,7 @@ int Combat_GetAttackResult(object oAttacker, object oTarget, object oWeapon, flo
 
     int bThreatenCritical;
 
-    if (GetM2DAInt(453215378, "enabled", 1)) {
+    if (GetM2DAInt(TABLE_OPTIONS, "enabled", 1)) {
         int autoCrit = 0;
         autoCrit += IsModalAbilityActive(oAttacker, ABILITY_SKILL_STEALTH_1);
         autoCrit += GetHasEffects(oTarget, EFFECT_TYPE_DEATH_HEX);
@@ -628,7 +627,7 @@ int Combat_GetAttackResult(object oAttacker, object oTarget, object oWeapon, flo
         Log_Trace_Combat("combat_h.GetAttackResult"," Attacker under misdirection hex: Hits are misses, crits are hits.", oTarget);
         #endif
 
-        if (nRet == COMBAT_RESULT_HIT || nRet == COMBAT_RESULT_BACKSTAB && (!bThreatenCritical || !GetM2DAInt(453215378, "enabled", 2)))
+        if (nRet == COMBAT_RESULT_HIT || nRet == COMBAT_RESULT_BACKSTAB && (!bThreatenCritical || !GetM2DAInt(TABLE_OPTIONS, "enabled", 2)))
         {
             nRet = COMBAT_RESULT_MISS;
         }
@@ -1048,7 +1047,7 @@ int  Combat_HandleCommandAttack(object oAttacker, object oTarget, int nCommandSu
                 #endif
             }
             else if (nAttackType == ATTACK_TYPE_MELEE) {
-                if (nHand == HAND_BOTH && GetM2DAInt(453215378, "enabled", 4))
+                if (nHand == HAND_BOTH && GetM2DAInt(TABLE_OPTIONS, "enabled", 4))
                     SetAttackDuration(oAttacker,0.5*(stAttack1.fAttackDuration + stAttack2.fAttackDuration));
                 else
                     SetAttackDuration(oAttacker,stAttack1.fAttackDuration);
