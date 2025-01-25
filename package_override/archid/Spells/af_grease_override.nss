@@ -1,5 +1,6 @@
 // -----------------------------------------------------------------------------
 // Grease Override spell script based on code from Dheuster
+// This is called in the af_ability_cast_impact event override script to handle the spellshaping ability
 // Modified by Archid to reduce code duplication and generally improve readability
 // -----------------------------------------------------------------------------
 /*
@@ -93,8 +94,8 @@ void main()
         case EVENT_TYPE_EXIT: {
             int nAbility = GetEventInteger(ev,0);
             object oTarget = GetEventTarget(ev);
-            object oCreator = GetEventCreator(ev);                
-            
+            object oCreator = GetEventCreator(ev);
+
             afLogInfo("EVENT_TYPE_EXIT " + ToString(oTarget), AF_LOG_GROUP);
 
             if (GetObjectType(oTarget) == OBJECT_TYPE_CREATURE)
