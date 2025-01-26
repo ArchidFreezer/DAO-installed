@@ -42,6 +42,7 @@ const float ATTACK_LOOP_DURATION_INVALID = 999.0f;
 const float ATTACK_HIT_BIAS = 4.0f; // General bias in the system towards hits instead of misses.
 const int ATTACK_TYPE_MELEE = 1;
 const int ATTACK_TYPE_RANGED = 2;
+const int EFFECT_MESSY_KILLS= 6610000;
 
 const float SPECIAL_BOSS_DEATHBLOW_THRESHOLD = 0.04;        // at this % of health, any meelee attack may trigger the deathblow of special bosses;
 
@@ -111,7 +112,7 @@ int CheckForDeathblow(object oAttacker, object oTarget)
         fChance *= 1.5;
 
     // Messy kills doubles the chance
-    if (GetM2DAInt(TABLE_OPTIONS, "enabled", 3) && GetHasEffects(oAttacker, 579873371))
+    if (GetM2DAInt(TABLE_OPTIONS, "enabled", 3) && GetHasEffects(oAttacker, EFFECT_MESSY_KILLS))
         fChance *= 2.0;
 
     return (fChance > RandomFloat());
