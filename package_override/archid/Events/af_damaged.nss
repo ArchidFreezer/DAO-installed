@@ -8,7 +8,8 @@ void main()
     object oDamager = GetEventCreator(ev);
 
     if ((GetWeaponStyle(oDamager) == WEAPONSTYLE_DUAL && HasAbility(oDamager, ABILITY_TALENT_DUAL_WEAPON_EXPERT)) ||
-        (GetHasEffects(OBJECT_SELF, EFFECT_TYPE_SLEEP, nAbility))) {
+        (GetHasEffects(OBJECT_SELF, EFFECT_TYPE_SLEEP, nAbility)) ||
+        (IsModalAbilityActive(oDamager, ABILITY_TALENT_SUPPRESSING_FIRE))) {
         // non-followers must use default script as on damaged events are common. creature_core will instead redirect the event
         if (IsFollower(OBJECT_SELF))
             HandleEvent(ev, R"af_damaged_rules.ncs");
