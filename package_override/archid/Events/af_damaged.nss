@@ -9,9 +9,9 @@ void main()
     if (GetWeaponStyle(oDamager) == WEAPONSTYLE_DUAL && HasAbility(oDamager, ABILITY_TALENT_DUAL_WEAPON_EXPERT)) {
         // non-followers must use default script as on damaged events are common. creature_core will instead redirect the event
         if (IsFollower(OBJECT_SELF))
-            HandleEvent(ev, R"rules_damaged.ncs");
+            HandleEvent(ev, R"af_damaged_rules.ncs");
         else
-            HandleEvent(SetEventString(ev, 0, "rules_damaged"));
+            HandleEvent(SetEventString(ev, 0, "af_damaged_rules"));
     } else {
         EventManager_ReleaseLock();
     }

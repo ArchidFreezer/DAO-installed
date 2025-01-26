@@ -13,10 +13,6 @@ void main()
     // -------------------------------------------------------------------------
     // Generic event message
     // -------------------------------------------------------------------------
-    #ifdef DEBUG
-    Log_Events("", ev);
-    #endif
-
     if (nEventType = EVENT_TYPE_DAMAGED)
     {
         // This object lost 1 hit point or more
@@ -110,9 +106,6 @@ void main()
                                 if (IsUsingRangedWeapon(OBJECT_SELF,OBJECT_INVALID,TRUE))
                                 {
                                     UI_DisplayMessage(OBJECT_SELF, UI_MESSAGE_INTERRUPTED);
-                                    #ifdef DEBUG
-                                    Log_Trace(LOG_CHANNEL_COMBAT,"rules_core.OnDamage","Ranged attack interrupted by damage");
-                                    #endif
                                     WR_ClearAllCommands(OBJECT_SELF, TRUE);
                                 }
                             }
@@ -167,20 +160,10 @@ void main()
                             if (IsConjuring(OBJECT_SELF))
                              {
                                  UI_DisplayMessage(OBJECT_SELF, UI_MESSAGE_INTERRUPTED);
-                                 #ifdef DEBUG
-                                 Log_Trace(LOG_CHANNEL_COMBAT,"rules_core.OnDamage","Spell interrupted by damage");
-                                 #endif
-
                                  SSPlaySituationalSound(OBJECT_SELF, SOUND_SITUATION_SPELL_INTERRUPTED);
                                  bSound = FALSE;
                                  WR_ClearAllCommands(OBJECT_SELF, TRUE);
                              }
-                        }
-                        else
-                        {
-                            #ifdef DEBUG
-                            Log_Trace(LOG_CHANNEL_COMBAT,"rules_core.OnDamage","Spell not interrupted, dmg " + ToString(fDamage) + " below threshold: " + ToString(fThres) );
-                            #endif
                         }
                     }
                 }
