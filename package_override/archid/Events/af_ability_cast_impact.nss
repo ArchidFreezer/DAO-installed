@@ -332,4 +332,4 @@ void main() {
     // -----------------------------------------------------------------
     if ((GetAbilityType(nAbility) == ABILITY_TYPE_ITEM) && (nAbility != ITEM_ABILITY_UNIQUE_POWER_UNLIMITED_USE) && (nAbility != ITEM_ABILITY_KOLGRIMS_HORN))
         RemoveItem(oItem,1);
-}
+} 

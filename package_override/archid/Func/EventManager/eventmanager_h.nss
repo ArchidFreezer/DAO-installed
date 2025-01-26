@@ -1,3 +1,4 @@
+#include "af_logging_h"
 /*
     EventManager : Listen or Override events without destroying the planet
 
@@ -9,6 +10,7 @@
 */
 
 const int TABLE_EVENT_MANAGER = 6610002;
+const int AF_LOG_EVENTMANAGER = 6;
 
 /* This variable need to be an integer in the original var_module 2da table */
 const string EVENT_MANAGER_LOCK = "MODULE_COUNTER_3";
@@ -23,12 +25,14 @@ const string EVENT_MANAGER_LOCK = "MODULE_COUNTER_3";
 * @author Anakin
 **/
 int EventManager_GetLock()
-{
+{                         
     int nLock = GetLocalInt(GetModule(), EVENT_MANAGER_LOCK);
+    afLogDebug("   EventManager_GetLock checking if locked: " + IntToString(nLock), AF_LOG_EVENTMANAGER);
 
     if (nLock == 0)
     {
         SetLocalInt(GetModule(), EVENT_MANAGER_LOCK, 1);
+        afLogDebug("   EventManager_GetLock got lock: " + IntToString(GetLocalInt(GetModule(), EVENT_MANAGER_LOCK)), AF_LOG_EVENTMANAGER);
         return TRUE;
     }
 
@@ -45,7 +49,9 @@ int EventManager_GetLock()
 **/
 void EventManager_ReleaseLock()
 {
+    afLogDebug("   EventManager_ReleaseLock before: " + IntToString(GetLocalInt(GetModule(), EVENT_MANAGER_LOCK)), AF_LOG_EVENTMANAGER);
     SetLocalInt(GetModule(), EVENT_MANAGER_LOCK, 0);
+    afLogDebug("   EventManager_ReleaseLock after: " + IntToString(GetLocalInt(GetModule(), EVENT_MANAGER_LOCK)), AF_LOG_EVENTMANAGER);
 }
 
 /**
@@ -60,6 +66,7 @@ void EventManager_ReleaseLock()
 void EventManager_Broadcast(event ev)
 {
     int nCurrentEventType = GetEventType(ev);
+    afLogInfo("EventManager_Broadcast handling event " + IntToString(nCurrentEventType), AF_LOG_EVENTMANAGER);
 
     string[] arOverride;
     string[] arPreListeners;
@@ -97,18 +104,22 @@ void EventManager_Broadcast(event ev)
     EventManager_ReleaseLock();
 
     int nPreSize = GetArraySize(arPreListeners);
-
+    afLogInfo("   EventManager_Broadcast found " + IntToString(nPreSize) + " pre listeners", AF_LOG_EVENTMANAGER);
     for (i = 0; i < nPreSize; i++)
         HandleEvent_String(ev, arPreListeners[i]);
 
     int nOverSize = GetArraySize(arOverride);
+    afLogInfo("   EventManager_Broadcast found " + IntToString(nOverSize) +  " overrides", AF_LOG_EVENTMANAGER);
     for (i = 0; i < nOverSize; i++)
         if (EventManager_GetLock()) HandleEvent_String(ev, arOverride[i]);
 
-    if (EventManager_GetLock())
-        HandleEvent(ev);
+    if (EventManager_GetLock()) {
+        afLogInfo("   EventManager_Broadcast running no-script handler ", AF_LOG_EVENTMANAGER);
+        HandleEvent(ev);         
+    }
 
     int nPostSize = GetArraySize(arPostListeners);
+    afLogInfo("   EventManager_Broadcast found " + IntToString(nPostSize) + " post listeners", AF_LOG_EVENTMANAGER);
     for (i = 0; i < nPostSize; i++)
         HandleEvent_String(ev, arPostListeners[i]);
 }
