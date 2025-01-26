@@ -15,7 +15,10 @@ const int SHALE_INNER_RESERVES = 300401;
 const int SHALE_RENEWED_ASSAULT = 300402;
 const int SHALE_SUPER_RESISTANCE = 300403;
 
-const resource SCRIPT_RESOURCE = R"shl_aoe_duration.ncs";
+const int SHALE_ROCK_MASTERY_HEARTBEAT = 6610025;
+const int SHALE_STONE_AURA_HEARTBEAT = 6610026;
+
+const resource SCRIPT_RESOURCE = R"af_talent_shl_aoe_duration.ncs";
 
 //apply heartbeat effects
 void _ApplyHeartbeatEffects(int nAbility, object oTarget, object oCreator)
@@ -52,29 +55,29 @@ void _ApplyHeartbeatEffects(int nAbility, object oTarget, object oCreator)
                 {
                     // dummy ID to handle applying/removing conditional bonuses;
                     // also need this to prevent effect stacking after area transition
-                    RemoveEffectsByParameters(oTarget, EFFECT_TYPE_INVALID, 300305, oCreator);
+                    RemoveEffectsByParameters(oTarget, EFFECT_TYPE_INVALID, SHALE_ROCK_MASTERY_HEARTBEAT, oCreator);
 
                     if (bIsRanged)
                     {
                         eEffect = EffectModifyProperty(PROPERTY_ATTRIBUTE_ATTACK, fAttackInc,
                                                        PROPERTY_ATTRIBUTE_DAMAGE_BONUS, fDamageInc);
-                        ApplyEffectOnObject(EFFECT_DURATION_TYPE_PERMANENT, eEffect, oTarget, 0.0f, oCreator, 300305);
+                        ApplyEffectOnObject(EFFECT_DURATION_TYPE_PERMANENT, eEffect, oTarget, 0.0f, oCreator, SHALE_ROCK_MASTERY_HEARTBEAT);
                     }
 
                     eEffect = EffectModifyProperty(PROPERTY_ATTRIBUTE_MISSILE_SHIELD, fMislDef);
-                    ApplyEffectOnObject(EFFECT_DURATION_TYPE_PERMANENT, eEffect, oTarget, 0.0f, oCreator, 300305);
+                    ApplyEffectOnObject(EFFECT_DURATION_TYPE_PERMANENT, eEffect, oTarget, 0.0f, oCreator, SHALE_ROCK_MASTERY_HEARTBEAT);
                 }
                 else if (bIsRanged) // bonuses for ranged weapons
                 {
-                    RemoveEffectsByParameters(oTarget, EFFECT_TYPE_INVALID, 300305, oCreator);
+                    RemoveEffectsByParameters(oTarget, EFFECT_TYPE_INVALID, SHALE_ROCK_MASTERY_HEARTBEAT, oCreator);
 
                     eEffect = EffectModifyProperty(PROPERTY_ATTRIBUTE_ATTACK, fAttackInc,
                                                    PROPERTY_ATTRIBUTE_DAMAGE_BONUS, fDamageInc);
-                    ApplyEffectOnObject(EFFECT_DURATION_TYPE_PERMANENT, eEffect, oTarget, 0.0f, oCreator, 300305);
+                    ApplyEffectOnObject(EFFECT_DURATION_TYPE_PERMANENT, eEffect, oTarget, 0.0f, oCreator, SHALE_ROCK_MASTERY_HEARTBEAT);
                 }
                 else
                 {
-                    RemoveEffectsByParameters(oTarget, EFFECT_TYPE_INVALID, 300305, oCreator);
+                    RemoveEffectsByParameters(oTarget, EFFECT_TYPE_INVALID, SHALE_ROCK_MASTERY_HEARTBEAT, oCreator);
                 }
             }
 
@@ -105,30 +108,30 @@ void _ApplyHeartbeatEffects(int nAbility, object oTarget, object oCreator)
 
                     // dummy ID to handle applying/removing conditional bonuses;
                     // also need this to prevent effect stacking after area transition
-                    RemoveEffectsByParameters(oTarget, EFFECT_TYPE_INVALID, 300405, oCreator);
+                    RemoveEffectsByParameters(oTarget, EFFECT_TYPE_INVALID, SHALE_STONE_AURA_HEARTBEAT, oCreator);
 
                     eEffect = EffectModifyProperty(PROPERTY_ATTRIBUTE_DEFENSE, fBonus4,
                                                    PROPERTY_ATTRIBUTE_ARMOR, fBonus1,
                                                    PROPERTY_ATTRIBUTE_SPELLRESISTANCE, fBonus2);
-                    ApplyEffectOnObject(EFFECT_DURATION_TYPE_PERMANENT, eEffect, oTarget, 0.0f, oCreator, 300405);
+                    ApplyEffectOnObject(EFFECT_DURATION_TYPE_PERMANENT, eEffect, oTarget, 0.0f, oCreator, SHALE_STONE_AURA_HEARTBEAT);
 
                     eEffect = EffectModifyProperty(PROPERTY_ATTRIBUTE_RESISTANCE_PHYSICAL, fBonus3,
                                                    PROPERTY_ATTRIBUTE_RESISTANCE_MENTAL, fBonus3,
                                                    PROPERTY_ATTRIBUTE_SPELLPOWER, fBonus2);
-                    ApplyEffectOnObject(EFFECT_DURATION_TYPE_PERMANENT, eEffect, oTarget, 0.0f, oCreator, 300405);
+                    ApplyEffectOnObject(EFFECT_DURATION_TYPE_PERMANENT, eEffect, oTarget, 0.0f, oCreator, SHALE_STONE_AURA_HEARTBEAT);
 
                     eEffect = EffectModifyProperty(PROPERTY_ATTRIBUTE_DAMAGE_RESISTANCE_FIRE, fBonus2,
                                                    PROPERTY_ATTRIBUTE_DAMAGE_RESISTANCE_COLD, fBonus2,
                                                    PROPERTY_ATTRIBUTE_DAMAGE_RESISTANCE_ELEC, fBonus2);
-                    ApplyEffectOnObject(EFFECT_DURATION_TYPE_PERMANENT, eEffect, oTarget, 0.0f, oCreator, 300405);
+                    ApplyEffectOnObject(EFFECT_DURATION_TYPE_PERMANENT, eEffect, oTarget, 0.0f, oCreator, SHALE_STONE_AURA_HEARTBEAT);
 
                     eEffect = EffectModifyProperty(PROPERTY_ATTRIBUTE_DAMAGE_RESISTANCE_NATURE, fBonus2,
                                                    PROPERTY_ATTRIBUTE_DAMAGE_RESISTANCE_SPIRIT, fBonus2);
-                    ApplyEffectOnObject(EFFECT_DURATION_TYPE_PERMANENT, eEffect, oTarget, 0.0f, oCreator, 300405);
+                    ApplyEffectOnObject(EFFECT_DURATION_TYPE_PERMANENT, eEffect, oTarget, 0.0f, oCreator, SHALE_STONE_AURA_HEARTBEAT);
                 }
                 else
                 {
-                    RemoveEffectsByParameters(oTarget, EFFECT_TYPE_INVALID, 300405, oCreator);
+                    RemoveEffectsByParameters(oTarget, EFFECT_TYPE_INVALID, SHALE_STONE_AURA_HEARTBEAT, oCreator);
                 }
             }
 
@@ -385,7 +388,7 @@ void main()
                     {
                         if (oTarget != oCreator)
                         {
-                            RemoveEffectsByParameters(oTarget, EFFECT_TYPE_INVALID, 300305, oCreator);
+                            RemoveEffectsByParameters(oTarget, EFFECT_TYPE_INVALID, SHALE_ROCK_MASTERY_HEARTBEAT, oCreator);
                             RemoveEffectsByParameters(oTarget, EFFECT_TYPE_INVALID, nAbility, oCreator);
                         }
 
@@ -396,7 +399,7 @@ void main()
                     {
                         if (oTarget != oCreator)
                         {
-                            RemoveEffectsByParameters(oTarget, EFFECT_TYPE_INVALID, 300405, oCreator);
+                            RemoveEffectsByParameters(oTarget, EFFECT_TYPE_INVALID, SHALE_STONE_AURA_HEARTBEAT, oCreator);
                             RemoveEffectsByParameters(oTarget, EFFECT_TYPE_INVALID, nAbility, oCreator);
                         }
 

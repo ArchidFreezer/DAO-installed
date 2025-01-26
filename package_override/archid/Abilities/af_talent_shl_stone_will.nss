@@ -1,14 +1,12 @@
 //*=============================================================================
-// AB: script for Shale's new talent Stone Will - alternate version.
-// Does not require tampering with rules_core.
-// Gives immunity to stun, knockdown, slip - pretty much Indomitable.
-// This is achieved by giving Shale the "Sturdy" trait for the duration.
+// AB: script for Shale's new talent Stone Will
 //*=============================================================================
 
 #include "abi_templates"
 #include "combat_h"
 
 const int EVENT_TYPE_SHALE_STONE_WILL = 90000; // custom event - resets ms
+const int SHALE_STONE_ROAR = 6610015;
 
 void _HandleImpact(struct EventSpellScriptImpactStruct stEvent)
 {
@@ -36,9 +34,6 @@ void _HandleImpact(struct EventSpellScriptImpactStruct stEvent)
                                    PROPERTY_ATTRIBUTE_RESISTANCE_MENTAL, fResist);
     ApplyEffectOnObject(EFFECT_DURATION_TYPE_TEMPORARY, eEffect, stEvent.oCaster, 20.0, stEvent.oCaster, stEvent.nAbility);
 
-    // add "Sturdy" trait to Shale; this trait negates knockdown, stun, slip
-    AddAbility(stEvent.oCaster, ABILITY_TRAIT_STURDY);
-
     // remove all movement speed modifiers
     RemoveEffectsByParameters(stEvent.oCaster, EFFECT_TYPE_MOVEMENT_RATE);
     RemoveEffectsByParameters(stEvent.oCaster, EFFECT_TYPE_MOVEMENT_RATE_DEBUFF);
@@ -52,7 +47,7 @@ void _HandleImpact(struct EventSpellScriptImpactStruct stEvent)
     // can't be implemented the same way as knockdown or slip
     event evResetMS = Event(EVENT_TYPE_SHALE_STONE_WILL);
     evResetMS = SetEventObject(evResetMS, 1, stEvent.oCaster);
-    DelayEvent(0.6, stEvent.oCaster, evResetMS, "shl_stone_will_2");
+    DelayEvent(0.6, stEvent.oCaster, evResetMS, "shl_stone_will");
 }
 
 void main()
@@ -101,7 +96,7 @@ void main()
             object oCaster = GetEventCreator(ev);
 
             // only when duration hasn't expired
-            if (GetHasEffects(oCaster, 300202, 300202))
+            if (GetHasEffects(oCaster, EFFECT_TYPE_STONE_WILL, SHALE_STONE_ROAR))
             {
                 effect[] eBuff = GetEffects(oCaster, EFFECT_TYPE_MOVEMENT_RATE);
                 effect[] eDebuff = GetEffects(oCaster, EFFECT_TYPE_MOVEMENT_RATE_DEBUFF);
@@ -117,13 +112,12 @@ void main()
                 }
 
                 ev = SetEventObject(ev, 1, oCaster);
-                DelayEvent(0.5, oCaster, ev, "shl_stone_will_2"); // 0.5s delay interval
+                DelayEvent(0.5, oCaster, ev, "shl_stone_will"); // 0.5s delay interval
             }
             else
             {
                 // clear all effects when duration expires
                 RemoveEffectsByParameters(oCaster, EFFECT_TYPE_INVALID, 300202);
-                RemoveAbility(oCaster, ABILITY_TRAIT_STURDY); // remove Sturdy
                 SetCreatureProperty(oCaster, PROPERTY_ATTRIBUTE_DAMAGE_SHIELD_POINTS, 0.0, PROPERTY_VALUE_MODIFIER);
             }
 

@@ -6,22 +6,22 @@
 #include "combat_h"
 #include "plt_tut_modal"
 
-const int SHALE_PULVERIZE = 300100;
-const int SHALE_SLAM = 300101;
-const int SHALE_QUAKE = 300102;
-const int SHALE_KILLING_BLOW = 300103;
-const int SHALE_STONEHEART = 300200;
-const int SHALE_BELLOW = 300201;
-const int SHALE_STONE_ROAR = 300202;
-const int SHALE_REGENERATE_BURST = 300203;
-const int SHALE_ROCK_MASTERY = 300300;
-const int SHALE_HURL_ROCK = 300301;
-const int SHALE_EARTHEN_GRASP = 300302;
-const int SHALE_ROCK_BARRAGE = 300303;
-const int SHALE_STONE_AURA = 300400;
-const int SHALE_INNER_RESERVES = 300401;
-const int SHALE_RENEWED_ASSAULT = 300402;
-const int SHALE_SUPER_RESISTANCE = 300403;
+const int SHALE_PULVERIZE = 6610009;
+const int SHALE_SLAM = 6610010;
+const int SHALE_QUAKE = 6610011;
+const int SHALE_KILLING_BLOW = 6610012;
+const int SHALE_STONEHEART = 6610013;
+const int SHALE_BELLOW = 6610014;
+const int SHALE_STONE_ROAR = 6610015;
+const int SHALE_REGENERATE_BURST = 6610016;
+const int SHALE_ROCK_MASTERY = 6610017;
+const int SHALE_HURL_ROCK = 6610018;
+const int SHALE_EARTHEN_GRASP = 6610019;
+const int SHALE_ROCK_BARRAGE = 6610020;
+const int SHALE_STONE_AURA = 6610021;
+const int SHALE_INNER_RESERVES = 6610022;
+const int SHALE_RENEWED_ASSAULT = 6610023;
+const int SHALE_SUPER_RESISTANCE = 6610024; 
 
 const int SHALE_RANGED_MODE_AOE = 2003;
 
@@ -34,7 +34,7 @@ const int SHALE_STONE_AURA_3 = 2013; // 7m
 const int SHALE_STONE_AURA_4 = 2014; // 8m
 
 // persistent aura script
-const resource SCRIPT_SHL_AOE_DURATION = R"shl_aoe_duration.ncs";
+const resource SCRIPT_SHL_AOE_DURATION = R"af_talent_shl_aoe_duration.ncs";
 
 // add effects
 void _ActivateModalAbility(struct EventSpellScriptImpactStruct stEvent)
@@ -293,10 +293,10 @@ void _DeactivateModalAbility(object oCaster, int nAbility)
     Effects_RemoveUpkeepEffect(oCaster, nAbility);
 
     // clear Stone Will effects if Stoneheart is deactivated
-    if (nAbility == 300200 && GetHasEffects(oCaster, 300202, 300202))
+    if (nAbility == SHALE_STONEHEART && GetHasEffects(oCaster, EFFECT_TYPE_STONE_WILL, SHALE_STONE_ROAR))
     {
-        RemoveEffectsByParameters(oCaster, EFFECT_TYPE_INVALID, 300202);
-		RemoveAbility(oCaster, ABILITY_TRAIT_STURDY);
+        RemoveEffectsByParameters(oCaster, EFFECT_TYPE_INVALID, SHALE_STONE_ROAR);
+        RemoveAbility(oCaster, ABILITY_TRAIT_STURDY);
     }
 }
 

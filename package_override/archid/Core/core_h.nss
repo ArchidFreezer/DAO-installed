@@ -26,6 +26,8 @@ const int   DA_LEVEL_CAP   = 25;  // Dragon Age level cap. Note: This is one of 
 const int PROPERTY_SIMPLE_AI_BEHAVIOR = 18;
 const int AI_BEHAVIOR_DEFAULT = 0;
 
+const int EFFECT_TYPE_STONE_WILL = 6610001;
+
 // -----------------------------------------------------------------------------
 // Basic combat system confiration
 // -----------------------------------------------------------------------------
@@ -1518,6 +1520,15 @@ int GetExperience(object oPartyMember)
 int IsImmuneToEffectType(object oCreature, int nEffectType) ;
 int IsImmuneToEffectType(object oCreature, int nEffectType)
 {
+    // AB: Shale's new Stone Will effects
+    if (GetHasEffects(oCreature, EFFECT_TYPE_INVALID, EFFECT_TYPE_STONE_WILL))
+    {
+        if (nEffectType == EFFECT_TYPE_KNOCKDOWN || nEffectType == EFFECT_TYPE_SLIP) // knockdown / slip immunity
+        {
+            return 1; // "Immune" message
+        }
+    }
+
     // ABILITY_TALENT_INDOMITABLE grants immunity to knockdown and stun
     if (nEffectType == EFFECT_TYPE_KNOCKDOWN || nEffectType == EFFECT_TYPE_STUN || nEffectType == EFFECT_TYPE_SLIP)
     {
@@ -2916,7 +2927,7 @@ float _GetAverageDamage(object oCreature, object oWeapon) {
                     fCritChance = 0.0;
             }
         }
-        float fCritMod = COMBAT_CRITICAL_DAMAGE_MODIFIER + 0.01*GetCreatureProperty(oCreature, 54);        
+        float fCritMod = COMBAT_CRITICAL_DAMAGE_MODIFIER + 0.01*GetCreatureProperty(oCreature, 54);
         fDamage *= 1 + MinF(1.0, MaxF(0.0, 0.01*fCritChance))*(fCritMod-1);
     }
     fDamage += GetCreatureProperty(oCreature, PROPERTY_ATTRIBUTE_DAMAGE_BONUS);
@@ -2972,7 +2983,7 @@ float _GetAttackLoopDuration(object oCreature) {
         if (nStyle == WEAPONSTYLE_DUAL) {
             object oOff = GetItemInEquipSlot(INVENTORY_SLOT_MAIN,oCreature);
             float fMainTime = BASE_TIMING_DUAL_WEAPONS + GetM2DAFloat(TABLE_ITEMSTATS,"dspeed",GetBaseItemType(oMain));
-            float fOffTime = BASE_TIMING_DUAL_WEAPONS + GetM2DAFloat(TABLE_ITEMSTATS,"dspeed",GetBaseItemType(oOff));            
+            float fOffTime = BASE_TIMING_DUAL_WEAPONS + GetM2DAFloat(TABLE_ITEMSTATS,"dspeed",GetBaseItemType(oOff));
             if (IsModalAbilityActive(oCreature, ABILITY_TALENT_DUAL_WEAPON_DOUBLE_STRIKE))
                 fTime = GetM2DAInt(TABLE_OPTIONS, "enabled", 4) ? 0.5 * (fMainTime + fOffTime) : fMainTime;
             else
@@ -3079,7 +3090,7 @@ void RecalculateDisplayDamage(object oCreature, int nSlot = INVENTORY_SLOT_INVAL
         float fDmg = _GetAverageDamage(oCreature, oMain);
         if (nStyle == WEAPONSTYLE_DUAL)
             fDmg += _GetAverageDamage(oCreature, oOff);
-        
+
         float fTime = _GetAttackLoopDuration(oCreature);
         float fSpeedMod = 1.0;
         if (IsUsingMeleeWeapon(oCreature, oMain)) {
