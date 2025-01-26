@@ -8,7 +8,6 @@
 // georg / petert
 // -----------------------------------------------------------------------------
 
-#include "log_h"
 #include "abi_templates"
 #include "sys_traps_h"
 #include "monster_constants_h"
