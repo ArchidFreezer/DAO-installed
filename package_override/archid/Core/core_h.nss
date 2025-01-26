@@ -26,7 +26,7 @@ const int   DA_LEVEL_CAP   = 25;  // Dragon Age level cap. Note: This is one of 
 const int PROPERTY_SIMPLE_AI_BEHAVIOR = 18;
 const int AI_BEHAVIOR_DEFAULT = 0;
 
-const int EFFECT_TYPE_STONE_WILL = 6610001;
+const int EFFECT_TYPE_STONE_WILL = 300202;
 
 // -----------------------------------------------------------------------------
 // Basic combat system confiration

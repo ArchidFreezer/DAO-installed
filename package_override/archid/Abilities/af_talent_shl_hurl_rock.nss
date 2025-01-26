@@ -9,13 +9,13 @@
 void _ApplyDamageAndEffects(struct EventSpellScriptImpactStruct stEvent, object oTarget, float fDamage, float fDistance)
 {
     effect eEffect;
-   
+
     // damage goes up as distance to impact center goes down, up to 150% at center
     // capped below just in case radius is >> 6
-    float fFactor = MaxF(0.66, 1.0 + 0.5 * (6.0 - fDistance) / 6.0);      
+    float fFactor = MaxF(0.66, 1.0 + 0.5 * (6.0 - fDistance) / 6.0);
     fDamage *= fFactor;
     eEffect = EffectDamage(fDamage);
-        
+
     ApplyEffectOnObject(EFFECT_DURATION_TYPE_INSTANT, eEffect, oTarget, 0.0f, stEvent.oCaster, stEvent.nAbility);
 
     // knockdown only within 3m of center
@@ -38,10 +38,10 @@ void _ApplyImpact(struct EventSpellScriptImpactStruct stEvent)
 
     // location impact vfx
     Ability_ApplyLocationImpactVFX(stEvent.nAbility, stEvent.lTarget);
-    
+
     // calculate base damage here
     float fDamage = 32.0f + 1.4f * GetAttributeModifier(stEvent.oCaster, PROPERTY_ATTRIBUTE_STRENGTH);
-    
+
     // get objects in area of effect
     object[] oTargets = GetObjectsInShape(OBJECT_TYPE_CREATURE, SHAPE_SPHERE, stEvent.lTarget, fRadius, 0.0, 0.0, TRUE);
 
@@ -49,9 +49,9 @@ void _ApplyImpact(struct EventSpellScriptImpactStruct stEvent)
     int nCount = 0;
     int nMax = GetArraySize(oTargets);
     for (nCount = 0; nCount < nMax; nCount++)
-    {   
+    {
         float fDistance = GetDistanceBetweenLocations(stEvent.lTarget, GetLocation(oTargets[nCount]));
-        
+
         // per-target effects
         _ApplyDamageAndEffects(stEvent, oTargets[nCount], fDamage, fDistance);
     }
@@ -82,7 +82,7 @@ void main()
 
             // hand this through to cast_impact
             SetAbilityResult(stEvent.oCaster, stEvent.nResistanceCheckResult);
-            
+
             break;
         }
 

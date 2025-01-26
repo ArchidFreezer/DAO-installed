@@ -12,7 +12,7 @@
 #include "ability_h"
 #include "combat_damage_h"
 
-const int SHALE_ROCK_BARRAGE = 6610020;
+const int SHALE_ROCK_BARRAGE = 300303;
 const int SHALE_BARRAGE = 2002;
 
 // initial impact

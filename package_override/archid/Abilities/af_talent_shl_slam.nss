@@ -25,14 +25,14 @@ void _HandleImpact(struct EventSpellScriptImpactStruct stEvent)
     eEffect = Effect(EFFECT_TYPE_KNOCKBACK);
     eEffect = SetEffectEngineFloat(eEffect, EFFECT_FLOAT_KNOCKBACK_DISTANCE, 2.0f);
     ApplyEffectOnObject(EFFECT_DURATION_TYPE_INSTANT, eEffect, stEvent.oTarget, 0.0f, stEvent.oCaster, stEvent.nAbility);
-    
+
     // brief stun
     if (!ResistanceCheck(stEvent.oCaster, stEvent.oTarget, PROPERTY_ATTRIBUTE_STRENGTH, PROPERTY_ATTRIBUTE_RESISTANCE_PHYSICAL))
     {
         eEffect = EffectStun();
         ApplyEffectOnObject(EFFECT_DURATION_TYPE_TEMPORARY, eEffect, stEvent.oTarget, RandomFloat() + 1.0, stEvent.oCaster, stEvent.nAbility);
     }
-    
+
     SendEventOnCastAt(stEvent.oTarget, stEvent.oCaster, stEvent.nAbility);
 }
 

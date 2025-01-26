@@ -6,7 +6,7 @@
 #include "combat_h"
 
 const int EVENT_TYPE_SHALE_STONE_WILL = 90000; // custom event - resets ms
-const int SHALE_STONE_ROAR = 6610015;
+const int SHALE_STONE_ROAR = 300202;
 
 void _HandleImpact(struct EventSpellScriptImpactStruct stEvent)
 {

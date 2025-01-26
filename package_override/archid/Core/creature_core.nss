@@ -10,7 +10,6 @@
     Note: this script redirects all events not handled into rules_core.
 
 */
-// -----------------------------------------------------------------------------
 // Owner: Yaron Jakobs, Georg Zoeller
 // -----------------------------------------------------------------------------
 
