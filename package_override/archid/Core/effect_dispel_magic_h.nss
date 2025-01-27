@@ -60,7 +60,7 @@ int Effects_HandleApplyEffectDispelMagic(effect eEffect)
         effect eSpell = arSpell[i];
         int nAbility = GetEffectAbilityID(eSpell);
         if (IsSpell(nAbility)) {
-            if (GetEffectDurationType(eSpell) != 3) {
+            if (GetEffectDurationType(eSpell) != EFFECT_DURATION_TYPE_PERMANENT) {
                 RemoveEffect(OBJECT_SELF, eSpell);
             } else {
                 object oCreator = GetEffectCreator(eSpell);
