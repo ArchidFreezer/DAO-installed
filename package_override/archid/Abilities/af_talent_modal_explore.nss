@@ -1,6 +1,10 @@
 #include "abi_templates"
 #include "talent_constants_h"
-#include "plt_tut_modal"
+#include "plt_tut_modal"   
+
+const int ABILITY_BLOOD_THIRST = 310020;
+const int ABILITY_TAINTED_BLADE = 310031;
+
 
 // add effects
 void _ActivateModalAbility(struct EventSpellScriptImpactStruct stEvent)
@@ -19,7 +23,7 @@ void _ActivateModalAbility(struct EventSpellScriptImpactStruct stEvent)
     switch (stEvent.nAbility)
     {
         // Blood Thirst
-        case 310020: {
+        case ABILITY_BLOOD_THIRST: {
             eEffects[0] = EffectModifyProperty(PROPERTY_ATTRIBUTE_ATTACK_SPEED_MODIFIER, -0.2f);
             eEffects[1] = EffectModifyProperty(PROPERTY_ATTRIBUTE_MELEE_CRIT_MODIFIER, 10.0f, PROPERTY_ATTRIBUTE_RANGED_CRIT_MODIFIER, 10.0f);
             eEffects[2] = EffectModifyMovementSpeed(1.2f);
@@ -31,7 +35,7 @@ void _ActivateModalAbility(struct EventSpellScriptImpactStruct stEvent)
             break;
         }
         // Tainted Blade
-        case 310031: {
+        case ABILITY_TAINTED_BLADE: {
             float fDamage = 5.0 + (GetAttributeModifier(stEvent.oCaster, PROPERTY_ATTRIBUTE_INTELLIGENCE) * 0.2);
             eEffects[0] = EffectModifyProperty(PROPERTY_ATTRIBUTE_DAMAGE_BONUS, fDamage);
 
