@@ -120,7 +120,7 @@ int _EffectDotGetNumberOfTicks(float fDuration) {
 // plus slightly less than one more tick interval. Because there is a tick at the start this works out to the # of ticks minus
 // the timer granularity. The clock ticks 64x a second thus we subtract 1/64th
 float _EffectDotGetAdjustedDuration(float fDuration) {
-    return GetM2DAInt(249815061, "enabled", 1) ? CREATURE_RULES_TICK_DELAY*_EffectDotGetNumberOfTicks(fDuration) - 1.0/64.0 : fDuration + 0.5*CREATURE_RULES_TICK_DELAY;
+    return GetM2DAInt(TABLE_OPTIONS, "enabled", 10) ? CREATURE_RULES_TICK_DELAY*_EffectDotGetNumberOfTicks(fDuration) - 1.0/64.0 : fDuration + 0.5*CREATURE_RULES_TICK_DELAY;
 }
 
 float _EffectDotGetDamagePerTick(float fTotalDamage, float fDuration)
