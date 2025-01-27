@@ -20,8 +20,102 @@ const string AF_AR_PRE_TOWER_ISHAL_1           = "pre410ar_tower_level_1";
 //------------------------------------------------------------------------------
 // Spellscript Impact Damage and Effects
 //------------------------------------------------------------------------------
+void _ApplyImpactDamageAndEffects(struct EventSpellScriptImpactStruct stEvent)
+{
+
+    if (IsObjectValid(stEvent.oTarget))
+        stEvent.lTarget = GetLocation(stEvent.oTarget);
+
+    // check for combo effect
+    int bCombo = FALSE;
+
+    float fDistance = GetM2DAFloat(TABLE_VFX_PERSISTENT, "RADIUS", STORM_OF_THE_CENTURY_AOE);
+
+    if (IsModalAbilityActive(stEvent.oCaster, ABILITY_SPELL_SPELL_MIGHT) == TRUE) {
+        // clear all tempests in range
+        object[] oTraps = GetObjectsInShape(OBJECT_TYPE_AREAOFEFFECTOBJECT, SHAPE_SPHERE, stEvent.lTarget, fDistance);
+
+        int nCount = 0;
+        int nMax = GetArraySize(oTraps);
+        for (nCount = 0; nCount < nMax; nCount++) {
+            Log_Trace(LOG_CHANNEL_COMBAT_ABILITY, "AoE " + ToString(nCount) + " = " + GetTag(oTraps[nCount]));
+            if (GetTag(oTraps[nCount]) == TEMPEST_TAG) {
+                bCombo = TRUE;
+                DestroyObject(oTraps[nCount]);
+            }
+        }
+    }
+
+    if (bCombo == TRUE) {
+        // clear all blizzards in range
+        object[] oTraps = GetObjectsInShape(OBJECT_TYPE_AREAOFEFFECTOBJECT, SHAPE_SPHERE, stEvent.lTarget, fDistance);
+
+        int nCount = 0;
+        int nMax = GetArraySize(oTraps);
+        for (nCount = 0; nCount < nMax; nCount++) {
+            Log_Trace(LOG_CHANNEL_COMBAT_ABILITY, "AoE " + ToString(nCount) + " = " + GetTag(oTraps[nCount]));
+            if (GetTag(oTraps[nCount]) == BLIZZARD_TAG) DestroyObject(oTraps[nCount]);
+        }
+
+        stEvent.nAbility = ABILITY_SPELL_STORM_OF_THE_CENTURY;
+        effect eAoE = EffectAreaOfEffect(STORM_OF_THE_CENTURY_AOE, SCRIPT_SPELL_AOE_DURATION, STORM_OF_THE_CENTURY_AOE_VFX);
+        Engine_ApplyEffectAtLocation(EFFECT_DURATION_TYPE_TEMPORARY, eAoE, stEvent.lTarget, STORM_OF_THE_CENTURY_DURATION, stEvent.oCaster, stEvent.nAbility);
+
+        // additional mana drain
+        effect eEffect = EffectModifyManaStamina(STORM_OF_THE_CENTURY_MANA_DRAIN);
+        ApplyEffectOnObject(EFFECT_DURATION_TYPE_INSTANT, eEffect, stEvent.oCaster, 0.0f, stEvent.oCaster, stEvent.nAbility);
+        UI_DisplayDamageFloaty(stEvent.oCaster, stEvent.oCaster, FloatToInt(STORM_OF_THE_CENTURY_MANA_DRAIN), stEvent.nAbility, 0, TRUE);
+
+        // combo effect - storm of the century
+        if (IsFollower(stEvent.oCaster) == TRUE) {
+            WR_SetPlotFlag(PLT_COD_AOW_SPELLCOMBO3, COD_AOW_SPELLCOMBO_3_STORM_OF_THE_CENTURY, TRUE);
+        }
+    } else {
+        effect eAoE = EffectAreaOfEffect(BLIZZARD_AOE, BLIZZARD_RESOURCE, BLIZZARD_AOE_VFX);
+        Engine_ApplyEffectAtLocation(EFFECT_DURATION_TYPE_TEMPORARY, eAoE, stEvent.lTarget, BLIZZARD_DURATION, stEvent.oCaster, stEvent.nAbility);
+        Engine_ApplyEffectAtLocation(EFFECT_DURATION_TYPE_TEMPORARY, EffectVisualEffect(BLIZZARD_ICE_SHEET_VFX), stEvent.lTarget, BLIZZARD_DURATION, stEvent.oCaster, stEvent.nAbility);
 
 
+        // -------------------------------------------------------------------------
+        // Demo hack - signal the first hostile creature an oncast at event
+        // -------------------------------------------------------------------------
+        object[] a = GetObjectsInShape(OBJECT_TYPE_CREATURE, SHAPE_SPHERE, stEvent.lTarget, 20.0f);
+
+        int nSize = GetArraySize(a);
+        int i;
+        for (i = 0; i < nSize; i++) {
+            if (IsObjectHostile(stEvent.oCaster, a[i])) SendEventOnCastAt(a[i], stEvent.oCaster, stEvent.nAbility, TRUE);
+        }
+    }
+}
+
+//------------------------------------------------------------------------------
+// Spellscript Heartbeat/Enter secondary effects
+//------------------------------------------------------------------------------
+void _ApplySecondaryEffects(object oCreator, object oTarget, int nAbility = ABILITY_SPELL_BLIZZARD)
+{
+    // 75% nothing, 12.5% slip, 12.5% freeze
+    int r = Random(8);
+    if (r < 2) {
+        if (ResistanceCheck(oCreator, oTarget, PROPERTY_ATTRIBUTE_SPELLPOWER, RESISTANCE_PHYSICAL) == FALSE) {
+            if (r == 1) {
+                effect eEffect = Effect(EFFECT_TYPE_SLIP);
+                ApplyEffectOnObject(EFFECT_DURATION_TYPE_INSTANT, eEffect, oTarget, 0.0f, oCreator, nAbility);
+            } else {
+                float fDuration = GetRankAdjustedEffectDuration(oTarget, BLIZZARD_FROZEN_DURATION);
+
+                // frozen
+                effect eEffect = EffectParalyze(BLIZZARD_FROZEN_VFX);
+                ApplyEffectOnObject(EFFECT_DURATION_TYPE_TEMPORARY, eEffect, oTarget, fDuration, oCreator, nAbility);
+
+                // petrify
+                eEffect = Effect(EFFECT_TYPE_PETRIFY);
+                eEffect = SetEffectInteger(eEffect, 0, 0);
+                ApplyEffectOnObject(EFFECT_DURATION_TYPE_TEMPORARY, eEffect, oTarget, fDuration, oCreator, nAbility);
+            }
+        }
+    }
+}
 void main() {
     event ev = GetCurrentEvent();
     int nEventType = GetEventType(ev); // CAST (directly from engine) or COMMAND_PENDING (re-directed by rules_core)
@@ -56,9 +150,8 @@ void main() {
                         effect eSlow = EffectModifyMovementSpeed(BLIZZARD_SLOW_FRACTION, TRUE);
                         ApplyEffectOnObject(EFFECT_DURATION_TYPE_PERMANENT, eSlow, oTarget, 0.0f, oCreator, nAbility);
 
-                        // physical resistance for slip
-                        if (ResistanceCheck(oCreator, oTarget, PROPERTY_ATTRIBUTE_SPELLPOWER, RESISTANCE_PHYSICAL) == FALSE)
-                            ApplyEffectOnObject(EFFECT_DURATION_TYPE_INSTANT, Effect(EFFECT_TYPE_SLIP), oTarget, 0.0f, oCreator, nAbility);
+                        // Apply freeze/slip
+                        _ApplySecondaryEffects(oCreator, oTarget, nAbility);
                     }
                     else
                         UI_DisplayMessage(oTarget, UI_MESSAGE_RESISTED);
@@ -102,36 +195,30 @@ void main() {
                 // check for fire barricade VFX in the AoE
                 effect[] oVFX = GetEffects(oArea);//GetObjectsInShape(OBJECT_TYPE_VFX, SHAPE_SPHERE, GetLocation(OBJECT_SELF), 20.0f);
                 location lAoE = GetLocation(OBJECT_SELF);
-                if (IsLocationValid(lAoE))
-                    afLogDebug("  AoE location valid.", AF_LOG_GROUP);
+                if (IsLocationValid(lAoE)) afLogDebug("  AoE location valid.", AF_LOG_GROUP);
 
                 int nMax = GetArraySize(oVFX);
                 afLogDebug("  There are " + ToString(nMax) + " VFX present.", AF_LOG_GROUP);
                 int nCount = 0;
-                for (nCount = 0; nCount < nMax; nCount++)
-                {
+                for (nCount = 0; nCount < nMax; nCount++) {
                     nType = GetEffectType(oVFX[nCount]);
                     sTag = ToString(nType);
                     afLogDebug("  Effect Type in AoE = " + sTag, AF_LOG_GROUP);
-                    if (nType == EFFECT_TYPE_VISUAL_EFFECT)
-                    {
+                    if (nType == EFFECT_TYPE_VISUAL_EFFECT) {
                         afLogDebug("    Effect is a VFX.", AF_LOG_GROUP);
 
                         // if the correct vfx type
                         nType = GetVisualEffectID(oVFX[nCount]);
                         afLogDebug("    Effect is ID " + ToString(nType) + " vs " + ToString(VFX_IMMOLATE_NO_CRUST), AF_LOG_GROUP);
-                        if (nType == VFX_IMMOLATE_NO_CRUST)
-                        {
+                        if (nType == VFX_IMMOLATE_NO_CRUST) {
                             // if close enough
                             location lLoc = GetVisualEffectLocation(oVFX[nCount]);
-                            if (IsLocationValid(lLoc))
-                                afLogDebug("    VFX location valid.", AF_LOG_GROUP);
+                            if (IsLocationValid(lLoc)) afLogDebug("    VFX location valid.", AF_LOG_GROUP);
 
                             float fDistance = GetDistanceBetweenLocations(lAoE, lLoc);
                             afLogDebug("      Distance = " + ToString(fDistance), AF_LOG_GROUP);
 
-                            if (fDistance <= 15.0f)
-                            {
+                            if (fDistance <= 15.0f) {
                                 RemoveEffect(oArea, oVFX[nCount]);
 
                                 object[] oSoundSet = GetNearestObjectToLocation(lLoc, OBJECT_TYPE_WAYPOINT);
@@ -172,6 +259,8 @@ void main() {
                                 effect ep = IsPartyMember(oTargets[i]) ? EffectModifyMovementSpeed(0.5f) : EffectParalyze(BLIZZARD_FROZEN_VFX);
                                 ApplyEffectOnObject(EFFECT_DURATION_TYPE_TEMPORARY, ep, oTargets[i], fDuration, oCreator, ABILITY_SPELL_BLIZZARD);
                             }
+                            // Apply freeze/slip
+                                _ApplySecondaryEffects(oCreator, oTargets[i], nAbility);
                         } else {
                             UI_DisplayMessage(oTargets[i], UI_MESSAGE_RESISTED);
                         }
