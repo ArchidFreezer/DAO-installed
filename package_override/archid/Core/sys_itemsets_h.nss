@@ -99,8 +99,7 @@ void ItemSet_Update(object oCreature)
     oItems[17] = GetItemInEquipSlot(INVENTORY_SLOT_SHALE_SHOULDERS, oCreature);
     oItems[18] = GetItemInEquipSlot(INVENTORY_SLOT_SHALE_LEFTARM, oCreature);
     // Compatibility with No Helmet Hack which puts helmets in the cloak slot
-    if (!IsObjectValid(oItems[3]))
-        oItems[3] = oItems[15];
+    if (!IsObjectValid(oItems[3])) oItems[3] = oItems[15];
 
     #ifdef DEBUG
     LogTrace(LOG_CHANNEL_TEMP, "  oItems[0] = " + GetTag(oItems[0]));
