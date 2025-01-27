@@ -1,5 +1,8 @@
-#include "autoloot_h"
+#include "af_autoloot_h"
 
+/*
+* Dain's conservative autoloot so no important items
+*/
 void main() {
     event ev = GetCurrentEvent();
     switch (GetEventType(ev)) {
@@ -11,7 +14,7 @@ void main() {
                     LootObject(OBJECT_SELF, oBag);
                     event evi = Event(EVENT_TYPE_INVALID);
                     evi = SetEventCreator(evi, oKiller);
-                    DelayEvent(1.0, oBag, evi, "death_autoloot_conservative");
+                    DelayEvent(1.0, oBag, evi, "af_death_autoloot");
                 }
             }
 
@@ -20,7 +23,7 @@ void main() {
 
         case EVENT_TYPE_INVALID: {
             if (GetGameMode() != GM_EXPLORE) {
-                DelayEvent(1.0, OBJECT_SELF, ev, "death_autoloot_conservative");
+                DelayEvent(1.0, OBJECT_SELF, ev, "af_death_autoloot");
                 return;
             }
             object oKiller = GetEventCreator(ev);
