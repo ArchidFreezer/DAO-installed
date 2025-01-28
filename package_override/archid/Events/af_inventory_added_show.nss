@@ -1,15 +1,18 @@
-const int TABLE_OPTS = 278334417;
+/*
+* Post event listener for: EVENT_TYPE_INVENTORY_ADDED
+*/
+#include "af_logging_h"
+
+const int MOD_OPTIONS = 6610007;
+const int AF_LOGGING_ITEM_RECEIVE = 8;
 
 void main() {
-    if (IsFollower(OBJECT_SELF)) {
+    if (IsFollower(OBJECT_SELF) && GetM2DAInt(TABLE_OPTIONS, "enabled", 11)) {
         event ev = GetCurrentEvent();
         object oItem = GetEventObject(ev, 0);
         string sMsg = GetName(oItem);
-        /* not doing this, picks up qty already in inventory too
-        int nStackSize = GetItemStackSize(oItem);
-        if (nStackSize > 1) {
-            sMsg = sMsg + " (" + ToString(nStackSize) + ")";
-        }*/
+
+        afLogDebug("Showing floaty for " + sMsg, AF_LOGGING_ITEM_RECEIVE);
         // Add material if equippable
         if ((GetM2DAInt(6, "EquippableSlots", GetBaseItemType(oItem)) & 243) > 0) {
             int nMaterial = GetM2DAInt(89, "Material", GetItemMaterialType(oItem));
@@ -19,9 +22,9 @@ void main() {
                     sMsg += " (" + sName + ")";
             }
         }
-        
-        int nColor = GetM2DAInt(TABLE_OPTS, "color", 1);
-        float fDuration = GetM2DAFloat(TABLE_OPTS, "duration", 1);
+
+        int nColor = GetM2DAInt(MOD_OPTIONS, "colour", 1);
+        float fDuration = GetM2DAFloat(MOD_OPTIONS, "duration", 1);
 
         DisplayFloatyMessage(OBJECT_SELF, sMsg, FLOATY_MESSAGE, nColor, fDuration);
     }
