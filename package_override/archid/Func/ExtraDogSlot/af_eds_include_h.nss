@@ -4,7 +4,8 @@
 #include "af_logging_h"
 #include "sys_rewards_h"
 
-const int TABLE_PARTY_PICKER = 113;
+const int TABLE_PARTY_PICKER = 113; 
+const int STRING_REF_RENAME_DOG = 362390;
 
 // =============================================================
 // UTILITIES METHODS
@@ -712,7 +713,8 @@ object summonDog()
                     // Result of event will go to the OBJECT field (module)
                     // as an EVENT_TYPE_POPUP_RESULT. The input string will
                     // be reflected as string event parameter 0.
-                    ShowPopup(362390,2,GetModule(),TRUE);
+                    // Type 2 is the text on the button from popups.gda (Dog Name Input)
+                    ShowPopup(STRING_REF_RENAME_DOG,2,GetModule(),TRUE);
                 }
             }
 
