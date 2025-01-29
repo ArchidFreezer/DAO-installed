@@ -3,7 +3,7 @@
 //   eds_dheu_dying_override
 //
 
-const int AF_LOGGING_EDS = 7;
+const int AF_LOGGROUP_EDS = 7;
 // ========================================================
 // Variables
 // ========================================================

@@ -10,7 +10,7 @@
 */
 
 // This must match the row in the logging_ m2da table
-const int AF_LOG_GROUP = 5;
+const int AF_LOGGROUP_GREASE = 5;
 
 #include "aoe_effects_h"
 #include "spell_constants_h"
@@ -29,7 +29,7 @@ void main()
             // Get a structure with the event parameters
             struct EventSpellScriptCastStruct stEvent = Events_GetEventSpellScriptCastParameters(ev);
 
-            afLogInfo("EVENT_TYPE_SPELLSCRIPT_CAST", AF_LOG_GROUP);
+            afLogInfo("EVENT_TYPE_SPELLSCRIPT_CAST", AF_LOGGROUP_GREASE);
 
             // we just hand this through to cast_impact
             SetAbilityResult(stEvent.oCaster, stEvent.nResistanceCheckResult);
@@ -41,7 +41,7 @@ void main()
             object oTarget = GetEventTarget(ev);
             object oCreator = GetEventCreator(ev);
 
-            afLogInfo("Entering Grease: " + ToString(oTarget), AF_LOG_GROUP);
+            afLogInfo("Entering Grease: " + ToString(oTarget), AF_LOGGROUP_GREASE);
 
             if (IsSpellShapingTarget(oCreator, oTarget)) {
                 if (!CheckSpellResistance(oTarget, oCreator, nAbility)) {
@@ -55,15 +55,16 @@ void main()
         }
 
         case EVENT_TYPE_AOE_HEARTBEAT: {
+            afLogDebug("EVENT_TYPE_AOE_HEARTBEAT caught", AF_LOGGROUP_SPELLSHAPING);
             int nAbility = GetEventInteger(ev,0);
             object oCreator = GetEventCreator(ev);
 
             int nFlag = GetAOEFlags(OBJECT_SELF);
-            afLogDebug("Grease Heartbeat " + ToString(oCreator), AF_LOG_GROUP);
+            afLogDebug("Grease Heartbeat " + ToString(oCreator), AF_LOGGROUP_GREASE);
 
 
             if ((nFlag & AOE_FLAG_DESTRUCTION_PENDING) == AOE_FLAG_DESTRUCTION_PENDING) {
-                afLogDebug("Grease Heartbeat aborted, flagged for deletion", AF_LOG_GROUP);
+                afLogDebug("Grease Heartbeat aborted, flagged for deletion", AF_LOGGROUP_GREASE);
                 return;
             }
 
@@ -79,7 +80,7 @@ void main()
                     if (GetArraySize(dot))
                         oIgniter = GetEffectCreator(dot[0]);
 
-                    afLogDebug("Grease Heartbeat: Igniting grease", AF_LOG_GROUP);
+                    afLogDebug("Grease Heartbeat: Igniting grease", AF_LOGGROUP_GREASE);
                     IgniteGreaseAoe(OBJECT_SELF, oTargets[i]);
 
                     break;
@@ -92,11 +93,12 @@ void main()
             break;
         }
         case EVENT_TYPE_EXIT: {
+            afLogDebug("EVENT_TYPE_EXIT caught", AF_LOGGROUP_SPELLSHAPING);
             int nAbility = GetEventInteger(ev,0);
             object oTarget = GetEventTarget(ev);
             object oCreator = GetEventCreator(ev);
 
-            afLogInfo("EVENT_TYPE_EXIT " + ToString(oTarget), AF_LOG_GROUP);
+            afLogInfo("EVENT_TYPE_EXIT " + ToString(oTarget), AF_LOGGROUP_GREASE);
 
             if (GetObjectType(oTarget) == OBJECT_TYPE_CREATURE)
                 RemoveStackingEffects(oTarget, oCreator, nAbility);

@@ -58,7 +58,7 @@ string gameModeToString(int gm)
 
 int eds_IsSummon(object oCreature)
 {
-    afLogDebug("eds_IsSummon called", AF_LOGGING_EDS);
+    afLogDebug("eds_IsSummon called", AF_LOGGROUP_EDS);
 
     // A different take. Instead of looking for a flag, we see if their
     // tag is one of the registered party members from the party_picker
@@ -71,11 +71,11 @@ int eds_IsSummon(object oCreature)
     int i;
     for (i = 0; i < nRows; i++) {
         if (GetM2DAString(TABLE_PARTY_PICKER,"Tag",i) == sTag) {
-            afLogDebug("eds_IsSummon: Creature tag matches entry [" + ToString(i) + "]. Returning false", AF_LOGGING_EDS);
+            afLogDebug("eds_IsSummon: Creature tag matches entry [" + ToString(i) + "]. Returning false", AF_LOGGROUP_EDS);
             return FALSE;
         }
     }
-    afLogDebug("eds_IsSummon: Creature tag did not match any party members. Returning true", AF_LOGGING_EDS);
+    afLogDebug("eds_IsSummon: Creature tag did not match any party members. Returning true", AF_LOGGROUP_EDS);
     return TRUE;
 }
 
@@ -128,7 +128,7 @@ int eds_RemoveParyMember(object oMember)
             nCamp  = GEN_ZEVRAN_IN_CAMP;
             nRecruited = GEN_ZEVRAN_RECRUITED;
         }
-                
+
         if(WR_GetPlotFlag( PLT_GEN00PT_PARTY, nRecruited)) {
             if(WR_GetPlotFlag(PLT_GEN00PT_PARTY, nParty) == TRUE) {
                 WR_SetPlotFlag(PLT_GEN00PT_PARTY, nCamp, TRUE, TRUE);
@@ -146,7 +146,7 @@ int eds_RemoveParyMember(object oMember)
 
 object eds_GetPartyPoolMemberByTag(string sTag)
 {
-    afLogDebug("eds_GetPartyPoolMemberByTag Called", AF_LOGGING_EDS);
+    afLogDebug("eds_GetPartyPoolMemberByTag Called", AF_LOGGROUP_EDS);
     object [] arParty = GetPartyPoolList();
     int i;
     int nSize = GetArraySize(arParty);
@@ -158,7 +158,7 @@ object eds_GetPartyPoolMemberByTag(string sTag)
 
 object eds_GetPartyMemberByTag(string sTag)
 {
-    afLogDebug("eds_GetPartyMemberByTag Called", AF_LOGGING_EDS);
+    afLogDebug("eds_GetPartyMemberByTag Called", AF_LOGGROUP_EDS);
     object [] arParty = GetPartyList();
     int i;
     int nSize = GetArraySize(arParty);
@@ -180,14 +180,14 @@ void giveDogWhistle()
             if  (IsObjectValid(oPC)) {
                 object dw = CreateItemOnObject(AF_ITR_EDS_WHISTLE,oPC,1);
                 if (OBJECT_INVALID == dw) {
-                    afLogDebug("eds_dheu_module_core : Dog Whistle was NOT Created", AF_LOGGING_EDS);
+                    afLogDebug("eds_dheu_module_core : Dog Whistle was NOT Created", AF_LOGGROUP_EDS);
                 } else {
-                    afLogDebug("eds_dheu_module_core : Dog Whistle created", AF_LOGGING_EDS);
+                    afLogDebug("eds_dheu_module_core : Dog Whistle created", AF_LOGGROUP_EDS);
                 }
             }
         }
     } else {
-        afLogDebug("eds_dheu_module_core : Dog Not member of party. Whistle was NOT Created", AF_LOGGING_EDS);
+        afLogDebug("eds_dheu_module_core : Dog Not member of party. Whistle was NOT Created", AF_LOGGROUP_EDS);
     }
 }
 
@@ -220,7 +220,7 @@ int isDogAttached(object oCaster)
 // Returns True if dog is a member of the active party. False otherwise
 int isDogInParty()
 {
-    afLogDebug("isDogInParty Called", AF_LOGGING_EDS);
+    afLogDebug("isDogInParty Called", AF_LOGGROUP_EDS);
     if(WR_GetPlotFlag( PLT_GEN00PT_PARTY, GEN_DOG_RECRUITED)) {
         object oDog = eds_GetPartyMemberByTag(GEN_FL_DOG);
         if (IsObjectValid(oDog)) return TRUE;
@@ -234,11 +234,11 @@ int isDogInParty()
 // to see if PC removed companion that the dog was attached to.
 string getStoredDogOwner()
 {
-    afLogDebug("getStoredDogOwner Called", AF_LOGGING_EDS);
+    afLogDebug("getStoredDogOwner Called", AF_LOGGROUP_EDS);
     if(WR_GetPlotFlag( PLT_GEN00PT_PARTY, GEN_DOG_RECRUITED)) {
         return GetLocalString(GetModule(),DOG_OWNER);
     } else {
-        afLogDebug("getStoredDogOwner : GEN_DOG_RECRUITED not set", AF_LOGGING_EDS);
+        afLogDebug("getStoredDogOwner : GEN_DOG_RECRUITED not set", AF_LOGGROUP_EDS);
     }
     return "";
 }
@@ -247,7 +247,7 @@ string getStoredDogOwner()
 // AF_ABI_EDS_DOG_SUMMONED abilityID.
 object getDogOwner()
 {
-    afLogDebug("getDogOwner Called", AF_LOGGING_EDS);
+    afLogDebug("getDogOwner Called", AF_LOGGROUP_EDS);
     if (isDogInParty()) {
         object [] arParty = GetPartyList();
         int i;
@@ -282,11 +282,11 @@ location GetLocationBehindCreature(object oCreature, float distance = -7.5)
 // bForceStoredRemoval -> Primarily used by EVENT_PARTY_MEMBER_FIRED
 object unAttachDogFromPartyMember(object oCaster, int bRes = TRUE, int bForceStoredRemoval = FALSE)
 {
-    afLogDebug("UnAttachDogFromPartyMember Called", AF_LOGGING_EDS);
+    afLogDebug("UnAttachDogFromPartyMember Called", AF_LOGGROUP_EDS);
     object oDog = eds_GetPartyMemberByTag(GEN_FL_DOG);
     int noHealth = (1.0 > GetCurrentHealth(oCaster));
     if (IsDead(oCaster) || noHealth) {
-        afLogDebug("UnAttachDogFromPartyMember : oCaster is dead or health is 0", AF_LOGGING_EDS);
+        afLogDebug("UnAttachDogFromPartyMember : oCaster is dead or health is 0", AF_LOGGROUP_EDS);
         if (bRes && (IsDead(oDog) || IsDying(oDog))) {
             float health = GetMaxHealth(oDog) * 0.5;
             int stamina  = GetCreatureMaxStamina(oDog);
@@ -400,7 +400,7 @@ void removeDog(int bOnlyIfAttached=FALSE)
 // more instant verision, see removeDog().
 void deactivate_DogSlot(object oCaster)
 {
-    afLogDebug("deactivate_DogSlot called", AF_LOGGING_EDS);
+    afLogDebug("deactivate_DogSlot called", AF_LOGGROUP_EDS);
 
     object oDog = unAttachDogFromPartyMember(oCaster);
     if (IsObjectValid(oDog)) {
@@ -412,7 +412,7 @@ void deactivate_DogSlot(object oCaster)
         // command cRunAway = CommandMoveAwayFromObject(arParty[pm], 40.0);
 
         // Update variables (checked when party-change events fire).
-        afLogDebug("Setting NODOGSLOT to TRUE", AF_LOGGING_EDS);
+        afLogDebug("Setting NODOGSLOT to TRUE", AF_LOGGROUP_EDS);
         SetLocalInt(GetModule(),NODOGSLOT,TRUE);
 
         // Give him two seconds and then remove him:
@@ -428,7 +428,7 @@ void deactivate_DogSlot(object oCaster)
 
 object fixBrokenDog()
 {
-    afLogDebug("WARNING : fixBrokenDog() called.", AF_LOGGING_EDS);
+    afLogDebug("WARNING : fixBrokenDog() called.", AF_LOGGROUP_EDS);
 
     // Normally when this happens, the effect is still attached to the
     // player which can make other function fail. So we start by
@@ -454,7 +454,7 @@ object fixBrokenDog()
     // STEP 2 : See if the dog is in the local area. If so, grab him...
     object [] oDogs = GetNearestObjectByTag(GetMainControlled(),GEN_FL_DOG, OBJECT_TYPE_CREATURE,1);
     if (GetArraySize(oDogs) > 0) {
-        afLogDebug("SUCCESS! Found dog in current map.", AF_LOGGING_EDS);
+        afLogDebug("SUCCESS! Found dog in current map.", AF_LOGGROUP_EDS);
         string sDogName = GetLocalString(GetModule(),EDS_DOG_NAME);
         if ("" != sDogName) {
             SetName(oDogs[0],sDogName);
@@ -467,7 +467,7 @@ object fixBrokenDog()
     // presence of the dogs name in persistent storage, we will
     // either make a barnd new dog or a clone of the old dog.
 
-    afLogDebug("Attempting to Restore lost dog", AF_LOGGING_EDS);
+    afLogDebug("Attempting to Restore lost dog", AF_LOGGROUP_EDS);
 
     resource rDog = GEN_FLR_DOG;
     object oDog = CreateObject(OBJECT_TYPE_CREATURE, rDog, GetLocation(OBJECT_SELF));
@@ -499,7 +499,7 @@ object fixBrokenDog()
         float xtr_tal = GetLocalFloat(oModule,EDS_DOG_XTRA_TALENTS);
 
         exp = GetCreatureProperty(GetHero(),PROPERTY_SIMPLE_EXPERIENCE);
-        afLogDebug("Updating XP on dogto match PC", AF_LOGGING_EDS);
+        afLogDebug("Updating XP on dogto match PC", AF_LOGGROUP_EDS);
         SetCreatureProperty(oDog,PROPERTY_SIMPLE_EXPERIENCE,exp);
         SetCreatureProperty(oDog,PROPERTY_SIMPLE_LEVEL,level);
         SetCreatureProperty(oDog,PROPERTY_SIMPLE_ATTRIBUTE_POINTS,xtr_attr);
@@ -543,48 +543,48 @@ object fixBrokenDog()
 
 
         if (GetLocalInt(oModule,EDS_DOG_HAS_GROWL)) {
-            afLogDebug("Updating Growl Talent]", AF_LOGGING_EDS);
+            afLogDebug("Updating Growl Talent]", AF_LOGGROUP_EDS);
             AddAbility(oDog,ABILITY_TALENT_MONSTER_DOG_GROWL);
             SetQuickslot(oDog, -1, ABILITY_TALENT_MONSTER_DOG_GROWL);
         }
         if (GetLocalInt(oModule,EDS_DOG_HAS_HOWL)) {
-            afLogDebug("Updating Howl Talent]", AF_LOGGING_EDS);
+            afLogDebug("Updating Howl Talent]", AF_LOGGROUP_EDS);
             AddAbility(oDog,ABILITY_TALENT_MONSTER_MABARI_HOWL);
             SetQuickslot(oDog, -1, ABILITY_TALENT_MONSTER_MABARI_HOWL);
         }
         if (GetLocalInt(oModule,EDS_DOG_HAS_COMBAT)) {
-            afLogDebug("Updating Combat Talent]", AF_LOGGING_EDS);
+            afLogDebug("Updating Combat Talent]", AF_LOGGROUP_EDS);
             AddAbility(oDog,ABILITY_TALENT_MONSTER_DOG_COMBAT_TRAINING);
         }
         if (GetLocalInt(oModule,EDS_DOG_HAS_OVERWHELM)) {
-            afLogDebug("Updating Overwhelm Talent]", AF_LOGGING_EDS);
+            afLogDebug("Updating Overwhelm Talent]", AF_LOGGROUP_EDS);
             AddAbility(oDog,ABILITY_TALENT_MONSTER_DOG_OVERWHELM);
             SetQuickslot(oDog, -1, ABILITY_TALENT_MONSTER_DOG_OVERWHELM);
         }
 
         if (GetLocalInt(oModule,EDS_DOG_HAS_SHRED)) {
-            afLogDebug("Updating Shred Talent]", AF_LOGGING_EDS);
+            afLogDebug("Updating Shred Talent]", AF_LOGGROUP_EDS);
             AddAbility(oDog,ABILITY_TALENT_MONSTER_DOG_SHRED);
             SetQuickslot(oDog, -1, ABILITY_TALENT_MONSTER_DOG_SHRED);
         }
         if (GetLocalInt(oModule,EDS_DOG_HAS_CHARGE))
         {
-            afLogDebug("Updating Charge Talent]", AF_LOGGING_EDS);
+            afLogDebug("Updating Charge Talent]", AF_LOGGROUP_EDS);
             AddAbility(oDog,ABILITY_TALENT_MONSTER_DOG_CHARGE);
             SetQuickslot(oDog, -1, ABILITY_TALENT_MONSTER_DOG_CHARGE);
         }
         if (GetLocalInt(oModule,EDS_DOG_HAS_FORT))
         {
-            afLogDebug("Updating Fort Talent]", AF_LOGGING_EDS);
+            afLogDebug("Updating Fort Talent]", AF_LOGGROUP_EDS);
             AddAbility(oDog,ABILITY_TALENT_MONSTER_DOG_FORTITUDE);
         }
         if (GetLocalInt(oModule,EDS_DOG_HAS_NEMESIS))
         {
-            afLogDebug("Updating Nemesis Talent]", AF_LOGGING_EDS);
+            afLogDebug("Updating Nemesis Talent]", AF_LOGGROUP_EDS);
             AddAbility(oDog,ABILITY_TALENT_MONSTER_DOG_NEMESIS);
         }
     } else {
-        afLogDebug("Previous Record Not Found. Using Defaults", AF_LOGGING_EDS);
+        afLogDebug("Previous Record Not Found. Using Defaults", AF_LOGGROUP_EDS);
 
         // When added to party, this tracks if it is the
         // first time and if so, autolevels the creature.
@@ -627,7 +627,7 @@ int getNumNonSummonedPartyMembers()
     int nSize = GetArraySize(theParty);
     int total = GetArraySize(theParty);
 
-    afLogDebug("Beginning Search for companions with no summons", AF_LOGGING_EDS);
+    afLogDebug("Beginning Search for companions with no summons", AF_LOGGROUP_EDS);
 
     // Some party members may have summoned
     // companions. So we scan all party members
@@ -719,7 +719,7 @@ object summonDog()
         }
 
         if (IsObjectValid(oDog)) {
-            afLogDebug("Found Dog", AF_LOGGING_EDS);
+            afLogDebug("Found Dog", AF_LOGGROUP_EDS);
             WR_SetObjectActive(oDog,TRUE);
             // location behindPC = GetFollowerWouldBeLocation(GetPartyLeader());
             location behindPC = GetLocation(GetMainControlled());
@@ -728,7 +728,7 @@ object summonDog()
             WR_SetPlotFlag(PLT_GEN00PT_PARTY, GEN_DOG_IN_PARTY, TRUE, TRUE);
             WR_AddCommand(oDog, cJump);
         } else {
-            afLogDebug("ERROR : Dog instance not found and could not be created (This is bad).", AF_LOGGING_EDS);
+            afLogDebug("ERROR : Dog instance not found and could not be created (This is bad).", AF_LOGGROUP_EDS);
             UI_DisplayMessage(GetMainControlled(),UI_MESSAGE_ABILITY_CONDITION_NOT_MET);
         }
     }
@@ -742,7 +742,7 @@ object summonDog()
 
 void attachDogToParty(object oDog)
 {
-    afLogDebug("attachDogToParty() Called", AF_LOGGING_EDS);
+    afLogDebug("attachDogToParty() Called", AF_LOGGROUP_EDS);
     if (IsObjectValid(oDog)) {
         object [] arParty = GetPartyList();
         int nSize = GetArraySize(arParty);
@@ -808,7 +808,7 @@ void checkDogSlot(int markSlot = FALSE)
             if (IsObjectValid(oOwner)) {
                 // eds_Log("Owner Found... [" + GetTag(oOwner) + "[");
                 if ("player" != GetTag(oOwner)) {
-                    afLogDebug("Owner is not player. Moving...", AF_LOGGING_EDS);
+                    afLogDebug("Owner is not player. Moving...", AF_LOGGROUP_EDS);
                     // Even if PC has a summon, this code will
                     // shift the dog up as far as we can toward
                     // the top.
@@ -817,7 +817,7 @@ void checkDogSlot(int markSlot = FALSE)
                     if (IsObjectValid(oDog)) {
                         // Attempt to re-attach to someone who isn't dead....
                         if (markSlot) {
-                            afLogDebug("Setting NODOGSLOT to FALSE", AF_LOGGING_EDS);
+                            afLogDebug("Setting NODOGSLOT to FALSE", AF_LOGGROUP_EDS);
                             SetLocalInt(GetModule(),NODOGSLOT,FALSE);
                         }
                         attachDogToParty(oDog);
@@ -843,7 +843,7 @@ void checkDogSlot(int markSlot = FALSE)
                 if (IsObjectValid(oDog)) {
                     // Attempt to re-attach to someone who isn't dead....
                     if (markSlot) {
-                        afLogDebug("Setting NODOGSLOT to FALSE", AF_LOGGING_EDS);
+                        afLogDebug("Setting NODOGSLOT to FALSE", AF_LOGGROUP_EDS);
                         SetLocalInt(GetModule(),NODOGSLOT,FALSE);
                     }
                     attachDogToParty(oDog);
@@ -897,33 +897,33 @@ void eds_DogSnapShot()
             int hasHowl   = HasAbility(oDog, ABILITY_TALENT_MONSTER_MABARI_HOWL);
 
 /*
-            afLogDebug("Dog SnapShot : ", AF_LOGGING_EDS);
+            afLogDebug("Dog SnapShot : ", AF_LOGGROUP_EDS
+            afLogDebug("", AF_LOGGROUP_EDS
+            afLogDebug("  Name       : " + sDogName, AF_LOGGROUP_EDS
+            afLogDebug("  Experience : " + ToString(exp), AF_LOGGROUP_EDS
+            afLogDebug("  Level      : " + ToString(level), AF_LOGGROUP_EDS
+            afLogDebug("  Skill Pts  : " + ToString(xtr_skil), AF_LOGGROUP_EDS
+            afLogDebug("  Talent Pts : " + ToString(xtr_tal), AF_LOGGROUP_EDS
+            afLogDebug("  Attr Pts   : " + ToString(xtr_attr), AF_LOGGROUP_EDS
             afLogDebug("", AF_LOGGING_EDS);
-            afLogDebug("  Name       : " + sDogName, AF_LOGGING_EDS);
-            afLogDebug("  Experience : " + ToString(exp), AF_LOGGING_EDS);
-            afLogDebug("  Level      : " + ToString(level), AF_LOGGING_EDS);
-            afLogDebug("  Skill Pts  : " + ToString(xtr_skil), AF_LOGGING_EDS);
-            afLogDebug("  Talent Pts : " + ToString(xtr_tal), AF_LOGGING_EDS);
-            afLogDebug("  Attr Pts   : " + ToString(xtr_attr), AF_LOGGING_EDS);
+            afLogDebug("  Collar     : [" + sCollar + "]", AF_LOGGROUP_EDS
+            afLogDebug("  Paint      : [" + sPaint  + "]", AF_LOGGROUP_EDS
             afLogDebug("", AF_LOGGING_EDS);
-            afLogDebug("  Collar     : [" + sCollar + "]", AF_LOGGING_EDS);
-            afLogDebug("  Paint      : [" + sPaint  + "]", AF_LOGGING_EDS);
+            afLogDebug("  Con        : " + ToString(con), AF_LOGGROUP_EDS
+            afLogDebug("  Dex        : " + ToString(dex), AF_LOGGROUP_EDS
+            afLogDebug("  Int        : " + ToString(itl), AF_LOGGROUP_EDS
+            afLogDebug("  Mag        : " + ToString(mag), AF_LOGGROUP_EDS
+            afLogDebug("  Str        : " + ToString(str), AF_LOGGROUP_EDS
+            afLogDebug("  Wil        : " + ToString(wil), AF_LOGGROUP_EDS
             afLogDebug("", AF_LOGGING_EDS);
-            afLogDebug("  Con        : " + ToString(con), AF_LOGGING_EDS);
-            afLogDebug("  Dex        : " + ToString(dex), AF_LOGGING_EDS);
-            afLogDebug("  Int        : " + ToString(itl), AF_LOGGING_EDS);
-            afLogDebug("  Mag        : " + ToString(mag), AF_LOGGING_EDS);
-            afLogDebug("  Str        : " + ToString(str), AF_LOGGING_EDS);
-            afLogDebug("  Wil        : " + ToString(wil), AF_LOGGING_EDS);
-            afLogDebug("", AF_LOGGING_EDS);
-            afLogDebug("  hasCharge  : " + ToString(hasCharge), AF_LOGGING_EDS);
-            afLogDebug("  hasCombat  : " + ToString(hasCombat), AF_LOGGING_EDS);
-            afLogDebug("  hasFort    : " + ToString(hasFort), AF_LOGGING_EDS);
-            afLogDebug("  hasGrowl   : " + ToString(hasGrowl), AF_LOGGING_EDS);
-            afLogDebug("  hasNemes   : " + ToString(hasNemes), AF_LOGGING_EDS);
-            afLogDebug("  hasOver    : " + ToString(hasOver), AF_LOGGING_EDS);
-            afLogDebug("  hasShred   : " + ToString(hasShred), AF_LOGGING_EDS);
-            afLogDebug("  hasHowl    : " + ToString(hasHowl), AF_LOGGING_EDS);
+            afLogDebug("  hasCharge  : " + ToString(hasCharge), AF_LOGGROUP_EDS
+            afLogDebug("  hasCombat  : " + ToString(hasCombat), AF_LOGGROUP_EDS
+            afLogDebug("  hasFort    : " + ToString(hasFort), AF_LOGGROUP_EDS
+            afLogDebug("  hasGrowl   : " + ToString(hasGrowl), AF_LOGGROUP_EDS
+            afLogDebug("  hasNemes   : " + ToString(hasNemes), AF_LOGGROUP_EDS
+            afLogDebug("  hasOver    : " + ToString(hasOver), AF_LOGGROUP_EDS
+            afLogDebug("  hasShred   : " + ToString(hasShred), AF_LOGGROUP_EDS
+            afLogDebug("  hasHowl    : " + ToString(hasHowl), AF_LOGGROUP_EDS
 */
             // Now store everything in module variables
             object oModule = GetModule();
@@ -957,7 +957,7 @@ void eds_DogSnapShot()
 
 void activate_DogSlot(object oCaster, int markSlot=TRUE)
 {
-    afLogDebug("activate_DogSlot Called", AF_LOGGING_EDS);
+    afLogDebug("activate_DogSlot Called", AF_LOGGROUP_EDS);
 
     // No matter what, we summon the dog and
     // add to the party
@@ -965,7 +965,7 @@ void activate_DogSlot(object oCaster, int markSlot=TRUE)
     if (IsObjectValid(oDog))
         checkDogSlot(markSlot);
     else
-        afLogDebug("Summon Dog returned invalid object", AF_LOGGING_EDS);
+        afLogDebug("Summon Dog returned invalid object", AF_LOGGROUP_EDS);
 }
 
 void handle_DogWhistle(event ev)

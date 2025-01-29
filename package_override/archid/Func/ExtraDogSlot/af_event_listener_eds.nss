@@ -16,7 +16,7 @@ void main()
                     case ABILITY_TALENT_NATURE_II_HARDINESS_OF_THE_BEAR:
                     case ABILITY_TALENT_SUMMON_SPIDER:
                     case ABILITY_SPELL_ANIMATE_DEAD: {
-                        afLogDebug("eds_dheu_event_override : Intercepted Summon Spell Begin. Removing Dog", AF_LOGGING_EDS);
+                        afLogDebug("Intercepted Summon Spell Begin. Removing Dog", AF_LOGGROUP_EDS);
                         object oCaster = GetEventObject(ev, 0);
                         object oDog = OBJECT_INVALID;
                         if (isDogAttached(oCaster)) {
@@ -35,7 +35,7 @@ void main()
                         location l1 = GetEventLocation(ev,0);
                         vector pos1 = GetPositionFromLocation(l1);
                         if (0.0 != pos1.x && 0.0 != pos1.y && 0.0 != pos1.z) {
-                            afLogDebug("eds_dheu_event_override : Intercepted Summon Spell Begin. Removing Dog", AF_LOGGING_EDS);
+                            afLogDebug("Intercepted Summon Spell Begin. Removing Dog", AF_LOGGROUP_EDS);
                             object oCaster = GetEventObject(ev, 0);
                             object oDog = OBJECT_INVALID;
                             if (isDogAttached(oCaster)) {
@@ -61,7 +61,7 @@ void main()
                     case ABILITY_SPELL_SPIDER_SHAPE:
                     case ABILITY_SPELL_FLYING_SWARM:
                     case ABILITY_SPELL_BEAR: {
-                        afLogDebug("eds_dheu_event_override : Intercepted Summon Spell End. Re-Adding Dog", AF_LOGGING_EDS);
+                        afLogDebug("Intercepted Summon Spell End. Re-Adding Dog", AF_LOGGROUP_EDS);
                         checkDogSlot();
                     }
                     break;
@@ -116,17 +116,17 @@ void main()
                         // party, but dog doesn't have an owner...
 
                         if (GetTag(oCreature) == GEN_FL_DOG) {
-                            afLogDebug("Party member is Dog", AF_LOGGING_EDS);
+                            afLogDebug("Party member is Dog", AF_LOGGROUP_EDS);
 
                             // To get the new variables to work, I had
                             // to make my own var_module.gda file and
                             // declare my variable names/types.
 
                             if (GetLocalInt(GetModule(),DOG_BYPASS)) {
-                                afLogDebug("ByPass is TRUE. Ignoring Dog Dying event", AF_LOGGING_EDS);
+                                afLogDebug("ByPass is TRUE. Ignoring Dog Dying event", AF_LOGGROUP_EDS);
                                 SetLocalInt(GetModule(),DOG_BYPASS,FALSE);
                             } else {
-                                afLogDebug("ByPass is FALSE. Handling Dog Dying event", AF_LOGGING_EDS);
+                                afLogDebug("ByPass is FALSE. Handling Dog Dying event", AF_LOGGROUP_EDS);
 
                                 // What is known:
                                 // - there are > 4 PM, so the dog should have an owner
@@ -143,9 +143,9 @@ void main()
                                 //   the dog. (We can treat them both the same)
 
                                 string sOwner = getStoredDogOwner();
-                                afLogDebug("Stored Owner returned [" +  sOwner + "]", AF_LOGGING_EDS);
+                                afLogDebug("Stored Owner returned [" +  sOwner + "]", AF_LOGGROUP_EDS);
                                 if ("" != sOwner) {
-                                    afLogDebug("Owner died. Handling", AF_LOGGING_EDS);
+                                    afLogDebug("Owner died. Handling", AF_LOGGROUP_EDS);
 
                                     // case 1: 1 the owner just died and took the dog with it
 
@@ -185,7 +185,7 @@ void main()
                             //   to someone else.
 
                             string sOwner = getStoredDogOwner();
-                            // afLogDebug("Stored Owner returned [" +  sOwner + "]", AF_LOGGING_EDS);
+                            // afLogDebug("Stored Owner returned [" +  sOwner + "]", AF_LOGGROUP_EDS
                             if (sOwner ==  GetTag(oCreature)) {
                                 object oDog = unAttachDogFromPartyMember(oOwner,FALSE);
                                 if (IsObjectValid(oDog)) {
@@ -204,7 +204,7 @@ void main()
             object oOwner = OBJECT_SELF;
             int nAbility = GetEventInteger(ev,0);
 
-            // eds_Log("EVENT_TYPE_SUMMON_DIED CAUGHT for [" + GetTag(oOwner) + "]");
+            afLogDebug("EVENT_TYPE_SUMMON_DIED CAUGHT for [" + GetTag(oOwner) + "]", AF_LOGGROUP_EDS);
             // PrintEventProperties(ev);
             checkDogSlot();
             break;

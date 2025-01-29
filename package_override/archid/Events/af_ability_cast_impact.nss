@@ -59,17 +59,17 @@ void main() {
     int nAbility = GetEventInteger(ev, 0);
     switch (nAbility) {
         case ABILITY_SPELL_FIREBALL:
-            ////PrintToLog("Spell Shaping : IT IS FIREBALL!");
+            afLogDebug("FIREBALL!", AF_LOGGROUP_SPELLSHAPING);
             break;
         case ABILITY_SPELL_CONE_OF_COLD:
-            ////PrintToLog("Spell Shaping : IT IS CONE OF COLD!");
+            afLogDebug("CONE OF COLD!", AF_LOGGROUP_SPELLSHAPING);
             break;
         case ABILITY_SPELL_GREASE:
-            ////PrintToLog("Spell Shaping : IT IS GREASE!");
+            afLogDebug("GREASE!", AF_LOGGROUP_SPELLSHAPING);
             nSpellCast = AF_SS_SPELL_GREASE;
             break;
         case ABILITY_SPELL_BLIZZARD:
-            ////PrintToLog("Spell Shaping : IT IS BLIZZARD!");
+            afLogDebug("BLIZZARD!", AF_LOGGROUP_SPELLSHAPING);
             nSpellCast = AF_SS_SPELL_BLIZZARD;
             break;
         default:
@@ -135,22 +135,21 @@ void main() {
 
     switch (nSpellCast) {
         case AF_SS_SPELL_GREASE: {
-            ////PrintToLog("Spell Shaping : Handling GREASE");
+            afLogDebug("Handling GREASE", AF_LOGGROUP_SPELLSHAPING);
 
             // Spell Grease
             if (IsObjectValid(oTarget))
                 lTarget = GetLocation(oTarget);
 
             // apply AoE effect on target
-            ////PrintToLog("Spell Shaping : GREASE Applying Effect");
+            afLogDebug("GREASE Applying Effect", AF_LOGGROUP_SPELLSHAPING);
             effect eAoE = EffectAreaOfEffect(GREASE_AOE, AF_ABI_GREASE_OVERRIDE_SCRIPT, GREASE_AOE_VFX);
             Engine_ApplyEffectAtLocation(EFFECT_DURATION_TYPE_TEMPORARY, eAoE, lTarget, GREASE_DURATION, oCaster, nAbility);
             SendEventOnCastAt(oTarget,oCaster, nAbility, TRUE);
             break;
         }
         case AF_SS_SPELL_BLIZZARD: {
-            ////PrintToLog("Spell Shaping : Handling BLIZZARD");
-
+            afLogDebug("Handling BLIZZARD", AF_LOGGROUP_SPELLSHAPING);
             // Spell Blizard : based on spell_blizzard.nss : _ApplyDamageAndEffects
             //----
             if (IsObjectValid(oTarget))
@@ -332,4 +331,4 @@ void main() {
     // -----------------------------------------------------------------
     if ((GetAbilityType(nAbility) == ABILITY_TYPE_ITEM) && (nAbility != ITEM_ABILITY_UNIQUE_POWER_UNLIMITED_USE) && (nAbility != ITEM_ABILITY_KOLGRIMS_HORN))
         RemoveItem(oItem,1);
-} 
+}

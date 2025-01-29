@@ -71,13 +71,13 @@ void main()
         //       to someone. We end effect and tell dog to run away.
         ////////////////////////////////////////////////////////////////////////
         case EVENT_DOG_RAN_AWAY: {
-            afLogDebug(GetCurrentScriptName() + " : EVENT_DOG_RAN_AWAY receieved");
+            afLogDebug("EVENT_DOG_RAN_AWAY receieved", AF_LOGGROUP_EDS);
             if(WR_GetPlotFlag( PLT_GEN00PT_PARTY, GEN_DOG_RECRUITED))
                 WR_SetPlotFlag(PLT_GEN00PT_PARTY, GEN_DOG_IN_CAMP, TRUE, TRUE);
             break;
         }
         case EVENT_MAKE_DOG_CLICKABLE: {
-            afLogDebug(GetCurrentScriptName() + " : EVENT_MAKE_DOG_CLICKABLE received");
+            afLogDebug("EVENT_MAKE_DOG_CLICKABLE received", AF_LOGGROUP_EDS);
             object oDog = eds_GetPartyPoolMemberByTag(GEN_FL_DOG);
             WR_SetPlotFlag(PLT_GEN00PT_PARTY, GEN_DOG_IN_CAMP, TRUE, TRUE);
             WR_SetObjectActive(oDog,TRUE);
@@ -89,7 +89,7 @@ void main()
         //       OR ITEM_DOG_WHISTLE associated.
         ////////////////////////////////////////////////////////////////////////
         case EVENT_TYPE_UNIQUE_POWER: {
-            afLogDebug(GetCurrentScriptName() + " : EVENT_TYPE_UNIQUE_POWER", AF_LOGGING_EDS);
+            afLogDebug("EVENT_TYPE_UNIQUE_POWER", AF_LOGGROUP_EDS);
             handle_DogWhistle(ev);
             break;
         }
@@ -101,7 +101,7 @@ void main()
             break;
         }
         case EVENT_TYPE_POPUP_RESULT: {
-            afLogDebug(GetCurrentScriptName() + "EVENT_TYPE_POPUP_RESULT");
+            afLogDebug("EVENT_TYPE_POPUP_RESULT");
             int nPopupID  = GetEventInteger(ev, 0);
             if (2 == nPopupID) {
                 if (1 == GetLocalInt(GetModule(), EDS_GET_DOG_NAME)) {
@@ -140,7 +140,7 @@ void testSpellShapingConfig() {
 }
 
 void testExtraDogSlotValid() {
-  afLogDebug("Extra Dog Slot : EVENT_TYPE_MODULE_LOAD", AF_LOGGING_EDS);
+  afLogDebug("Testing if dog slot valid", AF_LOGGROUP_EDS);
 
   int nChecked = GetLocalInt(GetModule(), EDS_CHECK_CONFLICT);
   if (0 == nChecked) {
@@ -157,15 +157,15 @@ void testExtraDogSlotValid() {
     int bCom = 0;
 
     if (2 == (bDie + bFir)) {
-      afLogWarn("EXTRA DOG MOD : MAJOR CONFLICTS DETECTED", AF_LOGGING_EDS);
+      afLogWarn("MAJOR CONFLICTS DETECTED", AF_LOGGROUP_EDS);
       ShowPopup(E3_EDS_CONFLICT, 1);
     } else if (1 == (bDie + bFir)) {
       if (bDie) {
-        afLogWarn("EXTRA DOG MOD : MAJOR CONFLICT DETECTED", AF_LOGGING_EDS);
+        afLogWarn("MAJOR CONFLICT DETECTED", AF_LOGGROUP_EDS);
         ShowPopup(E1_EDS_CONFLICT, 1);
       }
       if (bFir) {
-        afLogWarn("EXTRA DOG MOD : MAJOR CONFLICT DETECTED", AF_LOGGING_EDS);
+        afLogWarn("MAJOR CONFLICT DETECTED", AF_LOGGROUP_EDS);
         ShowPopup(E2_EDS_CONFLICT, 1);
       }
     } else {
@@ -180,15 +180,15 @@ void testExtraDogSlotValid() {
       bCom = (-1 == FindSubString(comStr,"eventmanager") || -1 == FindSubString(penStr,"eventmanager"));
 
       if (2 == (bSum + bCom)) {
-        afLogWarn("EXTRA DOG MOD : MINOR CONFLICTS DETECTED", AF_LOGGING_EDS);
+        afLogWarn("MINOR CONFLICTS DETECTED", AF_LOGGROUP_EDS);
         ShowPopup(W3_EDS_CONFLICT, 1);
       } else {
         if (bSum) {
-          afLogWarn("EXTRA DOG MOD : MINOR CONFLICT DETECTED", AF_LOGGING_EDS);
+          afLogWarn("MINOR CONFLICT DETECTED", AF_LOGGROUP_EDS);
           ShowPopup(W1_EDS_CONFLICT, 1);
         }
         if (bCom) {
-          afLogWarn("EXTRA DOG MOD : MINOR CONFLICT DETECTED", AF_LOGGING_EDS);
+          afLogWarn("MINOR CONFLICT DETECTED", AF_LOGGROUP_EDS);
           ShowPopup(W2_EDS_CONFLICT, 1);
         }
       }
@@ -204,7 +204,7 @@ void testExtraDogSlotValid() {
 
 void extraDogSlotInit() {
   string sArea = GetTag(GetArea(GetMainControlled()));
-  afLogDebug("Entering Area [" + sArea + "]", AF_LOGGING_EDS);
+  afLogDebug("Entering Area [" + sArea + "]", AF_LOGGROUP_EDS);
 
   if(WR_GetPlotFlag( PLT_GEN00PT_PARTY, GEN_DOG_RECRUITED)) {
 
@@ -234,7 +234,7 @@ void extraDogSlotInit() {
             }
           }
         }
-        afLogDebug("Sending EVENT_MAKE_DOG_CLICKABLE in 1.5 Sec", AF_LOGGING_EDS);
+        afLogDebug("Sending EVENT_MAKE_DOG_CLICKABLE in 1.5 Sec", AF_LOGGROUP_EDS);
         event eMakeClickable = Event(EVENT_MAKE_DOG_CLICKABLE);
         DelayEvent(1.5, GetModule(), eMakeClickable);
       }
@@ -255,11 +255,11 @@ void extraDogSlotInit() {
 }
 
 void extraDogSlotPartyPicker() {
-  afLogDebug("module event listener : EVENT_TYPE_PARTYPICKER_CLOSED", AF_LOGGING_EDS);
+  afLogDebug("EVENT_TYPE_PARTYPICKER_CLOSED", AF_LOGGROUP_EDS);
   // Should I care?
   int noDogSlot = GetLocalInt(GetModule(),NODOGSLOT);
   if (!noDogSlot) {
-    afLogDebug("NO DOG SLOT is false", AF_LOGGING_EDS);
+    afLogDebug("NO DOG SLOT is false", AF_LOGGROUP_EDS);
     // Only need to attach if dog is not in party
     if (!isDogInParty()) {
       object oOwner = OBJECT_INVALID;
@@ -271,6 +271,6 @@ void extraDogSlotPartyPicker() {
       activate_DogSlot(GetHero());
     }
   } else {
-    afLogDebug("NODOGSLOT is true. Ignoring change of party", AF_LOGGING_EDS);
+    afLogDebug("NODOGSLOT is true. Ignoring change of party", AF_LOGGROUP_EDS);
   }
 }

@@ -28,7 +28,7 @@ void main() {
             //--------------------------------------------------------------
             struct EventSpellScriptPendingStruct stEvent = Events_GetEventSpellScriptPendingParameters(ev);
 
-            afLogDebug(GetCurrentScriptName() + ".EVENT_TYPE_SPELLSCRIPT_PENDING: : " + Log_GetAbilityNameById(stEvent.nAbility), AF_LOGGING_EDS);
+            afLogDebug("EVENT_TYPE_SPELLSCRIPT_PENDING: " + Log_GetAbilityNameById(stEvent.nAbility), AF_LOGGROUP_EDS);
 
             //--------------------------------------------------------------
             // Setting Return Value
@@ -47,7 +47,7 @@ void main() {
             //--------------------------------------------------------------
             struct EventSpellScriptCastStruct stEvent = Events_GetEventSpellScriptCastParameters(ev);
 
-            afLogDebug(GetCurrentScriptName() + ".EVENT_TYPE_SPELLSCRIPT_CAST: " + Log_GetAbilityNameById(stEvent.nAbility), AF_LOGGING_EDS);
+            afLogDebug("EVENT_TYPE_SPELLSCRIPT_CAST: " + Log_GetAbilityNameById(stEvent.nAbility), AF_LOGGROUP_EDS);
             //------------------------------------------------------------------
             // we just hand this through to cast_impact
             //------------------------------------------------------------------
@@ -64,7 +64,7 @@ void main() {
             struct EventSpellScriptImpactStruct stEvent = Events_GetEventSpellScriptImpactParameters(ev);
 
 
-            afLogDebug(GetCurrentScriptName() + ".EVENT_TYPE_SPELLSCRIPT_IMPACT: " + Log_GetAbilityNameById(stEvent.nAbility), AF_LOGGING_EDS);
+            afLogDebug("EVENT_TYPE_SPELLSCRIPT_IMPACT: " + Log_GetAbilityNameById(stEvent.nAbility), AF_LOGGROUP_EDS);
 
             event ev = Event(EVENT_TYPE_UNIQUE_POWER);
             ev = SetEventInteger(ev,0, stEvent.nAbility);

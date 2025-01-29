@@ -5,6 +5,8 @@ const int AF_ABI_SPELLSHAPING_2 = 6610003;
 const int AF_ABI_SPELLSHAPING_3 = 6610004;
 const int AF_ABI_SPELLSHAPING_4 = 6610005;
 
+const int AF_LOGGROUP_SPELLSHAPING = 9;
+
 /*
  * Checks if a target is protected by SpellShaping from the effects of a spell
  * oCaster - The person casting the spell

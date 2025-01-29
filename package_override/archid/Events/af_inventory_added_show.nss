@@ -4,7 +4,7 @@
 #include "af_logging_h"
 
 const int MOD_OPTIONS = 6610007;
-const int AF_LOGGING_ITEM_RECEIVE = 8;
+const int AF_LOGGROUP_ITEMRECEIVE = 8;
 
 void main() {
     if (IsFollower(OBJECT_SELF) && GetM2DAInt(TABLE_OPTIONS, "enabled", 11)) {
@@ -12,7 +12,7 @@ void main() {
         object oItem = GetEventObject(ev, 0);
         string sMsg = GetName(oItem);
 
-        afLogDebug("Showing floaty for " + sMsg, AF_LOGGING_ITEM_RECEIVE);
+        afLogDebug("Showing floaty for " + sMsg, AF_LOGGROUP_ITEMRECEIVE);
         // Add material if equippable
         if ((GetM2DAInt(6, "EquippableSlots", GetBaseItemType(oItem)) & 243) > 0) {
             int nMaterial = GetM2DAInt(89, "Material", GetItemMaterialType(oItem));
