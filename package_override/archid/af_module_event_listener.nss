@@ -4,13 +4,11 @@
 #include "events_h"
 #include "af_constants_h"
 #include "af_logging_h"
-#include "af_eds_include_h"
 #include "af_nohelmet_h"
-
-const int SPELLSHAPING_WARNING_STRREFID = 627214951;
+#include "af_spellshaping_h"
+#include "af_eds_include_h"
 
 // Utility functions
-void testSpellShapingConfig();
 void testExtraDogSlotValid();
 void extraDogSlotInit();
 void extraDogSlotPartyPicker();
@@ -31,7 +29,7 @@ void main()
         ////////////////////////////////////////////////////////////////////////
         case EVENT_TYPE_MODULE_LOAD: {
             NoHelmetBookAdd();
-            testSpellShapingConfig();
+            SpellShapingCheckConfig();
             testExtraDogSlotValid();
             break;
         }
@@ -133,14 +131,6 @@ void main()
  * Start of utility functions
  *
  **/
-
-void testSpellShapingConfig() {
-    string appStr = GetM2DAString(TABLE_EVENTS, "Script", EVENT_TYPE_APPLY_EFFECT);
-    string ablStr = GetM2DAString(TABLE_EVENTS, "Script", EVENT_TYPE_ABILITY_CAST_IMPACT);
-
-    if (ablStr != "af_ablity_cast_impact" && ablStr != "eventmanager")
-        ShowPopup(SPELLSHAPING_WARNING_STRREFID, 1, OBJECT_INVALID, FALSE, 0);
-}
 
 void testExtraDogSlotValid() {
   afLogDebug("Testing if dog slot valid", AF_LOGGROUP_EDS);
