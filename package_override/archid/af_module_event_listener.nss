@@ -2,6 +2,7 @@
 #include "utility_h"
 #include "wrappers_h"
 #include "events_h"
+#include "af_constants_h"
 #include "af_logging_h"
 #include "af_eds_include_h"
 #include "af_nohelmet_h"
@@ -103,6 +104,8 @@ void main()
         case EVENT_TYPE_POPUP_RESULT: {
             afLogDebug("EVENT_TYPE_POPUP_RESULT");
             int nPopupID  = GetEventInteger(ev, 0);
+
+            // We cycle through the event handlers until we get one that handles the event
             if (2 == nPopupID) {
                 if (1 == GetLocalInt(GetModule(), EDS_GET_DOG_NAME)) {
                     SetLocalInt(GetModule(), EDS_GET_DOG_NAME, 0);
@@ -158,15 +161,15 @@ void testExtraDogSlotValid() {
 
     if (2 == (bDie + bFir)) {
       afLogWarn("MAJOR CONFLICTS DETECTED", AF_LOGGROUP_EDS);
-      ShowPopup(E3_EDS_CONFLICT, 1);
+      ShowPopup(E3_EDS_CONFLICT, AF_POPUP_MESSAGE_QUESTION);
     } else if (1 == (bDie + bFir)) {
       if (bDie) {
         afLogWarn("MAJOR CONFLICT DETECTED", AF_LOGGROUP_EDS);
-        ShowPopup(E1_EDS_CONFLICT, 1);
+        ShowPopup(E1_EDS_CONFLICT, AF_POPUP_MESSAGE_QUESTION);
       }
       if (bFir) {
         afLogWarn("MAJOR CONFLICT DETECTED", AF_LOGGROUP_EDS);
-        ShowPopup(E2_EDS_CONFLICT, 1);
+        ShowPopup(E2_EDS_CONFLICT, AF_POPUP_MESSAGE_QUESTION);
       }
     } else {
 
@@ -181,15 +184,15 @@ void testExtraDogSlotValid() {
 
       if (2 == (bSum + bCom)) {
         afLogWarn("MINOR CONFLICTS DETECTED", AF_LOGGROUP_EDS);
-        ShowPopup(W3_EDS_CONFLICT, 1);
+        ShowPopup(W3_EDS_CONFLICT, AF_POPUP_MESSAGE_QUESTION);
       } else {
         if (bSum) {
           afLogWarn("MINOR CONFLICT DETECTED", AF_LOGGROUP_EDS);
-          ShowPopup(W1_EDS_CONFLICT, 1);
+          ShowPopup(W1_EDS_CONFLICT, AF_POPUP_MESSAGE_QUESTION);
         }
         if (bCom) {
           afLogWarn("MINOR CONFLICT DETECTED", AF_LOGGROUP_EDS);
-          ShowPopup(W2_EDS_CONFLICT, 1);
+          ShowPopup(W2_EDS_CONFLICT, AF_POPUP_MESSAGE_QUESTION);
         }
       }
     }
@@ -274,3 +277,4 @@ void extraDogSlotPartyPicker() {
     afLogDebug("NODOGSLOT is true. Ignoring change of party", AF_LOGGROUP_EDS);
   }
 }
+

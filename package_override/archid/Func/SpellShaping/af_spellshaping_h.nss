@@ -1,9 +1,5 @@
 #include "ability_h"
-
-const int AF_ABI_SPELLSHAPING = 6610002;
-const int AF_ABI_SPELLSHAPING_2 = 6610003;
-const int AF_ABI_SPELLSHAPING_3 = 6610004;
-const int AF_ABI_SPELLSHAPING_4 = 6610005;
+#include "af_ability_h"
 
 const int AF_LOGGROUP_SPELLSHAPING = 9;
 
@@ -16,7 +12,7 @@ const int AF_LOGGROUP_SPELLSHAPING = 9;
  */
 int IsSpellShapingTarget(object oCaster, object oTarget) {
     // Both caster and target need to be valid and the caster must have spellshaping active
-   if (!IsObjectValid(oCaster) || !IsObjectValid(oTarget) || !Ability_IsAbilityActive(oCaster, AF_ABI_SPELLSHAPING))
+   if (!IsObjectValid(oCaster) || !IsObjectValid(oTarget) || !Ability_IsAbilityActive(oCaster, AF_ABI_SPELLSHAPING_1))
         return FALSE;
 
     // All higher level skills are passive upgrades so we can check in descending order.

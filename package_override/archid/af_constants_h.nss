@@ -3,6 +3,18 @@
 * Constants that are tied to functionality should be defined in a fuunctional specific script to remove the
 *  number of scripts that require recompilation on changes to this file
 */
+
+////
+//  Popup Window Types
+////
+
+const int AF_POPUP_MESSAGE_INVALID                 = 0;
+const int AF_POPUP_MESSAGE_QUESTION                = 1;
+const int AF_POPUP_MESSAGE_INPUT                   = 2;
+const int AF_POPUP_MESSAGE_BLOCKING_PLACEABLE      = 3;
+const int AF_POPUP_MESSAGE_MESSAGE                 = 4;
+const int AF_POPUP_MESSAGE_PRE_CHARGEN             = 5;
+
 //------------------------------------------------------------------------------
 // ITEMS
 //------------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 #include "effects_h"
 #include "ability_h"
-#include "af_spellshaping_h"
+#include "af_ability_h"
 
 // Code based on work by dainbramage - Dain's Fixes (https://www.nexusmods.com/dragonage/mods/4384)
 
@@ -15,7 +15,7 @@ int CheckCriterion(int nRow, string sCol, int nComparison) {
 int IsSpellShapingApplicable(int nEffectType, object oCreator) {
     return (nEffectType == EFFECT_TYPE_DAMAGE || IsEffectTypeHostile(nEffectType) || nEffectType == EFFECT_TYPE_PETRIFY || nEffectType == EFFECT_TYPE_SLIP) &&
         IsObjectValid(oCreator) && IsObjectValid(OBJECT_SELF) && !IsDead(oCreator) &&
-        HasAbility(oCreator, AF_ABI_SPELLSHAPING) && Ability_IsAbilityActive(oCreator, AF_ABI_SPELLSHAPING) &&
+        HasAbility(oCreator, AF_ABI_SPELLSHAPING_1) && Ability_IsAbilityActive(oCreator, AF_ABI_SPELLSHAPING_1) &&
         !IsObjectHostile(OBJECT_SELF, oCreator);
 }
 
