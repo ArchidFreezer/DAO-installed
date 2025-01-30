@@ -5,7 +5,7 @@
 #include "af_logging_h"
 
 // This must match the row in the logging_ m2da table
-const int AF_LOG_UNLOCK_SPELL = 2;
+const int AF_LOGGROUP_UNLOCK_SPELL = 2;
 
 // String references
 const int AF_STR_MAGIC_UNLOCK_FAIL = 6610014;
@@ -29,7 +29,7 @@ void _HandleImpact(struct EventSpellScriptImpactStruct stEvent)
     object oCaster = stEvent.oCaster;
     float fSpellpower = GetCreatureProperty(oCaster, PROPERTY_ATTRIBUTE_SPELLPOWER, PROPERTY_VALUE_TOTAL);
 
-    afLogInfo("EVENT_TYPE_SPELLSCRIPT_IMPACT - Handling impact", AF_LOG_UNLOCK_SPELL);
+    afLogInfo("EVENT_TYPE_SPELLSCRIPT_IMPACT - Handling impact", AF_LOGGROUP_UNLOCK_SPELL);
 
     // make sure there is a location, just in case
     if (IsObjectValid(oTarget))
@@ -40,34 +40,34 @@ void _HandleImpact(struct EventSpellScriptImpactStruct stEvent)
     // Get the lock difficulty
     float fCasterLevel;
     float fLockLevel = IntToFloat(GetPlaceablePickLockLevel(oTarget));
-    afLogDebug("SPELL_UNLOCK - Lock level: " + FloatToString(fLockLevel), AF_LOG_UNLOCK_SPELL);
+    afLogDebug("SPELL_UNLOCK - Lock level: " + FloatToString(fLockLevel), AF_LOGGROUP_UNLOCK_SPELL);
     switch (stEvent.nAbility)
     {
         case AF_ABI_SPELL_UNLOCK_1: {
             fCasterLevel = (SPELL_UNLOCK_1_POWER + (fSpellpower * 0.5f));
-            afLogDebug("SPELL_UNLOCK_1 - Caster level: " + FloatToString(fCasterLevel), AF_LOG_UNLOCK_SPELL);
+            afLogDebug("SPELL_UNLOCK_1 - Caster level: " + FloatToString(fCasterLevel), AF_LOGGROUP_UNLOCK_SPELL);
             break;
         }
         case AF_ABI_SPELL_UNLOCK_2: {
             fCasterLevel = (SPELL_UNLOCK_2_POWER + (fSpellpower * 0.5f));
-            afLogDebug("SPELL_UNLOCK_2 - Caster level: " + FloatToString(fCasterLevel), AF_LOG_UNLOCK_SPELL);
+            afLogDebug("SPELL_UNLOCK_2 - Caster level: " + FloatToString(fCasterLevel), AF_LOGGROUP_UNLOCK_SPELL);
             break;
         }
         case AF_ABI_SPELL_UNLOCK_3: {
             fCasterLevel = (SPELL_UNLOCK_3_POWER + fSpellpower);
-            afLogDebug("SPELL_UNLOCK_3 - Caster level: " + FloatToString(fCasterLevel), AF_LOG_UNLOCK_SPELL);
+            afLogDebug("SPELL_UNLOCK_3 - Caster level: " + FloatToString(fCasterLevel), AF_LOGGROUP_UNLOCK_SPELL);
             break;
         }
     }
 
     event evResult;
     if (fCasterLevel >= fLockLevel) {
-        afLogDebug("Unlock success", AF_LOG_UNLOCK_SPELL);
+        afLogDebug("Unlock success", AF_LOGGROUP_UNLOCK_SPELL);
         UI_DisplayMessage(oTarget, UI_MESSAGE_UNLOCKED);
         PlaySound(oTarget, GetM2DAString(TABLE_PLACEABLE_TYPES, "PickLockSuccess", GetAppearanceType(oTarget)));
         evResult = Event(EVENT_TYPE_UNLOCKED);
     } else {
-        afLogDebug("Unlock fail", AF_LOG_UNLOCK_SPELL);
+        afLogDebug("Unlock fail", AF_LOGGROUP_UNLOCK_SPELL);
         DisplayFloatyMessage(oTarget, GetStringByStringId(AF_STR_MAGIC_UNLOCK_FAIL));
         PlaySound(oTarget, GetM2DAString(TABLE_PLACEABLE_TYPES, "PickLockFailure", GetAppearanceType(oTarget)));
         evResult = Event(EVENT_TYPE_UNLOCK_FAILED);
@@ -92,17 +92,17 @@ int checkTargetIsValid(event ev) {
     // We only deal with 3 types of locked objects: Door, Cage & Container
     string sStateTable = GetPlaceableStateCntTable(oTarget);
     if (sStateTable != PLC_STATE_CNT_CAGE && sStateTable != PLC_STATE_CNT_CONTAINER && sStateTable != PLC_STATE_CNT_DOOR) {
-        afLogDebug("checkTarget - target incorrect type", AF_LOG_UNLOCK_SPELL);
+        afLogDebug("checkTarget - target incorrect type", AF_LOGGROUP_UNLOCK_SPELL);
         DisplayFloatyMessage(oTarget, GetStringByStringId(AF_STR_MAGIC_UNLOCK_INVALID_PLACEABLE_TYPE));
         bTargetValid = FALSE;
     } else if (sStateTable == PLC_STATE_CNT_CAGE && GetPlaceableState(oTarget) != PLC_STATE_CAGE_LOCKED ||
                sStateTable == PLC_STATE_CNT_CONTAINER && GetPlaceableState(oTarget) != PLC_STATE_CONTAINER_LOCKED ||
                sStateTable == PLC_STATE_CNT_DOOR && GetPlaceableState(oTarget) != PLC_STATE_DOOR_LOCKED) {
-        afLogDebug("checkTarget - target already unlocked", AF_LOG_UNLOCK_SPELL);
+        afLogDebug("checkTarget - target already unlocked", AF_LOGGROUP_UNLOCK_SPELL);
         DisplayFloatyMessage(oTarget, GetStringByStringId(AF_STR_MAGIC_UNLOCK_TARGET_UNLOCKED));
         bTargetValid = FALSE;
     } else if (!GetPlaceableKeyRequired(oTarget) && nLockLevel < DEVICE_DIFFICULTY_IMPOSSIBLE) {
-        afLogDebug("checkTarget - target cannot be unlocked", AF_LOG_UNLOCK_SPELL);
+        afLogDebug("checkTarget - target cannot be unlocked", AF_LOGGROUP_UNLOCK_SPELL);
         DisplayFloatyMessage(oTarget, GetStringByStringId(AF_STR_MAGIC_UNLOCK_INVALID));
         bTargetValid = FALSE;
    }
@@ -118,13 +118,13 @@ void main()
     event ev = GetCurrentEvent();
     int nEventType = GetEventType(ev);
 
-    afLogInfo("entered ability script", AF_LOG_UNLOCK_SPELL);
+    afLogInfo("entered ability script", AF_LOGGROUP_UNLOCK_SPELL);
 
     switch(nEventType)
     {
         case EVENT_TYPE_SPELLSCRIPT_PENDING:
         {
-            afLogDebug("EVENT_TYPE_SPELLSCRIPT_PENDING", AF_LOG_UNLOCK_SPELL);
+            afLogDebug("EVENT_TYPE_SPELLSCRIPT_PENDING", AF_LOGGROUP_UNLOCK_SPELL);
             Ability_SetSpellscriptPendingEventResult(checkTargetIsValid(ev) ? COMMAND_RESULT_SUCCESS : COMMAND_RESULT_INVALID);
 
             break;
@@ -132,7 +132,7 @@ void main()
 
         case EVENT_TYPE_SPELLSCRIPT_CAST:
         {
-            afLogDebug("EVENT_TYPE_SPELLSCRIPT_CAST", AF_LOG_UNLOCK_SPELL);
+            afLogDebug("EVENT_TYPE_SPELLSCRIPT_CAST", AF_LOGGROUP_UNLOCK_SPELL);
 
             // Get a structure with the event parameters
             struct EventSpellScriptCastStruct stEvent = Events_GetEventSpellScriptCastParameters(ev);
@@ -145,7 +145,7 @@ void main()
 
         case EVENT_TYPE_SPELLSCRIPT_IMPACT:
         {
-            afLogDebug("EVENT_TYPE_SPELLSCRIPT_IMPACT", AF_LOG_UNLOCK_SPELL);
+            afLogDebug("EVENT_TYPE_SPELLSCRIPT_IMPACT", AF_LOGGROUP_UNLOCK_SPELL);
 
             // Get a structure with the event parameters
             struct EventSpellScriptImpactStruct stEvent = Events_GetEventSpellScriptImpactParameters(ev);
