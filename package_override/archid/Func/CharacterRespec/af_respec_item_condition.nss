@@ -11,12 +11,13 @@
 //
 /////////////////////////////////////////////////////////////////
 
+#include "af_respec_utility_h"
 
 int StartingConditional()
 {
     object oCharacter = GetMainControlled();
-    if (CountItemsByTag(oCharacter, "wrk_potion_respec"))
-        return 0;
+    if (CountItemsByTag(oCharacter, AF_ITM_RESPEC_POTION))
+        return FALSE;
     else
-        return 1;
+        return TRUE;
 }

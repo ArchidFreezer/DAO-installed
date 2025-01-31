@@ -6,7 +6,7 @@
 //
 /////////////////////////////////////////////////////////////////
 
-#include "wrk_respec_utility_h"
+#include "af_respec_utility_h"
 
 /** @brief Resets the attribute points
 *
@@ -40,15 +40,11 @@ void WRK_RESPEC_ATTRIBUTES(object oCharacter, float fValue = 1.0f)
     ////
     //  HUMANOIDS
     ////
-    switch ( iRace )
-    {
+    switch (iRace) {
         // Humans
-        case RACE_HUMAN:
-        {
-            switch ( iClass )
-            {
-                case CLASS_ROGUE:
-                {
+        case RACE_HUMAN: {
+            switch (iClass) {
+                case CLASS_ROGUE: {
                     WRK_SetAllBaseAttributes(oCharacter, WRK_HR_STR, WRK_HR_DEX, WRK_HR_WIL, WRK_HR_MAG, WRK_HR_INT, WRK_HR_CON);
                     // Return the rest of the attribute points to the characters.
                     // Every character has WRK_START_ATTR_SUM points spent by default
@@ -56,14 +52,12 @@ void WRK_RESPEC_ATTRIBUTES(object oCharacter, float fValue = 1.0f)
                     WRK_GiveAttributePoints(oCharacter, fSum-WRK_START_ATTR_SUM_HUMANOID);
                     break;
                 }
-                case CLASS_WARRIOR:
-                {
+                case CLASS_WARRIOR: {
                     WRK_SetAllBaseAttributes(oCharacter, WRK_HW_STR, WRK_HW_DEX, WRK_HW_WIL, WRK_HW_MAG, WRK_HW_INT, WRK_HW_CON);
                     WRK_GiveAttributePoints(oCharacter, fSum-WRK_START_ATTR_SUM_HUMANOID);
                     break;
                 }
-                case CLASS_WIZARD:
-                {
+                case CLASS_WIZARD: {
                     WRK_SetAllBaseAttributes(oCharacter, WRK_HM_STR, WRK_HM_DEX, WRK_HM_WIL, WRK_HM_MAG, WRK_HM_INT, WRK_HM_CON);
                     WRK_GiveAttributePoints(oCharacter, fSum-WRK_START_ATTR_SUM_HUMANOID);
                     break;
@@ -73,24 +67,19 @@ void WRK_RESPEC_ATTRIBUTES(object oCharacter, float fValue = 1.0f)
         } // ! case human
 
         // Elves
-        case RACE_ELF:
-        {
-            switch ( iClass )
-            {
-                case CLASS_ROGUE:
-                {
+        case RACE_ELF: {
+            switch (iClass) {
+                case CLASS_ROGUE: {
                     WRK_SetAllBaseAttributes(oCharacter, WRK_ER_STR, WRK_ER_DEX, WRK_ER_WIL, WRK_ER_MAG, WRK_ER_INT, WRK_ER_CON);
                     WRK_GiveAttributePoints(oCharacter, fSum-WRK_START_ATTR_SUM_HUMANOID);
                     break;
                 }
-                case CLASS_WARRIOR:
-                {
+                case CLASS_WARRIOR: {
                     WRK_SetAllBaseAttributes(oCharacter, WRK_EW_STR, WRK_EW_DEX, WRK_EW_WIL, WRK_EW_MAG, WRK_EW_INT, WRK_EW_CON);
                     WRK_GiveAttributePoints(oCharacter, fSum-WRK_START_ATTR_SUM_HUMANOID);
                     break;
                 }
-                case CLASS_WIZARD:
-                {
+                case CLASS_WIZARD: {
                     WRK_SetAllBaseAttributes(oCharacter, WRK_EM_STR, WRK_EM_DEX, WRK_EM_WIL, WRK_EM_MAG, WRK_EM_INT, WRK_EM_CON);
                     WRK_GiveAttributePoints(oCharacter, fSum-WRK_START_ATTR_SUM_HUMANOID);
                     break;
@@ -100,18 +89,14 @@ void WRK_RESPEC_ATTRIBUTES(object oCharacter, float fValue = 1.0f)
         } // ! case elf
 
         // Dwarves
-        case RACE_DWARF:
-        {
-            switch ( iClass )
-            {
-                case CLASS_ROGUE:
-                {
+        case RACE_DWARF: {
+            switch (iClass) {
+                case CLASS_ROGUE: {
                     WRK_SetAllBaseAttributes(oCharacter, WRK_DR_STR, WRK_DR_DEX, WRK_DR_WIL, WRK_DR_MAG, WRK_DR_INT, WRK_DR_CON);
                     WRK_GiveAttributePoints(oCharacter, fSum-WRK_START_ATTR_SUM_HUMANOID);
                     break;
                 }
-                case CLASS_WARRIOR:
-                {
+                case CLASS_WARRIOR: {
                     WRK_SetAllBaseAttributes(oCharacter, WRK_DW_STR, WRK_DW_DEX, WRK_DW_WIL, WRK_DW_MAG, WRK_DW_INT, WRK_DW_CON);
                     WRK_GiveAttributePoints(oCharacter, fSum-WRK_START_ATTR_SUM_HUMANOID);
                     break;
@@ -121,10 +106,8 @@ void WRK_RESPEC_ATTRIBUTES(object oCharacter, float fValue = 1.0f)
         } // ! case dwarf
 
         // Qunari (Sten)
-        case RACE_QUNARI:
-        {
-            if ( iClass == CLASS_WARRIOR )
-            {
+        case RACE_QUNARI: {
+            if (iClass == CLASS_WARRIOR) {
                 // Only one class here, Sten is a warrior
                 WRK_SetAllBaseAttributes(oCharacter, WRK_QN_STR, WRK_QN_DEX, WRK_QN_WIL, WRK_QN_MAG, WRK_QN_INT, WRK_QN_CON);
                 WRK_GiveAttributePoints(oCharacter, fSum-WRK_START_ATTR_SUM_QUNARI);
@@ -133,10 +116,8 @@ void WRK_RESPEC_ATTRIBUTES(object oCharacter, float fValue = 1.0f)
         } // ! case qunari
 
         // Animal
-        case RACE_ANIMAL:
-        {
-            if ( iClass == CLASS_DOG )
-            {
+        case RACE_ANIMAL: {
+            if (iClass == CLASS_DOG) {
                 WRK_SetAllBaseAttributes(oCharacter, WRK_DG_STR, WRK_DG_DEX, WRK_DG_WIL, WRK_DG_MAG, WRK_DG_INT, WRK_DG_CON);
                 WRK_GiveAttributePoints(oCharacter, fSum-WRK_START_ATTR_SUM_DOG);
             }
@@ -144,11 +125,9 @@ void WRK_RESPEC_ATTRIBUTES(object oCharacter, float fValue = 1.0f)
         } // ! case animal
 
         // Golem (Shale)
-        case RACE_GOLEM:
-        {
+        case RACE_GOLEM: {
             // NOTE: CLASS_SHALE (16) is not the correct class
-            if ( iClass == CLASS_WARRIOR && GetName(oCharacter) == "Shale" )
-            {
+            if (iClass == CLASS_WARRIOR && GetName(oCharacter) == "Shale") {
                 WRK_SetAllBaseAttributes(oCharacter, WRK_SH_STR, WRK_SH_DEX, WRK_SH_WIL, WRK_SH_MAG, WRK_SH_INT, WRK_SH_CON);
                 WRK_GiveAttributePoints(oCharacter, fSum-WRK_START_ATTR_SUM_SHALE);
             }

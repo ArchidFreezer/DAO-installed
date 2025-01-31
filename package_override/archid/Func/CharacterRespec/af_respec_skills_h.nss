@@ -6,7 +6,8 @@
 //
 /////////////////////////////////////////////////////////////////
 
-#include "wrk_respec_utility_h"
+#include "af_respec_utility_h"
+#include "af_ability_h"
 
 /** @brief Loops through an ability array and resets skills
 *
@@ -21,14 +22,11 @@
 * @param oCharacter  - The character
 * @author weriK
 **/
-int WRK_LOOP_SKILL(int iCounter, int iMax, int[] arAbilityID, object oCharacter)
-{
+int WRK_LOOP_SKILL(int iCounter, int iMax, int[] arAbilityID, object oCharacter){
     int i;
-    for (i = iCounter; i < iMax; i++)
-    {
+    for (i = iCounter; i < iMax; i++) {
         // Check whether the character has the talent
-        if ( HasAbility(oCharacter, arAbilityID[i]) )
-        {
+        if ( HasAbility(oCharacter, arAbilityID[i]) ) {
             // Unlearn the talent
             RemoveAbility(oCharacter, arAbilityID[i]);
             WRK_GiveSkillPoints(oCharacter, 1.0f);
@@ -49,8 +47,7 @@ int WRK_LOOP_SKILL(int iCounter, int iMax, int[] arAbilityID, object oCharacter)
 * @param oCharacter - The character
 * @author weriK
 **/
-void WRK_RESPEC_SKILLS(object oCharacter)
-{
+void WRK_RESPEC_SKILLS(object oCharacter) {
     // Master list of all available skills ( 8 rows, 4 ranks, 32 skill points max )
     int[] WRK_SKILLLIST;
 
@@ -98,13 +95,18 @@ void WRK_RESPEC_SKILLS(object oCharacter)
     WRK_SKILLLIST[29] = ABILITY_SKILL_COMBAT_TACTICS_3;
     WRK_SKILLLIST[30] = ABILITY_SKILL_COMBAT_TACTICS_2;
     WRK_SKILLLIST[31] = ABILITY_SKILL_COMBAT_TACTICS_1;
+                                                
+    // From the SpellShaping mod
+    WRK_SKILLLIST[32] = AF_ABI_SPELLSHAPING_4;
+    WRK_SKILLLIST[33] = AF_ABI_SPELLSHAPING_3;
+    WRK_SKILLLIST[34] = AF_ABI_SPELLSHAPING_2;
+    WRK_SKILLLIST[35] = AF_ABI_SPELLSHAPING_1;
 
 
     // This will loop through the whole skill list array and free up any skill
-    // point that is taken. Shale has no assignable skills even though he does have
-    // COMBAT_TACTICS_1 hidden. Because of this we want to skip him.
-    if ( GetName(oCharacter) != "Shale"  )
-    {
+    // point that is taken. Shale has no assignable skills even though she does have
+    // COMBAT_TACTICS_1 hidden. Because of this we want to skip her.
+    if ( GetName(oCharacter) != "Shale"  ) {
         WRK_LOOP_SKILL(0, GetArraySize(WRK_SKILLLIST), WRK_SKILLLIST, oCharacter);
 
         // Recalculate the amount of available tactics due to the loss of Combat Tactics

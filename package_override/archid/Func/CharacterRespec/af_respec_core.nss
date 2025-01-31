@@ -7,9 +7,9 @@
 /////////////////////////////////////////////////////////////////
 
 #include "sys_rewards_h"
-#include "wrk_respec_attributes_h"
-#include "wrk_respec_spells_h"
-#include "wrk_respec_skills_h"
+#include "af_respec_abilities_h"
+#include "af_respec_attributes_h"
+#include "af_respec_skills_h"
 
 void WRK_RespecCharacter(object oCharacter);
 void WRK_RespecCharacter(object oCharacter)
@@ -19,7 +19,7 @@ void WRK_RespecCharacter(object oCharacter)
     WRK_ClearQuickslots(oCharacter);
 
     // Respec the spells
-    WRK_RESPEC_SPELLS(oCharacter);
+    WRK_RESPEC_ABILITIES(oCharacter);
 
     // Respec the skills
     WRK_RESPEC_SKILLS(oCharacter);
@@ -34,15 +34,15 @@ void WRK_RespecCharacter(object oCharacter)
 
     // Add a bit of random RP
     string[] sRPText;
-    sRPText[0] = "Ugh.. Where am I?!";
-    sRPText[1] = "Ooh! I feel... different!";
-    sRPText[2] = "Something is strange...";
-    sRPText[3] = "This isn't right! No, no, nono!";
-    sRPText[4] = "What... Who the... What just happened?!";
-    sRPText[5] = "Hamsters and rangers everywhere!";
+    sRPText[0] = GetStringByStringId(6610078);
+    sRPText[1] = GetStringByStringId(6610079);
+    sRPText[2] = GetStringByStringId(6610080);
+    sRPText[3] = GetStringByStringId(6610081);
+    sRPText[4] = GetStringByStringId(6610082);
+    sRPText[5] = GetStringByStringId(6610083);
     DisplayFloatyMessage(oCharacter, sRPText[Random(6)], FLOATY_MESSAGE, 16777215, 5.0f);
 
     // Remove a potion from the shared inventory every time we use one.
-    UT_RemoveItemFromInventory(R"wrk_potion_respec.uti", 1, GetHero());
+    UT_RemoveItemFromInventory(R"af_char_respec_potion.uti", 1, GetHero());
 
 } // ! WRK_RespecCharacter

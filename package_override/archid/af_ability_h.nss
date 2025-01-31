@@ -1,5 +1,5 @@
 /*
-* List of constants taht define new abilities added in the mod
+* List of constants that define new abilities added in the mod
 */
 const int AF_ABI_SPELLSHAPING_1 = 6610002;
 const int AF_ABI_SPELLSHAPING_2 = 6610003;
@@ -10,3 +10,4 @@ const int AF_ABI_SPELL_UNLOCK_1 = 6610006;
 const int AF_ABI_SPELL_UNLOCK_2 = 6610007;
 const int AF_ABI_SPELL_UNLOCK_3 = 6610008;
 
+const int AF_ABI_CHAR_RESPEC = 6610010;
