@@ -27,9 +27,9 @@ void main() {
                 return;
             }
             object oKiller = GetEventCreator(ev);
-            int bFull = LootObject(OBJECT_SELF, oKiller);
+            int nFull = LootObject(OBJECT_SELF, oKiller);
 
-            if (bFull)
+            if (nFull == LOOT_RETURN_INV_FULL)
                 DisplayFloatyMessage(oKiller, "Inventory Full", FLOATY_MESSAGE, 0xff0000, 2.0);
 
             break;
