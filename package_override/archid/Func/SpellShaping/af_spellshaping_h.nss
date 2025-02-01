@@ -1,7 +1,7 @@
 #include "ability_h"
 #include "af_ability_h"
 
-const int SPELLSHAPING_WARNING_STRREFID = 6610059;
+const int AF_SPELLSHAPING_WARNING_STRREFID = 6610095;
 const int AF_LOGGROUP_SPELLSHAPING = 9;
 
 /*
@@ -40,6 +40,6 @@ void SpellShapingCheckConfig() {
     string ablStr = GetM2DAString(TABLE_EVENTS, "Script", EVENT_TYPE_ABILITY_CAST_IMPACT);
 
     if (ablStr != "af_ablity_cast_impact" && ablStr != "eventmanager")
-        ShowPopup(SPELLSHAPING_WARNING_STRREFID, 1, OBJECT_INVALID, FALSE, 0);
+        ShowPopup(AF_SPELLSHAPING_WARNING_STRREFID, 1, OBJECT_INVALID, FALSE, 0);
 }
 
