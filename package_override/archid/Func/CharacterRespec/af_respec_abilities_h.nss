@@ -8,7 +8,7 @@
 #include "2da_constants_h"
 #include "af_respec_utility_h"
 #include "af_ability_h"
-#include "ability_h" 
+#include "ability_h"
 #include "af_logging_h"
 
 
@@ -23,7 +23,7 @@
 * @param oCharacter  - The character
 * @author weriK
 **/
-void WRK_LOOP_ABILITY(int[] arAbilityID, object oCharacter) {  
+void WRK_LOOP_ABILITY(int[] arAbilityID, object oCharacter) {
     int iCount = GetArraySize(arAbilityID);
     afLogInfo("Number of skills: " + IntToString(iCount), AF_LOGGROUP_CHAR_RESPEC);
 
@@ -372,6 +372,10 @@ void WRK_RESPEC_ABILITIES(object oCharacter) {
     WRK_ABILITIES_DOG[iDog++] = ABILITY_TALENT_MONSTER_DOG_SHRED;
     WRK_ABILITIES_DOG[iDog++] = ABILITY_TALENT_MONSTER_DOG_CHARGE;
     WRK_ABILITIES_DOG[iDog++] = ABILITY_TALENT_MONSTER_DOG_FORTITUDE;
+    WRK_ABILITIES_DOG[iDog++] = AF_ABI_DOG_ENDURANCE;
+    WRK_ABILITIES_DOG[iDog++] = AF_ABI_DOG_BOND;
+    WRK_ABILITIES_DOG[iDog++] = AF_ABI_DOG_FRIGHTEN;
+    WRK_ABILITIES_DOG[iDog++] = AF_ABI_DOG_LEAP;
 
     ////
     // SHALE TALENTS master table
