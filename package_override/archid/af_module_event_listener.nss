@@ -5,6 +5,7 @@
 #include "af_constants_h"
 #include "af_logging_h"
 #include "af_nohelmet_h"
+#include "af_respec_module_h"
 #include "af_spellshaping_h"
 #include "af_eds_include_h"
 
@@ -100,7 +101,10 @@ void main()
             // Each listener should return TRUE or FALSE based on whether it handled the event on not
             if (ExtraDogSlotPopupEventHandler(ev)) {
                 break;
+            } else if(RespecPopupEventHandler(ev)) {
+                break;
             }
+
             break;
         }
         case EVENT_TYPE_PARTYPICKER_CLOSED: {

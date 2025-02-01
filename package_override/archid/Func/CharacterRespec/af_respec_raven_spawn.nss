@@ -9,9 +9,7 @@
 // this spawn script upon loading of the camp area. He knows sekretz! :)
 //
 /////////////////////////////////////////////////////////////////
-
-const string AF_CRE_RESPEC_RAVEN = "af_char_respec_raven";
-const resource AF_CRR_RESPEC_RAVEN = R"af_char_respec_raven.utc";
+#include "af_respec_utility_h"
 
 void main()
 {
@@ -22,8 +20,10 @@ void main()
     // Retrieve the area tag
     string sLocationTag = GetTag(oArea);
 
+    afLogDebug("Entering new area: " + sLocationTag, AF_LOGGROUP_CHAR_RESPEC);
     // If there is no vendor spawned yet in this area, do that now
     if (!IsObjectValid(oVendor)) {
+        afLogDebug("Respec raven not found", AF_LOGGROUP_CHAR_RESPEC);
         // King's Camp at Ostagaar, Day & Night, Behind the fire next to Duncan
         if ( FindSubString( sLocationTag, "pre100ar_kings_camp", 0 ) >= 0 ) {
             location lSpawn = Location(oArea, Vector(562.17, 498.52, -0.49), -92.5);

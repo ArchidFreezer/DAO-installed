@@ -10,6 +10,7 @@
 #include "af_respec_abilities_h"
 #include "af_respec_attributes_h"
 #include "af_respec_skills_h"
+#include "af_respec_utility_h"
 
 void WRK_RespecCharacter(object oCharacter);
 void WRK_RespecCharacter(object oCharacter)
@@ -43,6 +44,6 @@ void WRK_RespecCharacter(object oCharacter)
     DisplayFloatyMessage(oCharacter, sRPText[Random(6)], FLOATY_MESSAGE, 16777215, 5.0f);
 
     // Remove a potion from the shared inventory every time we use one.
-    UT_RemoveItemFromInventory(R"af_char_respec_potion.uti", 1, GetHero());
+    UT_RemoveItemFromInventory(AF_ITR_RESPEC_POTION, 1, GetHero());
 
 } // ! WRK_RespecCharacter

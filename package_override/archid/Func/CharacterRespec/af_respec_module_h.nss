@@ -1,17 +1,17 @@
 #include "wrappers_h"
 #include "af_respec_core_h"
 #include "af_respec_utility_h"
-#include "plt_af_char_respec"
+#include "plt_af_respec"
 
 /**
 * @brief Show a popuyp trhe first time the module loads
 */
 void RespecTestCharacter() {
     // If this is not the first time the module was loaded
-    if (WR_GetPlotFlag(PLT_AF_CHAR_RESPEC, AF_RESPEC_FIRST_START)) {
+    if (WR_GetPlotFlag(PLT_AF_RESPEC, AF_RESPEC_FIRST_START)) {
         // Show a Welcome Screen to the player so they know the module started correctly
         ShowPopup(6610085, AF_POPUP_MESSAGE);   // Ok button
-        WR_SetPlotFlag(PLT_AF_CHAR_RESPEC, AF_RESPEC_FIRST_START, FALSE);
+        WR_SetPlotFlag(PLT_AF_RESPEC, AF_RESPEC_FIRST_START, FALSE);
     }
 }
 
@@ -21,16 +21,16 @@ void RespecTestCharacter() {
 * @return TRUE if the event is handled; FALSE otherwise
 */
 int RespecPopupEventHandler(event ev) {
-                                       
+
     int nPopupID  = GetEventInteger(ev, 0);  // popup ID (references a row in popups 2da)
-    
+
     // Check that this is our popup
     if (nPopupID != AF_POPUP_CHAR_RESPEC)
         return FALSE;
-        
+
     // Only proceed if we want to use the potion now
     // Every other case we ignore
-    if (!WR_GetPlotFlag(PLT_AF_CHAR_RESPEC, AF_RESPEC_USE_POTION))
+    if (!WR_GetPlotFlag(PLT_AF_RESPEC, AF_RESPEC_USE_POTION))
         return FALSE;
 
     // Retrieve the object which fired the potion ability
@@ -46,7 +46,7 @@ int RespecPopupEventHandler(event ev) {
         WRK_RespecCharacter(aPartyList[nPartyMember]);
 
     // Either way, we want to reset the flag
-    WR_SetPlotFlag(PLT_AF_CHAR_RESPEC, AF_RESPEC_USE_POTION, FALSE);
+    WR_SetPlotFlag(PLT_AF_RESPEC, AF_RESPEC_USE_POTION, FALSE);
 
     return TRUE;
 }

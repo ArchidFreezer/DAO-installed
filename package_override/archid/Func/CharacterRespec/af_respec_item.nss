@@ -9,7 +9,7 @@
 #include "events_h"
 #include "wrappers_h"
 #include "af_constants_h"
-#include "plt_af_char_respec"
+#include "plt_af_respec"
 
 
 
@@ -40,7 +40,7 @@ void main() {
             }
 
             // Set the plot flag to indicate our intention of respeccing
-            WR_SetPlotFlag( PLT_AF_CHAR_RESPEC, AF_RESPEC_USE_POTION, TRUE );
+            WR_SetPlotFlag( PLT_AF_RESPEC, AF_RESPEC_USE_POTION, TRUE );
 
             // Show a confirmation dialog box to the player
             ShowPopup(6610084, AF_POPUP_CHAR_RESPEC, oCharacter);

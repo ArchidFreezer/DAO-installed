@@ -7,15 +7,25 @@
 /////////////////////////////////////////////////////////////////
 
 #include "attributes_h"
+#include "af_logging_h"
+
+const int AF_LOGGROUP_CHAR_RESPEC = 10;
 
 ////
 //  Module variables
-////                
+////
 
-const string AF_VAR_CHAR_RESPEC = "CHAR_RESPEC"; 
+const string AF_VAR_CHAR_RESPEC = "CHAR_RESPEC";
 
-const string AF_ITM_RESPEC_POTION = "af_char_respec_potion";
-const resource AF_ITR_RESPEC_POTION = R"af_char_respec_potion.uti";
+////
+//  Respec resouces
+////
+const string AF_ITM_RESPEC_POTION = "af_respec_potion";
+const resource AF_ITR_RESPEC_POTION = R"af_respec_potion.uti";
+
+const string AF_CRE_RESPEC_RAVEN = "af_respec_raven";
+const resource AF_CRR_RESPEC_RAVEN = R"af_respec_raven.utc";
+
 
 ////
 //  Shale DLC Ability ID list
